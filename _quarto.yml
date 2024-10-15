@@ -1,0 +1,27 @@
+project:
+  type: website
+
+website:
+  title: "Vikrant"
+  sidebar: false
+  navbar:
+    right:
+      - icon: linkedin
+        href: https://www.linkedin.com/in/vikrant-mehta/
+      - icon: github
+        href: https://github.com/vikrantmehta123
+      - icon: code
+        href: https://leetcode.com/u/vikrantmehta123/
+    left:
+      - href: about.qmd
+        text: About
+      - href: blog.qmd
+        text: Blog
+
+format:
+  html:
+    theme: simplex
+    css: styles.css
+    toc: true
+
+
