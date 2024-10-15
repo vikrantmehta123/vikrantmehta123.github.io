@@ -1,6 +1,6 @@
 ---
 title: "Mastering Life Like a Grandmaster"
-image: Mind Master.jpg
+image: "./Mind Master.jpg"
 author: "Vikrant Mehta"
 date: "2024-10-13"
 categories: [Chess, Books]

@@ -1,4 +1,5 @@
 ---
+title: Blog
 listing:
   contents: posts
   sort: "date desc"
@@ -9,7 +10,7 @@ listing:
   fields: [date, title, reading-time, categories]
   image-align: left
 page-layout: full
-title-block-banner: false
+title-block-banner: true
 ---
 
 
