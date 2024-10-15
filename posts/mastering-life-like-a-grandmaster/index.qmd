@@ -1,5 +1,6 @@
 ---
 title: "Mastering Life Like a Grandmaster"
+image: Mind Master.jpg
 author: "Vikrant Mehta"
 date: "2024-10-13"
 categories: [Chess, Books]
@@ -39,8 +40,4 @@ There's an open interpretation here- if we want, we can apply the same reasoning
 
 Regardless of whether AI takes over or not, it's certainly our duty to be adaptable. Always be asking ourselves the questions: What do I need to learn? What do I need to unlearn? 
 
-<figure>
-    <img src="Mind Master.jpg"
-         alt="Cover Photo of the Book Mind Master">
-    <figcaption>Mind Master by Vishy Anand</figcaption>
-</figure>
+![Mind Master By Vishy](Mind Master.jpg){width=75% height=60% fig-alt="Mind Master Book Image" fig-align="center"}
