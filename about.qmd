@@ -16,7 +16,7 @@ about:
 
 👋 Hi, I’m Vikrant Mehta. I’m a final-year student at IIT Madras, pursuing a B.S. in Data Science and Applications. I currently work as a teaching assistant for the Data Structures and Algorithms (PDSA) course and as a Software Engineering intern at VuNet Systems in Bangalore. I'm passionate about applying Data Science to various domains and am always eager to explore new ideas and learn.
 
-Outside of academics, I try to keep my interests broad. I love sports—I play chess, tennis, and cricket. I’m an avid reader, aiming to finish at least one book each week, and I also enjoy studying finance. I usually write about what I read, intriguing finance topics, projects I'm building, or new things I’m learning.
+Outside of academics, I try to keep my interests broad. I love sports—I play chess, tennis, and cricket. I’m an avid reader, aiming to finish at least one book each week, and I also enjoy studying finance and business. I usually write about what I read, intriguing finance topics, projects I'm building, or new things I’m learning.
 
 I’m a bit of a techie who loves data science and programming but finds joy in other fields too. My interests span beyond tech, including finance, sports, languages, and even theatre.
 
