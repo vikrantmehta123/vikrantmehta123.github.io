@@ -1,0 +1,45 @@
+---
+title: "Mastering Deep Learning as a Non-Techie"
+author: "Vikrant Mehta"
+date: "2024-10-18"
+image: "Meta Learning.png"
+categories: [Data Science, Psychology]
+description: "How do you master deep learning, especially if you're not a 'techie'? Radek Osmulski did just this. We went from having a boring job to an exciting career at NVidia. This post tells you how."
+---
+
+Even if you closely follow AI and deep learning, chances are you haven’t heard of Radek Osmulski. He’s a deep learning engineer at Nvidia and a top competitor on Kaggle. But what’s really inspiring about Radek’s story is that he didn’t write a single line of code until he was 29! So how did he go from not knowing how to program to landing a job at Nvidia? How did he master deep learning so well? Radek answers these questions in his book, *Meta Learning*, which you can buy [here](https://rosmulski.gumroad.com/l/learn_machine_learning/blog).
+
+In this blog post, I’ll summarize the key ideas from *Meta Learning*, so that even if you’re not a technical expert, you can get started and master deep learning yourself. 
+
+### The Essential Skills
+
+You might think deep learning requires advanced knowledge of statistics, algorithms, data structures, or calculus. But in reality, Radek argues that what you *really* need are these four skills:
+
+- *Navigating Stack Overflow:* Get familiar with the interface, learn to navigate the site. 
+- *Reading documentation:* Start with open-source projects—it’s intimidating at first, but it gets easier. By seeing how others code, you’ll improve your own. Take any open-source project in your preferred language and start exploring it.
+- *Understanding code repositories:* No matter which one you use, editors have powerful features that make your life easy. Know them!
+- *Using version control (Git):* Nearly all of the world’s code is managed through Git, so learning how to use basic Git is extremely important. Get started [here](https://youtu.be/2sjqTHE0zok?feature=shared).
+
+It sounds simple, right? None of these are deep learning-specific skills, but they are essential for implementing deep learning projects (or any software project, for that matter). If you have these skills, you can build on these to learn anything!
+
+You can parallely take FastAI's deep learning course as well to get familiar with Deep Learning. More on this later.
+
+### Share Your Work
+
+You learn best by doing, but even better by sharing. Sharing isn’t about showing off; it’s about reflecting. If, like me, you’re not someone who posts on social media often, this can be tough. But it’s worth breaking the barrier.
+
+Sharing what you’re learning forces you to reflect, and reflection means deeper understanding. Start a blog, even if it’s just for yourself. Write about what you’re learning, then share it. Remember, you don’t have to be an expert to start writing a blog. Your journey as a beginner is just as important, especially for your own growth.
+
+### BUILD. BUILD. BUILD. 
+
+One of the biggest barriers to learning deep learning is there's just too much theory. You are told that you need to know statistics, calculus, and basic machine learning to just get started with deep learning. Radek’s advice is clear: stop focusing on theory, and start building. It’s better to build first and figure out the theory later. In his words, a better approach is: "Use one cup of theory, one cup of practice. Rinse and repeat."
+
+Don’t overdo it with too many courses—pick one. By far, the best course on learning deep learning is the FastAI's Deep Learning course. In fact, engineers at OpenAI are required to take this course before joining. You can start with this course, build the basics, and get your hands dirty! 
+
+
+![Meta Learning Book Profile](Meta%20Learning.png)
+*Meta Learning by Radek Osmulski*
+
+---
+
+I claim no credit for the information presented here. All insights are from Radek's book. My goal was to present a small summary and to absorb the learnings better myself. 

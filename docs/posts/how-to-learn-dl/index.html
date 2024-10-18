@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Vikrant Mehta">
+<meta name="dcterms.date" content="2024-10-18">
+<meta name="description" content="How do you master deep learning, especially if you’re not a ‘techie’? Radek Osmulski did just this. We went from having a boring job to an exciting career at NVidia. This post tells you how.">
 
-<title>blog – Vikrant</title>
+<title>Mastering Deep Learning as a Non-Techie – Vikrant</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +26,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,67 +69,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-reading-time','listing-categories','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -138,7 +81,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Vikrant</span>
     </a>
   </div>
@@ -149,11 +92,11 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" aria-current="page"> 
+    <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
@@ -181,156 +124,95 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Mastering Deep Learning as a Non-Techie</h1>
+                  <div>
+        <div class="description">
+          How do you master deep learning, especially if you’re not a ‘techie’? Radek Osmulski did just this. We went from having a boring job to an exciting career at NVidia. This post tells you how.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Data Science</div>
+                <div class="quarto-category">Psychology</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Vikrant Mehta </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 18, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Books">Books <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Business">Business <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Chess">Chess <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Data Science">Data Science <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Psychology">Psychology <span class="quarto-category-count">(1)</span></div></div></div>
-<!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
-
-
-
-
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-title" data-direction="asc">
-          Title
-        </option>
-         <option value="listing-date-sort" data-direction="asc">
-          Date - Oldest
-        </option>
-         <option value="listing-date-sort" data-direction="desc">
-          Date - Newest
-        </option>
-     </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-essential-skills" id="toc-the-essential-skills" class="nav-link active" data-scroll-target="#the-essential-skills">The Essential Skills</a></li>
+  <li><a href="#share-your-work" id="toc-share-your-work" class="nav-link" data-scroll-target="#share-your-work">Share Your Work</a></li>
+  <li><a href="#build.-build.-build." id="toc-build.-build.-build." class="nav-link" data-scroll-target="#build.-build.-build.">BUILD. BUILD. BUILD.</a></li>
+  </ul>
+</nav>
     </div>
-</div>
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Data Science,Psychology" data-listing-date-sort="1729189800000" data-listing-file-modified-sort="1729241669436" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="566">
-<div class="thumbnail">
-<p><a href="./posts/how-to-learn-dl/index.html" class="no-external"></a></p><a href="./posts/how-to-learn-dl/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/how-to-learn-dl/Meta Learning.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/how-to-learn-dl/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/how-to-learn-dl/index.html" class="no-external">Mastering Deep Learning as a Non-Techie</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/how-to-learn-dl/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Data Science'); return false;">
-Data Science
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Psychology'); return false;">
-Psychology
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/how-to-learn-dl/index.html" class="no-external">How do you master deep learning, especially if you’re not a ‘techie’? Radek Osmulski did just this. We went from having a boring job to an exciting career at NVidia. This post tells you how.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/how-to-learn-dl/index.html" class="no-external">
-<div class="listing-date">
-Oct 18, 2024
-</div>
-<div class="listing-reading-time">
-3 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="Business" data-listing-date-sort="1728930600000" data-listing-file-modified-sort="1729242164929" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1341">
-<div class="thumbnail">
-<p><a href="./posts/meeting-bhavesh-bhatia/index.html" class="no-external"></a></p><a href="./posts/meeting-bhavesh-bhatia/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/meeting-bhavesh-bhatia/Bhavesh Bhatia.jpeg" class="thumbnail-image"></p>
-</a><p><a href="./posts/meeting-bhavesh-bhatia/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/meeting-bhavesh-bhatia/index.html" class="no-external">A Visionary Leader</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/meeting-bhavesh-bhatia/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Business'); return false;">
-Business
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/meeting-bhavesh-bhatia/index.html" class="no-external">Bhavesh Bhatia’s story is nothing short of inspirational. He started with a rented handcart as a store, and built a business employing more than 10,000 people. Read on to know how he did it.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/meeting-bhavesh-bhatia/index.html" class="no-external">
-<div class="listing-date">
-Oct 15, 2024
-</div>
-<div class="listing-reading-time">
-7 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="Chess,Books" data-listing-date-sort="1728757800000" data-listing-file-modified-sort="1729242080820" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="703">
-<div class="thumbnail">
-<p><a href="./posts/mastering-life-like-a-grandmaster/index.html" class="no-external"></a></p><a href="./posts/mastering-life-like-a-grandmaster/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/mastering-life-like-a-grandmaster/Mind Master.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/mastering-life-like-a-grandmaster/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/mastering-life-like-a-grandmaster/index.html" class="no-external">Mastering Life Like a Grandmaster</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/mastering-life-like-a-grandmaster/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Chess'); return false;">
-Chess
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Books'); return false;">
-Books
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/mastering-life-like-a-grandmaster/index.html" class="no-external">Vishy Anand, the five-time world champion, is a person who inspires many. His advice, like his chess, is well thought out and worth listening to. Recently, he published his book: “Mind Master: Winning Lessons from a Champion’s life”. Read on to find out what’s Vishy’s take on life.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/mastering-life-like-a-grandmaster/index.html" class="no-external">
-<div class="listing-date">
-Oct 13, 2024
-</div>
-<div class="listing-reading-time">
-4 min
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>Even if you closely follow AI and deep learning, chances are you haven’t heard of Radek Osmulski. He’s a deep learning engineer at Nvidia and a top competitor on Kaggle. But what’s really inspiring about Radek’s story is that he didn’t write a single line of code until he was 29! So how did he go from not knowing how to program to landing a job at Nvidia? How did he master deep learning so well? Radek answers these questions in his book, <em>Meta Learning</em>, which you can buy <a href="https://rosmulski.gumroad.com/l/learn_machine_learning/blog">here</a>.</p>
+<p>In this blog post, I’ll summarize the key ideas from <em>Meta Learning</em>, so that even if you’re not a technical expert, you can get started and master deep learning yourself.</p>
+<section id="the-essential-skills" class="level3">
+<h3 class="anchored" data-anchor-id="the-essential-skills">The Essential Skills</h3>
+<p>You might think deep learning requires advanced knowledge of statistics, algorithms, data structures, or calculus. But in reality, Radek argues that what you <em>really</em> need are these four skills:</p>
+<ul>
+<li><em>Navigating Stack Overflow:</em> Get familiar with the interface, learn to navigate the site.</li>
+<li><em>Reading documentation:</em> Start with open-source projects—it’s intimidating at first, but it gets easier. By seeing how others code, you’ll improve your own. Take any open-source project in your preferred language and start exploring it.</li>
+<li><em>Understanding code repositories:</em> No matter which one you use, editors have powerful features that make your life easy. Know them!</li>
+<li><em>Using version control (Git):</em> Nearly all of the world’s code is managed through Git, so learning how to use basic Git is extremely important. Get started <a href="https://youtu.be/2sjqTHE0zok?feature=shared">here</a>.</li>
+</ul>
+<p>It sounds simple, right? None of these are deep learning-specific skills, but they are essential for implementing deep learning projects (or any software project, for that matter). If you have these skills, you can build on these to learn anything!</p>
+<p>You can parallely take FastAI’s deep learning course as well to get familiar with Deep Learning. More on this later.</p>
+</section>
+<section id="share-your-work" class="level3">
+<h3 class="anchored" data-anchor-id="share-your-work">Share Your Work</h3>
+<p>You learn best by doing, but even better by sharing. Sharing isn’t about showing off; it’s about reflecting. If, like me, you’re not someone who posts on social media often, this can be tough. But it’s worth breaking the barrier.</p>
+<p>Sharing what you’re learning forces you to reflect, and reflection means deeper understanding. Start a blog, even if it’s just for yourself. Write about what you’re learning, then share it. Remember, you don’t have to be an expert to start writing a blog. Your journey as a beginner is just as important, especially for your own growth.</p>
+</section>
+<section id="build.-build.-build." class="level3">
+<h3 class="anchored" data-anchor-id="build.-build.-build.">BUILD. BUILD. BUILD.</h3>
+<p>One of the biggest barriers to learning deep learning is there’s just too much theory. You are told that you need to know statistics, calculus, and basic machine learning to just get started with deep learning. Radek’s advice is clear: stop focusing on theory, and start building. It’s better to build first and figure out the theory later. In his words, a better approach is: “Use one cup of theory, one cup of practice. Rinse and repeat.”</p>
+<p>Don’t overdo it with too many courses—pick one. By far, the best course on learning deep learning is the FastAI’s Deep Learning course. In fact, engineers at OpenAI are required to take this course before joining. You can start with this course, build the basics, and get your hands dirty!</p>
+<p><img src="Meta Learning.png" class="img-fluid" alt="Meta Learning Book Profile"> <em>Meta Learning by Radek Osmulski</em></p>
+<hr>
+<p>I claim no credit for the information presented here. All insights are from Radek’s book. My goal was to present a small summary and to absorb the learnings better myself.</p>
+
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

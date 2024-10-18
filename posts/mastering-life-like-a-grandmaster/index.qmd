@@ -4,6 +4,8 @@ image: "./Mind Master.jpg"
 author: "Vikrant Mehta"
 date: "2024-10-13"
 categories: [Chess, Books]
+description: "Vishy Anand, the five-time world champion, is a person who inspires many. His advice, like his chess, is well thought out and worth listening to. Recently, he published his book: \"Mind Master: Winning Lessons from a Champion's life\". Read on to find out what's Vishy's take on life."
+fig-cap-location: bottom
 ---
 
 Recently, I came across Vishy Anand's book- "Mind Master". For anyone who admires Vishy, and anyone who wants to succeed in life, the book is a delight. Vishy shares his experiences and the lessons he learned from playing chess. In this post, I share the top three lessons from Vishy's book. 
