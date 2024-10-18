@@ -13,16 +13,29 @@ website:
         href: https://github.com/vikrantmehta123
       - icon: code
         href: https://leetcode.com/u/vikrantmehta123/
+      - text: "{{<fa chess-queen>}}"
+        href: https://lichess.org/@/vikrant-123
     left:
       - href: about.qmd
         text: About
       - href: blog.qmd
         text: Blog
+      - text: Projects
+        href: projects.qmd 
+include-in-header: 
+  text:
+    <script type="text/javascript" src="script.js"></script>
 
 format:
   html:
-    theme: simplex
+    theme: 
+      light: flatly
+      dark: darkly 
     css: styles.css
     toc: true
+    header-includes: |
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Sofia&family=WindSong:wght@400;500&display=swap" rel="stylesheet">
 
 
