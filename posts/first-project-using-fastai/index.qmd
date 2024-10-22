@@ -1,6 +1,7 @@
 ---
 title: "Building a Digit Classifier From Scratch"
 author: "Vikrant Mehta"
+image: "./MNIST Viz.png"
 date: "2024-10-23"
 categories: [Data Science]
 code-fold: true
