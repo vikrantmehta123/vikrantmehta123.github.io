@@ -4,7 +4,7 @@ author: "Vikrant Mehta"
 date: "2024-10-18"
 image: "Meta Learning.png"
 categories: [Data Science, Psychology]
-description: "How do you master deep learning, especially if you're not a 'techie'? Radek Osmulski did just this. We went from having a boring job to an exciting career at NVidia. This post tells you how."
+description: "How do you master deep learning, especially if you're not a 'techie'? Radek Osmulski did just this. He went from having a boring job to an exciting career at NVidia. This post tells you how."
 ---
 
 Even if you closely follow AI and deep learning, chances are you haven’t heard of Radek Osmulski. He’s a deep learning engineer at Nvidia and a top competitor on Kaggle. But what’s really inspiring about Radek’s story is that he didn’t write a single line of code until he was 29! So how did he go from not knowing how to program to landing a job at Nvidia? How did he master deep learning so well? Radek answers these questions in his book, *Meta Learning*, which you can buy [here](https://rosmulski.gumroad.com/l/learn_machine_learning/blog).

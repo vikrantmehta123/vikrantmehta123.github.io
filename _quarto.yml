@@ -22,10 +22,6 @@ website:
         text: Blog
       - text: Projects
         href: projects.qmd 
-include-in-header: 
-  text:
-    <script type="text/javascript" src="script.js"></script>
-
 format:
   html:
     theme: 

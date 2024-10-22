@@ -1,0 +1,272 @@
+---
+title: "Building a Digit Classifier From Scratch"
+author: "Vikrant Mehta"
+date: "2024-10-23"
+categories: [Data Science]
+code-fold: true
+description: "In this post, I'll share how I created my first deep learning model. I created a neural network from scratch using FastAI and PyTorch. While I didn't write code for backpropagation (thankfully, PyTorch is there!), I did write the building blocks myself, which made this incredibly fun!"
+---
+
+
+This is my first time building a deep learning model from scratch. Before this, I had not tried it, and I wasn't sure where to start. But thanks to Jeremy Howard's [Practical Deep Learning for Coders](https://course.fast.ai/) course, I gave it a shot and built my first deep learning model- a digit classifier. His course also encouraged me to share what I learn with others.
+
+In this blog post, I'll share how I built a simple neural network using FastAI and PyTorch. I'll walk through how I prepared the data, built the model, and trained it. I hope my experience helps others who are also trying to build their first model.
+
+### Loading the Training Dataset
+
+Although FastAI comes with the MNIST dataset, it needs to be loaded and prepared for training. 
+
+The data is in the `URLs` module in `fastai` library, and it has the following directory structure:  
+
+```
+path/
+├── training/
+│   ├── 0/
+│   │   ├── img1
+│   │   └── img2
+│   ├── 1/
+│   │   ├── img2
+│   │   └── img1
+├── testing/
+│   ├── 0/
+│   │   ├── img1
+│   │   └── img2
+│   ├── 1/
+│   │   ├── img1
+│   │   └── img2
+```
+
+We can write a few lines of code to load these images as tensors:
+
+```python
+
+path = untar_data(URLs.MNIST)
+Path.BASE_PATH = path
+
+x = [ ]
+y = [ ]
+for i in range(10):
+    img_paths = (path/'training'/str(i)).ls()  # Get the image paths of a digit
+
+    # Load the images and convert to tensors
+    x.extend([tensor(Image.open(o)) for o in img_paths])
+
+    # Store the corresponding digit label for all images in this folder
+    y.extend([tensor(i)] * len(img_paths))
+```
+
+### Data Preprocessing
+
+I now had a $28 \times 28$ matrix for each image. To pass this as input to the model, I needed to flatten it into a single tensor, and standardize the pixel values for better results. 
+
+```python
+# Convert the python list into PyTorch tensor, and standardize it
+x_tensor = torch.stack(x).float()/255
+y_tensor = torch.tensor(y)
+
+# Each image is 28 * 28. So we flatten each image into a single flat tensor of size 784.
+flattened_x = x_tensor.view(-1, 28*28)
+flattened_y = y_tensor.unsqueeze(1) # y_tensor has shape [60000], we unsqueeze it to make it [60000, 1]
+```
+
+It's always a good idea to split the dataset into training and validation sets:
+
+```python
+from fastai.data.transforms import RandomSplitter
+
+splitter = RandomSplitter(valid_pct=0.2, seed=42)  # 80% training, 20% validation
+
+train_idxs, val_idxs = splitter(range(len(flattened_x))) # Splitter returns indices for the two sets
+
+# Create the training and validation data from those indices
+X_train = flattened_x[train_idxs]
+y_train = flattened_y[train_idxs]
+
+X_val = flattened_x[val_idxs]
+y_val = flattened_y[val_idxs]
+```
+
+As Jeremy Howard says, getting the data into your model is the trickiest and the most time-consuming part of building a deep learning model. Boy, it was tricky! 
+
+Now that I had the dataset ready, I trained the model.
+
+### Training the Model
+
+I used a simple two-layer neural network to classify the digits. This architecture, while basic, was a good starting point for understanding how deep learning models work.
+
+1. Linear Layer
+2. ReLU activation Layer
+3. Linear Layer
+4. Softmax Output
+
+Since the task is a classification task with multiple classes, I used cross entropy loss as the loss function to guide training. By using plain softmax as output function, I got `NaN` values, so I used log softmax for numerical stability.
+
+For this model, I had two sets of parameters:
+
+1. Weights and biases for layer 1, and
+2. Weights and biases for layer 2
+
+It's not a terrible idea to randomly initialize these weights. I defined the functions to implement the functionality for the model's architecture:
+
+1. Initializing random weights
+2. Computing cross entropy loss
+3. Computing log softmax
+4. Matrix multiplication for the linear layers
+
+```python 
+def init_params(size, std=1.0):
+    """Randomly initializes parameters of given size"""
+    return (torch.randn(size)*std).requires_grad_()
+
+def linear(xb, weights, bias):
+    """Does matrix multiplication with inputs and weights: y = mx + c"""
+    return xb @ weights + bias
+
+def log_softmax(logits):
+    max_logits = logits.max(dim=1, keepdim=True).values
+    stable_logits = logits - max_logits  # For numerical stability
+
+    # Compute log-softmax
+    log_probs = stable_logits - torch.log(torch.exp(stable_logits).sum(dim=1, keepdim=True))
+
+    return log_probs
+
+def cross_entropy_loss(log_probs, yb):
+    yb = yb.squeeze(1)
+    log_probs = log_probs.squeeze(1)
+
+    true_class_log_probs = log_probs[range(len(yb)), yb]
+
+    loss = -true_class_log_probs.mean()
+    return loss
+```
+
+Then, I used the `DataLoaders` class in `FastAI`, which passes the input tensors to the models in batches. I also initialized the model parameters.
+
+```python
+
+# Randomly initialize weights and biases for both the layers
+w1 = init_params((28*28,128))
+b1 = init_params(128)
+w2 = init_params((128,10))
+b2 = init_params(10)
+
+train_dataloader = DataLoader(train_dataset, batch_size=256, shuffle=True)
+validation_dataloader = DataLoader(validation_dataset, batch_size=256, shuffle=True)
+```
+
+Finally, the training phase:
+
+```python
+
+epochs = 25 # Train for 25 Epochs
+learning_rate = 0.001
+
+for i in range(epochs):
+    for xb, yb in train_dataloader:
+        # Reset gradients that have acccumulated in the last batch
+        if w1.grad is not None:
+            w1.grad.zero_()
+        if b1.grad is not None:
+            b1.grad.zero_()
+        if w2.grad is not None:
+            w2.grad.zero_()
+        if b2.grad is not None:
+            b2.grad.zero_()
+
+        # Forward pass 
+        hidden = torch.relu(linear(xb, w1, b1)) # 1st linear + ReLU
+        probabilities = log_softmax(linear(hidden, w2, b2)) # 2nd Linear + softmax
+
+        # Compute loss for the current training batch
+        loss = cross_entropy_loss(probabilities, yb)
+
+        # Backpropagation: use PyTorch functionality to do backpropagation
+        loss.backward()
+
+        # Update weights and biases
+        w1.data -= learning_rate * w1.grad.data
+        b1.data -= learning_rate * b1.grad.data
+        w2.data -= learning_rate * w2.grad.data
+        b2.data -= learning_rate * b2.grad.data
+
+        # Ensure gradients are tracked for next iteration
+        w1.requires_grad_(True)
+        b1.requires_grad_(True)
+        w2.requires_grad_(True)
+        b2.requires_grad_(True)
+
+    # Compute loss on the validation dataset with the same model
+    epoch_loss = 0
+    for xb, yb in validation_dataloader:
+        hidden = torch.relu(linear(xb, w1, b1))
+        probabilities = log_softmax(linear(hidden, w2, b2))
+        loss = cross_entropy_loss(probabilities, yb)
+        epoch_loss += loss.item()
+
+    average_loss = epoch_loss / len(validation_dataloader)
+
+    # Print the loss after each epoch
+    print(f'Epoch [{i+1}/{epochs}], Loss: {average_loss:.4f}')
+```
+
+### Evaluating the Model
+
+After training, it was time to test the predictions on the test dataset, the moment of truth!
+
+I performed the same preprocessing steps on the test dataset, as on the training dataset. First, we load the data, then we convert it into a flattened tensor, which we then standardize. 
+
+```python
+testing_path = (path/'testing').ls()
+
+x_test = [ ]
+y_test = [ ]
+for i in range(10):
+    img_paths = (path/'testing'/str(i)).ls()  # Get the image paths in folder 'i'
+
+    # Load the images and convert to tensors
+
+    x_test.extend([tensor(Image.open(o)) for o in img_paths])
+
+    # Store the corresponding label `i` for all images in this folder
+    y_test.extend([tensor(i)] * len(img_paths))
+
+
+x_test_tensor = torch.stack(x_test).float()/255
+y_test_tensor = torch.tensor(y_test)
+
+# Each image is 28 * 28. So we flatten each image into a single flat tensor of size 784.
+flattened_x_test = x_test_tensor.view(-1, 28*28)
+flattened_y_test = y_test_tensor.unsqueeze(1)
+```
+
+I used the trained model to compute the predictions, and get the fraction of accurate predictions. 
+
+```python
+# Forward pass through the network
+hidden = torch.relu(linear(flattened_x_test, w1, b1))
+probabilities = log_softmax(linear(hidden, w2, b2))
+
+predicted_classes = torch.argmax(probabilities, dim=1)
+
+correct_predictions = (predicted_classes == y_test_tensor).sum().item()
+
+# Calculate the number of incorrect predictions
+incorrect_predictions = len(y_test_tensor) - correct_predictions
+
+accuracy = correct_predictions / len(y_test_tensor) 
+print(f'Accuracy on test dataset: {accuracy * 100:.2f}%')
+```
+
+The model achieves about 80% accuracy! For my first model, not bad at all!
+---
+
+### Final Thoughts
+
+Building this model was much more helpful than simply watching tutorials. There's a great room for improvement on this model, like increasing the complexity of the model, exploring errors, or trying a different architecture. The possibilities to experiment are endless, and I hope to continue experimenting!
+
+If you're reading this and thinking about building your own first model, it's worth it! Happy coding! ✌️
+
+P.S. Take a look at FastAI's course: [Practical Deep Learning for Coders](https://course.fast.ai/). It's truly one of a kind!
+
+---

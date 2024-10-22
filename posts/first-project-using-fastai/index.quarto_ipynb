@@ -1,0 +1,64 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Building a Digit Classifier From Scratch\"\n",
+        "author: \"Vikrant Mehta\"\n",
+        "date: \"2024-10-19\"\n",
+        "categories: [Data Science]\n",
+        "code-fold: true\n",
+        "description: \"Building your first model is the crucial barrier that we need overcome. In this post, I share how we can build a simple neural network from scratch. We will use FastAI library functions and some PyTorch utilities, but we will build the building blocks of the model ourselves. In the process, we'll learn about Softmax Loss function, forward and backward passes, and weight updates.\"\n",
+        "---\n",
+        "\n",
+        "\n",
+        "Disclaimer: I tried to implement this notebook as an exercise in the Jeremy Howard's Deep Learning for Coders course. In this notebook, we'll build a digit classifier using deep learning. We'll use MNIST dataset to train our model and at the end, we'll try to evaluate our model on some digits we pass of our own. The focus of this notebook is build most of the building blocks from scratch, however we won't be writing code for backpropagation for this notebook. We'll use PyTorch's functionalities to compute the same. Let's dive right into. \n",
+        "\n",
+        "### Creating the Dataset\n",
+        "\n",
+        "Although Fast AI comes with MNIST dataset, we need to load the dataset for our model training. We cannot willy nilly access any document that comes with the library. So let's load the data. \n",
+        "\n",
+        "The data is in the URLs module, and has the following directory structure:\n",
+        "- path\n",
+        "    - training\n",
+        "        - 0\n",
+        "            - img1\n",
+        "            - img2\n",
+        "        - 1\n",
+        "        .\n",
+        "        .\n",
+        "    - testing\n",
+        "        - 0\n",
+        "            - img1\n",
+        "            - img2\n",
+        "        - 1\n",
+        "        .\n",
+        "        .\n",
+        "\n",
+        "We can access these files using the following code:\n"
+      ],
+      "id": "f93a8a71"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "print(hello world)"
+      ],
+      "id": "920abae4",
+      "execution_count": null,
+      "outputs": []
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3",
+      "language": "python",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
