@@ -13,5 +13,14 @@
       "/posts/meeting-bhavesh-bhatia/index.html",
       "/posts/mastering-life-like-a-grandmaster/index.html"
     ]
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/posts/first-project-using-fastai/index.html",
+      "/posts/how-to-learn-dl/index.html",
+      "/posts/meeting-bhavesh-bhatia/index.html",
+      "/posts/mastering-life-like-a-grandmaster/index.html"
+    ]
   }
 ]
