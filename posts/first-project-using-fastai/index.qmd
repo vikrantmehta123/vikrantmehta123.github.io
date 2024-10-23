@@ -186,16 +186,13 @@ for i in range(epochs):
         loss.backward()
 
         # Update weights and biases
-        w1.data -= learning_rate * w1.grad.data
-        b1.data -= learning_rate * b1.grad.data
-        w2.data -= learning_rate * w2.grad.data
-        b2.data -= learning_rate * b2.grad.data
 
-        # Ensure gradients are tracked for next iteration
-        w1.requires_grad_(True)
-        b1.requires_grad_(True)
-        w2.requires_grad_(True)
-        b2.requires_grad_(True)
+        # Update weights and biases
+        with torch.no_grad():
+            w1 -= learning_rate * w1.grad
+            b1 -= learning_rate * b1.grad
+            w2 -= learning_rate * w2.grad
+            b2 -= learning_rate * b2.grad
 
     # Compute loss on the validation dataset with the same model
     epoch_loss = 0

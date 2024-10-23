@@ -17,6 +17,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/creating-http-server-from-scratch/index.html",
       "/posts/first-project-using-fastai/index.html",
       "/posts/how-to-learn-dl/index.html",
       "/posts/meeting-bhavesh-bhatia/index.html",
