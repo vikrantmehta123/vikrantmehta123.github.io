@@ -1,0 +1,333 @@
+---
+title: "Building an HTTP Server From Scratch"
+author: "Vikrant Mehta"
+date: "2024-10-27"
+categories: [Software Engineering]
+image: "./FastAPI Server.png"
+code-fold: true
+description: "Serving a web application is as simple as running a single command. But this hides a lot of details. In this post, we create an HTTP server from scratch in Python to peek under the hood."
+---
+
+Running a web server can seem like magic- you type a command `fastapi dev main.py` or `node app.js`, and boom, your app is live on a server. But have you ever wondered what's happening behind the scenes? In this post, we'll build our own HTTP server from scratch and know what *really* goes on under the hood!
+
+### What's HTTP?
+
+HTTP is one set of rules (called a protocol) that computers use to talk to each other over the internet. It's 'text-based,' meaning it sends and receives plain text messages. Don't worry if this doesn't make sense just yet- by the end of this blog, you'll know exactly how it works! 
+
+### What's a Server?
+
+At its core, a server responds to requests of clients. Think of it like this: a client (like your web browser) asks for something, and the server sends it back. But how do they "talk" to each other? How does the server know what to send?
+
+To make this interaction happen, there are two things we need:
+
+1. The server needs to *listen* for and accept *connections* from clients. Clients will send requests as bytes (just raw data).
+
+2. The server should then figure out what the client wants (like a webpage) and respond with the right data- again, as bytes.
+
+This is our wishlist for the server. Now, let’s see how we can make this happen:
+
+To start, we need a TCP Server. A TCP server listens for requests and ensures that data is sent and received reliably. This will let us *connect with clients*, the first item in our wishlist. Let's break this down step by step with code:
+
+#### Implementing a TCP Server:
+
+First, we need to import the socket library, which is needed to set up the server to accept connections. It's for handling low-level networking interfaces, which we don't need to worry ourselves with.
+
+```python
+import socket
+```
+
+Now, let's define a class called `TCPServer`. This class will set up a server that listens for client connections.
+
+```python
+class TCPServer:
+    def __init__(self, port=8080) -> None:
+        self.host = "127.0.0.1"  # Localhost IP
+        self.port = port  # The port number the server will listen on
+
+```
+Here, we are specifying that our server will run on localhost (127.0.0.1) on port 8080. The `__init__` function initializes our server with these default values.
+
+To make our server actually *do* something, we need to set it up to listen for client requests:
+
+```python
+def start(self):
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.bind((self.host, self.port))  # Bind the server to the host and port
+    s.listen(5)  # The server can accept up to 5 connections at a time
+```
+
+We don't need to know details of these methods right now. Just know that this code sets up a server that listens for up to 5 client requests at a time. That’s all we need for now!
+
+Once the server is listening, we need to accept the connection request from the client and handle it. This is done using `accept()` and `recv()` methods. And we need the server to keep listening to incoming requests, so put this in an infinite loop:
+
+```python
+while True:
+    conn, addr = s.accept()  # Accept a new connection
+    print(f"Connection established with {addr}")
+    data = conn.recv(2048)  # Read data from the client (2KB max)
+```
+`s.accept()` waits until a client connects. Once connected, it returns two things:
+
+- `conn`: the connection object to communicate with the client.
+- `addr`: the client's address.
+
+`recv(2048)` reads up to 2048 bytes (2 KB) of data sent from the client.
+
+At this point, the server is simply waiting for a request from client and accepting the data sent in the request. 
+
+After receiving the data, we need to process it and send a response back to the client:
+
+```python
+    response = self.handle_request(data)  # Process the client request
+    conn.sendall(response)  # Send the response back to the client
+    conn.close()  # Close the connection
+```
+
+`handle_request(data)` is a method that we’ll implement later to process the client's request. This is where we meet the second requirement of the server- understanding what the client wants and sending the response back. 
+
+`sendall()` sends the response back to the client, and `conn.close()` closes the connection.
+
+And that’s it! With this setup, our server can accept and respond to client requests. 
+
+Here's the full version of the code:
+
+```python
+import socket
+
+class TCPServer:
+    def __init__(self, port=8080) -> None:
+        self.host = "127.0.0.1"
+        self.port = port
+
+    def start(self):
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.bind((self.host, self.port))
+        s.listen(5)
+
+        while True:
+            conn, addr = s.accept()  # Accept new connection
+            print(f"Connection established with {addr}")
+            data = conn.recv(2048)  # Receive data from client
+            response = self.handle_request(data)  # Process the request
+            conn.sendall(response)  # Send the response back to the client
+            conn.close()  # Close the connection
+
+    def handle_request(self, data):
+        pass  # To be implemented later
+```
+
+---
+
+### Building the HTTP Server
+
+Okay, so we’ve got our TCP server ready, and it’s time to implement the most important part—the `handle_request` function. This is where our server takes the request, figures out what the client wants, and then sends back a proper response.
+
+But how does the server *know* what the client wants? 
+
+The client's request comes as a stream of bytes. But HTTP is a text-based protocol, meaning that the request can be converted to text and it follows specific rules and formats. So we convert those bytes into strings and parse that string to understand what the client is asking for.
+
+HTTP requests have a fixed format which we can use to extract information from the request, like:
+
+- The method (e.g., GET or POST)
+- The URI (what page or resource the client wants)
+- The headers (extra info about the request)
+- The body (optional data sent by the client)
+
+*Note:* Refer to [this](https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages#http_requests) website to know the structure of HTTP request.
+            
+
+```python
+
+class HTTPServer(TCPServer):
+    def __init__(self, port=8080) -> None:
+        super().__init__(port)
+
+    def handle_request(self, data):
+        data = data.decode() # convert bytes into string
+        request = self.parse(data)
+
+        self.create_response() # Implemented later
+
+    def parse(self, data:str):
+        """
+        This function will parse the HTTP request and return the method, URI, headers, and body.
+        """
+        request = {}
+        lines = data.split("\r\n")  # Split the request by line
+
+        # First line contains method, URI, and HTTP version
+        request_line = lines[0]
+        words = request_line.split(" ")
+        request['method'] = words[0]
+
+        if len(words) > 1:
+            # For some requests, URI might be missing (e.g., homepage)
+            request['uri'] = words[1] 
+
+        if len(words) > 2:
+            request['http_version'] = words[2]
+
+        # Now let's extract headers and body
+        body = ''
+        in_headers = True
+        request['headers'] = {}
+
+        for line in lines[1:]:
+            if line == '':  # Blank line separates headers from body
+                in_headers = False
+            elif in_headers:
+                key, value = line.split(': ', 1)
+                request['headers'][key] = value
+            else:
+                body += line
+
+        request['body'] = body
+        return request
+```
+
+What's happening here?
+
+We are converting the request into a string first, then we are parsing it using simple string manipulating in Python to extract information like the HTTP method, the URI that the client wants, along with the HTTP request headers and body.
+
+If we didn't know the structure of an HTTP request, we can't do this string manipulation, and we won't know what the client wants! But because HTTP has a fixed format (a "protocol"), we can parse the request accurately . 
+
+Once we know what the client wants, it’s time to respond. But remember, HTTP has format for responses too! We can’t just send plain text back. We have to structure our response according to the HTTP protocol:
+
+- A response line (e.g., HTTP/1.1 200 OK)
+- The headers (e.g., server info)
+- A blank line (separating headers from the body)
+- The body (the actual content)
+
+Here's how we can do it:
+
+```python
+
+def create_response(self, request) :
+    if request['method'] == 'GET' and request['uri'] == '/hi':
+        return hello()
+    elif request['method'] == 'GET' and request['uri'] == '/namaste':
+        return namaste()
+
+def namaste():
+    response_line = "HTTP/1.1 200 OK\r\n" 
+    response_headers = f"Server: {socket.gethostname()}"
+    blank_line = b"\r\n"
+    response_body = "Namaste!"
+
+    # Concatenate everything and return it as bytes
+    return b"".join([response_line, response_headers, blank_line, response_body])
+
+def hello():
+    response_line = "HTTP/1.1 200 OK\r\n" 
+    response_headers = f"Server: {socket.gethostname()}"
+    blank_line = b"\r\n"
+    response_body = "Hello World!"
+
+    # Concatenate everything and return it as bytes
+    return b"".join([response_line, response_headers, blank_line, response_body])
+```
+
+Here's the entire code for the HTTP Server:
+
+```python
+
+class HTTPServer(TCPServer):
+    def __init__(self, port=8080) -> None:
+        super().__init__(port)
+
+    def handle_request(self, data):
+        data = data.decode() 
+        request = self.parse(data)
+
+        self.create_response() 
+
+    def parse(self, data:str):
+        """
+        This function will parse the HTTP request and return the method, URI, headers, and body.
+        """
+        request = {}
+        lines = data.split("\r\n") 
+        request_line = lines[0]
+        words = request_line.split(" ")
+        request['method'] = words[0]
+
+        if len(words) > 1:
+            request['uri'] = words[1] 
+
+        if len(words) > 2:
+            request['http_version'] = words[2]
+
+        body = ''
+        in_headers = True
+        request['headers'] = {}
+
+        for line in lines[1:]:
+            if line == '':  
+                in_headers = False
+            elif in_headers:
+                key, value = line.split(': ', 1)
+                request['headers'][key] = value
+            else:
+                body += line
+
+        request['body'] = body
+        return request
+
+
+    def create_response(self, request) :
+        if request['method'] == 'GET' and request['uri'] == '/hi':
+            return hello()
+        elif request['method'] == 'GET' and request['uri'] == '/namaste':
+            return namaste()
+
+    def namaste():
+        response_line = "HTTP/1.1 200 OK\r\n" 
+        response_headers = f"Server: {socket.gethostname()}"
+        blank_line = b"\r\n"
+        response_body = "Namaste!"
+
+        # Concatenate everything and return it as bytes
+        return b"".join([response_line, response_headers, blank_line, response_body])
+
+    def hello():
+        response_line = "HTTP/1.1 200 OK\r\n" 
+        response_headers = f"Server: {socket.gethostname()}"
+        blank_line = b"\r\n"
+        response_body = "Hello World!"
+
+        # Concatenate everything and return it as bytes
+        return b"".join([response_line, response_headers, blank_line, response_body])
+```
+
+This is already a perfectly valid HTTP server! But imagine we had 100s of functions and URI combinations. The `if-else` conditions will very quickly get messy. But we can make this better! We’ll use a dictionary to map specific requests to their handler functions. This is how modern web frameworks cna handle routes!
+
+```python
+
+routes = {
+    ('GET', '/hi'): hello,
+    ('GET', '/namaste'): namaste
+}
+
+def create_response(self, request):
+    # Look up the appropriate function in the routes dictionary
+    handler = routes[(request['method'], request['uri'])]
+    return handler()
+
+```
+
+This is a great improvement. An even better one is if you use decorators. You can add more routes, handle different HTTP methods, or experiment with cookies and sessions. I'll leave that for you to implement! Now, hopefully, commands like `fastapi dev main.py` are not magic blackboxes anymore.
+
+Happy coding!😄
+
+---
+
+### Credits and Resources:
+
+To build this server, I've relied on the following resources:
+
+1. [Bharat Chauhan Blog](https://bhch.github.io/posts/2017/11/writing-an-http-server-from-scratch/)
+2. [Neso Academy Course on Networking](https://youtube.com/playlist?list=PLBlnK6fEyqRgMCUAG0XRw78UA8qnv6jEx&si=aRPHTedU5WD4y9vu)
+3. [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP)
+4. You can check out [this](https://github.com/vikrantmehta123/http-server) repository for an improved version of the HTTP server we built.
+
+---

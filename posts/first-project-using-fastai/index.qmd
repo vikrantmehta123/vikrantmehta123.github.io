@@ -256,7 +256,7 @@ accuracy = correct_predictions / len(y_test_tensor)
 print(f'Accuracy on test dataset: {accuracy * 100:.2f}%')
 ```
 
-The model achieves about 80% accuracy! For my first model, not bad at all!
+The model achieves about 87% accuracy! For my first model, not bad at all!
 ---
 
 ### Final Thoughts
