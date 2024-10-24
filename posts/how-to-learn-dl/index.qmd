@@ -3,7 +3,7 @@ title: "Mastering Deep Learning as a Non-Techie"
 author: "Vikrant Mehta"
 date: "2024-10-18"
 image: "Meta Learning.png"
-categories: [Data Science, Psychology]
+categories: [Data Science, Psychology, Books]
 description: "How do you master deep learning, especially if you're not a 'techie'? Radek Osmulski did just this. He went from having a boring job to an exciting career at NVidia. This post tells you how."
 ---
 
