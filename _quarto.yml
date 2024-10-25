@@ -22,6 +22,23 @@ website:
         text: Blog
       - text: Projects
         href: projects.qmd 
+      - text: DSA
+        menu:
+          - text: Sorting and Searching
+            href: dsa/week2.qmd
+          - text: Stacks, Queues, Linked Lists, and Arrays
+            href: dsa/week3.qmd
+          - text: Graphs
+            href: dsa/week4.qmd
+          - text: Shortest Paths and MCST
+            href: dsa/week5.qmd
+          - text: Heaps and Trees
+            href: dsa/week6.qmd
+          - text: Greedy Problems
+            href: dsa/week7.qmd
+          - text: Divide and Conquer Problems
+            href: dsa/week8.qmd
+
 format:
   html:
     theme: 

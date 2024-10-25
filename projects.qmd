@@ -6,7 +6,7 @@ listing:
   categories: false
   sort-ui: true
   filter-ui: true 
-  fields: [date, title, image, description]
+  fields: [date, title, reading-time, image, description]
   image-align: right
   image-lazy-loading: true
 page-layout: full

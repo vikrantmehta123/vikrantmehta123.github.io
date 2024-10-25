@@ -82,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-reading-time','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
       searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
     };
@@ -167,6 +167,41 @@ window.Quarto = {
     <a class="nav-link active" href="./projects.html" aria-current="page"> 
 <span class="menu-text">Projects</span></a>
   </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-dsa" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">DSA</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-dsa">    
+        <li>
+    <a class="dropdown-item" href="./dsa/week2.html">
+ <span class="dropdown-text">Sorting and Searching</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./dsa/week3.html">
+ <span class="dropdown-text">Stacks, Queues, Linked Lists, and Arrays</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./dsa/week4.html">
+ <span class="dropdown-text">Graphs</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./dsa/week5.html">
+ <span class="dropdown-text">Shortest Paths and MCST</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./dsa/week6.html">
+ <span class="dropdown-text">Heaps and Trees</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./dsa/week7.html">
+ <span class="dropdown-text">Greedy Problems</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./dsa/week8.html">
+ <span class="dropdown-text">Divide and Conquer Problems</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
@@ -237,7 +272,7 @@ window.Quarto = {
     </div>
 </div>
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1729794600000" data-listing-file-modified-sort="1729849045753" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="245">
+<div class="g-col-1" data-index="0" data-listing-date-sort="1729794600000" data-listing-file-modified-sort="1729849532910" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="245">
 <a href="./projects/http-server-from-scratch/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -247,6 +282,9 @@ window.Quarto = {
 <h5 class="no-anchor card-title listing-title">
 HTTP Server From Scratch
 </h5>
+<div class="listing-reading-time card-text text-muted">
+2 min
+</div>
 <div class="card-text listing-description">
 I always wondered how HTTP and servers worked under the hood. So I decided to build an HTTP web server from scratch, without relying on existing frameworks!
 </div>
@@ -267,6 +305,9 @@ Oct 25, 2024
 <h5 class="no-anchor card-title listing-title">
 Money Map
 </h5>
+<div class="listing-reading-time card-text text-muted">
+1 min
+</div>
 <div class="card-text listing-description">
 Money Map is a financial tool that lets you run simulations with different inputs and get an approximation of your financial plans.
 </div>
