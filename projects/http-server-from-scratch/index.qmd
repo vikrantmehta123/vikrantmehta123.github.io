@@ -3,7 +3,7 @@ title: "HTTP Server From Scratch"
 author: "Vikrant Mehta"
 date: "2024-10-25"
 image: "./FastAPI Server.png"
-description: ""
+description: "I always wondered how HTTP and servers worked under the hood. So I decided to build an HTTP web server from scratch, without relying on existing frameworks!"
 ---
 
 ### Project Overview
@@ -16,6 +16,7 @@ This project is a simple HTTP server built using Python from the ground up witho
 
 - An extensible router that lets you add routes and route-handlers
 - Sessions and Token management
+- Multithreading for handling concurrent requests
 - Request parser and response formatter
 - Logging for debugging and maintenance perspective
 - An OOP based design for the server
