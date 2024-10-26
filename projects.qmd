@@ -3,10 +3,10 @@ listing:
   contents: projects
   sort: "date desc"
   type: grid
-  categories: false
+  categories: true
   sort-ui: true
   filter-ui: true 
-  fields: [date, title, reading-time, image, description]
+  fields: [date, title, reading-time, image, description, categories]
   image-align: right
   image-lazy-loading: true
 page-layout: full

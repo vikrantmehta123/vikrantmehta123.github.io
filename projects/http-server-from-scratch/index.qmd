@@ -2,6 +2,7 @@
 title: "HTTP Server From Scratch"
 author: "Vikrant Mehta"
 date: "2024-10-25"
+categories: [Software Engineering]
 image: "./FastAPI Server.png"
 description: "I always wondered how HTTP and servers worked under the hood. So I decided to build an HTTP web server from scratch, without relying on existing frameworks!"
 ---

@@ -2,6 +2,7 @@
   {
     "listing": "/projects.html",
     "items": [
+      "/projects/digit-classifier-from-scratch/index.html",
       "/projects/http-server-from-scratch/index.html",
       "/projects/money-map/index.html"
     ]
