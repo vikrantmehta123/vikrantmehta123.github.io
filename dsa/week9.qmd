@@ -18,8 +18,11 @@ We need to find the number of ways to reach the top of a staircase with `n` step
 `n = 3`
 
 There are three ways to reach the third step:
+
 - $0$ $\rightarrow$ $1$ $\rightarrow$ $2$ $\rightarrow$ $3$. In this way, we are taking one step every time. 
+
 - $0$ $\rightarrow$ $1$ $\rightarrow$ $3$. Here, we jumped $2$ places from the $1$ st step. 
+
 - $0$ $\rightarrow$ $2$ $\rightarrow$ $3$. Here, we jumped $2$ places from the $0$ th step, and then $1$ step from the $2$ nd step.
 
 Since there are three ways we return 3.

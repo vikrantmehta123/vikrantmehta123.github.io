@@ -533,7 +533,26 @@ counts[2] = 2</code></pre>
 <h4 class="anchored" data-anchor-id="using-binary-search">5.1 Using Binary Search</h4>
 <p>📚 <strong>Problem Overview:</strong></p>
 <p>We need to find the element in <span class="math inline">\(\log(n)\)</span> time. When you see <span class="math inline">\(\log(n)\)</span>, what do you think of? Of course, Binary search! This question has been asked in PYQs, so better to understand it well.</p>
-<p><strong>💡 The Solution:</strong> 1. At any <code>mid</code> index, there are two possibilities: either the <em>left half</em> of the array is sorted, or the <em>right half</em> is. 2. If the <em>left side is sorted</em>: - Check if the target within this range? - If yes, do a binary search on the left half. - If no, explore the right half. 3. If the <em>right side is sorted</em>: - Again, check if the target is in this range. - If yes, perform binary search on the right half. - If no, explore to the left side.</p>
+<p><strong>💡 The Solution:</strong></p>
+<ol type="1">
+<li>At any <code>mid</code> index, there are two possibilities: either the <em>left half</em> of the array is sorted, or the <em>right half</em> is.</li>
+<li>If the <em>left side is sorted</em>:
+<ul>
+<li>Check if the target within this range?
+<ul>
+<li>If yes, do a binary search on the left half.</li>
+<li>If no, explore the right half.</li>
+</ul></li>
+</ul></li>
+<li>If the <em>right side is sorted</em>:
+<ul>
+<li>Again, check if the target is in this range.
+<ul>
+<li>If yes, perform binary search on the right half.</li>
+<li>If no, explore to the left side.</li>
+</ul></li>
+</ul></li>
+</ol>
 <section id="code-implementation-5" class="level5">
 <h5 class="anchored" data-anchor-id="code-implementation-5">💻 Code Implementation:</h5>
 <div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>

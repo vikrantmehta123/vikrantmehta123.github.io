@@ -263,6 +263,7 @@ This is a simple search problem, so the test cases are not discussed.
 We need to find the element in $\log(n)$ time. When you see $\log(n)$, what do you think of? Of course, Binary search! This question has been asked in PYQs, so better to understand it well.
 
 **💡 The Solution:**
+
 1. At any `mid` index, there are two possibilities: either the *left half* of the array is sorted, or the *right half* is.
 2. If the *left side is sorted*:
     - Check if the target within this range?
