@@ -163,6 +163,7 @@ It should be the smallest element that we can remove, because the spending can b
     - Pop and multiply the minimum with the day counter and add this to the max spending. 
 
 Time Complexity: $O(m^2n)$
+
 ##### 💻 Code Implementation:
 ```python
 class Solution:
@@ -336,4 +337,40 @@ class Solution:
             answer.append(level_sum / level_nodes)
 
         return answer
+```
+
+### 5. [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/description/)
+
+**📚 Problem Overview:**
+
+The problem is straightforward. The easiest way to solve this is by sorting the list in descending order and then selecting `k`th element in the list. But we're told that we cannot use sorting. 
+
+#### Using Heaps:
+
+**💡 The Solution:**
+
+- We can maintain a min-heap of `k` elements. 
+- Whenever we find an element which is bigger than the minimum element in the heap, we need to insert that element in the heap. By doing this, at the end of the iteration, we will have the min-heap of `k` elements which are the `k` largest numbers in the array. 
+- Among these `k` largest elements, `k`th largest element, is the smallest element (if you're given a list of `k` elements and you want to find `k`th largest element, that's the same as finding the minimum in the list). So at the end, we can pop the smallest element from the min-heap, and return it.
+
+##### 💻 Code Implementation:
+```python
+import heapq
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        heap = [ ]
+        i = 0
+        ### Initialize heap with the first `k` elements
+        while i < k:
+            heapq.heappush(heap, nums[i])
+            i += 1
+        
+        # If you find greater element than the smallest, pop minimum from heap and insert nums[i].
+        for i in range(i, len(nums)):
+            if heap and heap[0] < nums[i]:
+                heapq.heappop(heap)
+                heapq.heappush(heap, nums[i])
+
+        # minimum of top k largest number = kth largest in the list
+        return heapq.heappop(heap)
 ```

@@ -1,0 +1,63 @@
+---
+title: "Leet Code Problems on String Matching and Tries"
+author: "Vikrant Mehta"
+date: "2024-10-03"
+---
+
+### 1. [Implement a Trie](https://leetcode.com/problems/implement-trie-prefix-tree/)
+
+📚 **Problem Overview:**
+
+We need to implement the Trie data structure. You can read more about it [here](https://en.wikipedia.org/wiki/Trie). 
+
+**💡 The Solution:**
+
+- For each node in the Trie, we need to keep track of its children and whether the node is the end of a word. At maximum, each node can have 26 children- one for each letter in the alphabet. We can use a dictionary to represent children (we could also use lists, but not every node is going to have 26 children, which makes it inefficient and complicated when searching ).
+
+- Then we implement the operations, which are similar to Tree operations. 
+
+##### 💻 Code Implementation:
+```python
+
+# Define a helper class for each node in the Trie
+class TrieNode:
+    def __init__(self):
+        self.children = { }
+        self.is_end_of_word = False
+
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+
+    def insert(self, word:str) -> None:
+        curr = self.root
+        
+        # Insert each character at new level if it doesn't exist
+        for char in word:
+            if char not in curr.children:
+                curr.children[char] = TrieNode()
+            curr = curr.children[char]
+        curr.is_end_of_word = True
+    
+    def search(self, word:str) -> bool:
+        curr = self.root
+        
+        # As long as you find characters, keep traversing.
+        for char in word:
+            if char not in curr.children:
+                return False
+            curr = curr.children[char]
+        
+        # You may find a character sequence which is not a word- but a prefix. Check for it. 
+        if curr.is_end_of_word: return True
+        return False
+
+    def startsWith(self, word:str) -> bool:
+        # Same as above, except no prefix check. Even if you find prefix, return True
+        curr = self.root
+        for char in word:
+            if char not in curr.children:
+                return False
+            curr = curr.children[char]
+        return True
+```

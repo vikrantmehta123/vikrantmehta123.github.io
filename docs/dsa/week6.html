@@ -205,6 +205,14 @@ window.Quarto = {
     <a class="dropdown-item" href="../dsa/week8.html">
  <span class="dropdown-text">Divide and Conquer Problems</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../dsa/week9.html">
+ <span class="dropdown-text">Dynamic Programming</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../dsa/week10.html">
+ <span class="dropdown-text">String Matching and Tries</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -249,6 +257,7 @@ window.Quarto = {
   <li><a href="#network-delay-time" id="toc-network-delay-time" class="nav-link" data-scroll-target="#network-delay-time">2. Network Delay Time</a></li>
   <li><a href="#maximum-spending-after-buying-items" id="toc-maximum-spending-after-buying-items" class="nav-link" data-scroll-target="#maximum-spending-after-buying-items">3 Maximum Spending After Buying Items</a></li>
   <li><a href="#average-of-levels-in-binary-tree" id="toc-average-of-levels-in-binary-tree" class="nav-link" data-scroll-target="#average-of-levels-in-binary-tree">4. Average of Levels in Binary Tree</a></li>
+  <li><a href="#kth-largest-element-in-an-array" id="toc-kth-largest-element-in-an-array" class="nav-link" data-scroll-target="#kth-largest-element-in-an-array">5. Kth Largest Element in an Array</a></li>
   </ul>
 </nav>
     </div>
@@ -406,7 +415,9 @@ We can represent the <code>times</code> array as an adjacency list:</p>
 <p>We are given an <span class="math inline">\(m \times n\)</span> matrix, and we can take out values only from the right end of each row. Further, the amount spent on a day is defined as <code>day number * value of the product</code>.</p>
 <p>To maximize spending over <code>m * n</code> days, can you think of which element do we need to remove first? It should be the smallest element that we can remove, because the spending can be maximized if larger values are taken near the end of <code>m * n</code>th day. So, from each rows’ last column, we need to pop the one that is the smallest.</p>
 <p><em>Pseudocode:</em> - Keep a variable for max spending. - Iterate day counter $ m n$ times - Keep a minimum value variable. - Find out the minimum last element for every row- since we can only take elements from the rightmost end. - Pop and multiply the minimum with the day counter and add this to the max spending.</p>
-<p>Time Complexity: <span class="math inline">\(O(m^2n)\)</span> ##### 💻 Code Implementation:</p>
+<p>Time Complexity: <span class="math inline">\(O(m^2n)\)</span></p>
+<section id="code-implementation-2" class="level5">
+<h5 class="anchored" data-anchor-id="code-implementation-2">💻 Code Implementation:</h5>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> maxSpending(<span class="va">self</span>, values: List[List[<span class="bu">int</span>]]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        m, n <span class="op">=</span> <span class="bu">len</span>(values), <span class="bu">len</span>(values[<span class="dv">0</span>])  </span>
@@ -428,6 +439,7 @@ We can represent the <code>times</code> array as an adjacency list:</p>
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>            product_val <span class="op">=</span> values[min_index].pop()</span>
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>            max_spending <span class="op">+=</span> day <span class="op">*</span> product_val</span>
 <span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> max_spending</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 </section>
 <section id="using-minheaps" class="level4">
 <h4 class="anchored" data-anchor-id="using-minheaps">3.2 Using Minheaps</h4>
@@ -455,8 +467,8 @@ We can represent the <code>times</code> array as an adjacency list:</p>
 <li>From the row from which the minimum was popped, insert the new last element in the heap.</li>
 </ul>
 <p>Time Complexity: <span class="math inline">\(O(mn \cdot log(m))\)</span></p>
-<section id="code-implementation-2" class="level5">
-<h5 class="anchored" data-anchor-id="code-implementation-2">💻 Code Implementation:</h5>
+<section id="code-implementation-3" class="level5">
+<h5 class="anchored" data-anchor-id="code-implementation-3">💻 Code Implementation:</h5>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Minheap:</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.A <span class="op">=</span> []</span>
@@ -528,8 +540,8 @@ We can represent the <code>times</code> array as an adjacency list:</p>
 <p>To find the average of values for each level of the tree, we need to process the tree <strong>level-by-level</strong>. Remember, a tree is just a graph with <strong>no cycles</strong> , so we can apply <strong>graph algorithms</strong> to trees too!</p>
 <p>When you hear “level-by-level,” which algorithm comes to mind? 🤔</p>
 <p>Yep, good old <strong>BFS</strong> (Breadth-First Search)! BFS helps us traverse the tree one level at a time, which is exactly what we need here. For each level, we collect all the nodes, then simply compute the <strong>average</strong> of their values.😊</p>
-<section id="code-implementation-3" class="level5">
-<h5 class="anchored" data-anchor-id="code-implementation-3">💻 Code Implementation:</h5>
+<section id="code-implementation-4" class="level5">
+<h5 class="anchored" data-anchor-id="code-implementation-4">💻 Code Implementation:</h5>
 <div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> deque</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
@@ -560,6 +572,41 @@ We can represent the <code>times</code> array as an adjacency list:</p>
 <span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>            answer.append(level_sum <span class="op">/</span> level_nodes)</span>
 <span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> answer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="kth-largest-element-in-an-array" class="level3">
+<h3 class="anchored" data-anchor-id="kth-largest-element-in-an-array">5. <a href="https://leetcode.com/problems/kth-largest-element-in-an-array/description/">Kth Largest Element in an Array</a></h3>
+<p><strong>📚 Problem Overview:</strong></p>
+<p>The problem is straightforward. The easiest way to solve this is by sorting the list in descending order and then selecting <code>k</code>th element in the list. But we’re told that we cannot use sorting.</p>
+<section id="using-heaps" class="level4">
+<h4 class="anchored" data-anchor-id="using-heaps">Using Heaps:</h4>
+<p><strong>💡 The Solution:</strong></p>
+<ul>
+<li>We can maintain a min-heap of <code>k</code> elements.</li>
+<li>Whenever we find an element which is bigger than the minimum element in the heap, we need to insert that element in the heap. By doing this, at the end of the iteration, we will have the min-heap of <code>k</code> elements which are the <code>k</code> largest numbers in the array.</li>
+<li>Among these <code>k</code> largest elements, <code>k</code>th largest element, is the smallest element (if you’re given a list of <code>k</code> elements and you want to find <code>k</code>th largest element, that’s the same as finding the minimum in the list). So at the end, we can pop the smallest element from the min-heap, and return it.</li>
+</ul>
+<section id="code-implementation-5" class="level5">
+<h5 class="anchored" data-anchor-id="code-implementation-5">💻 Code Implementation:</h5>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> heapq</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> findKthLargest(<span class="va">self</span>, nums: List[<span class="bu">int</span>], k: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        heap <span class="op">=</span> [ ]</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="co">### Initialize heap with the first `k` elements</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> i <span class="op">&lt;</span> k:</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>            heapq.heappush(heap, nums[i])</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>            i <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># If you find greater element than the smallest, pop minimum from heap and insert nums[i].</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(i, <span class="bu">len</span>(nums)):</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> heap <span class="kw">and</span> heap[<span class="dv">0</span>] <span class="op">&lt;</span> nums[i]:</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>                heapq.heappop(heap)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>                heapq.heappush(heap, nums[i])</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># minimum of top k largest number = kth largest in the list</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> heapq.heappop(heap)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

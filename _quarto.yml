@@ -38,6 +38,10 @@ website:
             href: dsa/week7.qmd
           - text: Divide and Conquer Problems
             href: dsa/week8.qmd
+          - text: Dynamic Programming
+            href: dsa/week9.qmd
+          - text: String Matching and Tries
+            href: dsa/week10.qmd
 
 format:
   html:

@@ -9,7 +9,7 @@
 <meta name="author" content="Vikrant Mehta">
 <meta name="dcterms.date" content="2024-10-03">
 
-<title>Leet Code Problems on Shortest Paths and Minimum Cost Spanning Trees – Vikrant</title>
+<title>Leet Code Problems on String Matching and Tries – Vikrant</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -110,35 +110,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Sofia&amp;family=WindSong:wght@400;500&amp;display=swap" rel="stylesheet">
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -253,9 +224,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#min-cost-to-connect-all-points" id="toc-min-cost-to-connect-all-points" class="nav-link active" data-scroll-target="#min-cost-to-connect-all-points">1. Min Cost To Connect All Points</a></li>
-  <li><a href="#path-with-maximum-probability" id="toc-path-with-maximum-probability" class="nav-link" data-scroll-target="#path-with-maximum-probability">2. Path with Maximum Probability</a></li>
-  <li><a href="#cheapest-flight-within-k-stops" id="toc-cheapest-flight-within-k-stops" class="nav-link" data-scroll-target="#cheapest-flight-within-k-stops">3. Cheapest Flight Within K Stops</a></li>
+  <li><a href="#implement-a-trie" id="toc-implement-a-trie" class="nav-link active" data-scroll-target="#implement-a-trie">1. Implement a Trie</a></li>
   </ul>
 </nav>
     </div>
@@ -264,7 +233,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Leet Code Problems on Shortest Paths and Minimum Cost Spanning Trees</h1>
+<h1 class="title">Leet Code Problems on String Matching and Tries</h1>
 </div>
 
 
@@ -293,199 +262,61 @@ window.Quarto = {
 </header>
 
 
-<section id="min-cost-to-connect-all-points" class="level3">
-<h3 class="anchored" data-anchor-id="min-cost-to-connect-all-points">1. <a href="https://leetcode.com/problems/min-cost-to-connect-all-points/description/">Min Cost To Connect All Points</a></h3>
-<p><strong>🎯 Understanding the Test Cases:</strong></p>
-<p><em>Test Case 1:</em></p>
-<p><code>points = [[0,0],[2,2],[3,10],[5,2],[7,0]]</code></p>
-<p>The first test case from the problem statement.</p>
-<p><em>Explanation:</em></p>
-<p>There are many ways to connect all points. For example: - Path: <code>[0,0] -&gt; [7,0] -&gt; [3,10] -&gt; [2,2] -&gt; [5,2]</code> - Total Manhattan Distance: <span class="math inline">\(7 + 14 + 9 + 3 = 33\)</span> (not optimal)</p>
-<p>But the <em>optimal</em> way connects them with a total distance of <em>20</em>, as shown in the problem description.</p>
-<p>Key idea: From any point, you can connect to any other point, and the edge cost is the Manhattan distance. The goal is to minimize the total cost (sum of all edges).</p>
-<section id="minimum-cost-spanning-trees" class="level4">
-<h4 class="anchored" data-anchor-id="minimum-cost-spanning-trees">1.1 Minimum Cost Spanning Trees</h4>
+<section id="implement-a-trie" class="level3">
+<h3 class="anchored" data-anchor-id="implement-a-trie">1. <a href="https://leetcode.com/problems/implement-trie-prefix-tree/">Implement a Trie</a></h3>
 <p>📚 <strong>Problem Overview:</strong></p>
-<p>We need to find the <em>minimum cost</em> to connect all points. This is a <em>Minimum Cost Spanning Tree (MCST)</em> problem!</p>
-<p>🛠️ How do we turn the points into a graph?</p>
-<ul>
-<li>Each point can be a node.</li>
-<li>The edges are the Mahattan distances between every pair of points in the graph. That means it’s a complete graph—each node is connected to every other one.</li>
-</ul>
-<p><em>Pseudocode for building this graph:</em></p>
-<ul>
-<li>Run a nested loop:
-<ul>
-<li>For each point
-<ul>
-<li>For every other point,
-<ul>
-<li>Compute the distance and store the edge in an adjacency matrix or an adjacency list</li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul>
+<p>We need to implement the Trie data structure. You can read more about it <a href="https://en.wikipedia.org/wiki/Trie">here</a>.</p>
 <p><strong>💡 The Solution:</strong></p>
-<ol type="1">
-<li>Build the Graph</li>
-<li><em>Find the MCST:</em>
 <ul>
-<li>Use <em>Prim’s</em> or <em>Kruskal’s</em> algorithm to find the Minimum Cost Spanning Tree. 🌐</li>
-<li>Then, just sum up the edge weights of the Tree. That’s our minimum cost! 🏆</li>
-</ul></li>
-</ol>
+<li><p>For each node in the Trie, we need to keep track of its children and whether the node is the end of a word. At maximum, each node can have 26 children- one for each letter in the alphabet. We can use a dictionary to represent children (we could also use lists, but not every node is going to have 26 children, which makes it inefficient and complicated when searching ).</p></li>
+<li><p>Then we implement the operations, which are similar to Tree operations.</p></li>
+</ul>
 <section id="code-implementation" class="level5">
 <h5 class="anchored" data-anchor-id="code-implementation">💻 Code Implementation:</h5>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> kruskal(WList):</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Kruskal's as per the PDSA book"""</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    (edges,component,TE) <span class="op">=</span> ([],{},[])</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> u <span class="kw">in</span> WList.keys():</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        edges.extend([(d,u,v) <span class="cf">for</span> (v,d) <span class="kw">in</span> WList[u]])</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        component[u] <span class="op">=</span> u</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a helper class for each node in the Trie</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TrieNode:</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.children <span class="op">=</span> { }</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.is_end_of_word <span class="op">=</span> <span class="va">False</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    edges.sort()</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (d,u,v) <span class="kw">in</span> edges:</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> component[u] <span class="op">!=</span> component[v]:</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            TE.append((u,v, d))</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            c <span class="op">=</span> component[u]</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> w <span class="kw">in</span> WList.keys():</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> component[w] <span class="op">==</span> c:</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                    component[w] <span class="op">=</span> component[v]</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> TE</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_min_cost(TE) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compute the Minimum Cost based on Tree Edges</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    min_cost <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> u, v, d <span class="kw">in</span> TE:</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        min_cost <span class="op">+=</span> d</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(min_cost)</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> minCostConnectPoints(<span class="va">self</span>, points: List[List[<span class="bu">int</span>]]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Init Adjacency Matrix</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        AList <span class="op">=</span> { i : [] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(points))}</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Each point can be connected to every other point and their manhattan distance can be computed.</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(points)):</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>            x1, y1 <span class="op">=</span> points[i][<span class="dv">0</span>], points[i][<span class="dv">1</span>]</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Trie:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.root <span class="op">=</span> TrieNode()</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> insert(<span class="va">self</span>, word:<span class="bu">str</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        curr <span class="op">=</span> <span class="va">self</span>.root</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Insert each character at new level if it doesn't exist</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> char <span class="kw">in</span> word:</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> char <span class="kw">not</span> <span class="kw">in</span> curr.children:</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>                curr.children[char] <span class="op">=</span> TrieNode()</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>            curr <span class="op">=</span> curr.children[char]</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        curr.is_end_of_word <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> search(<span class="va">self</span>, word:<span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        curr <span class="op">=</span> <span class="va">self</span>.root</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="co"># As long as you find characters, keep traversing.</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> char <span class="kw">in</span> word:</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> char <span class="kw">not</span> <span class="kw">in</span> curr.children:</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>            curr <span class="op">=</span> curr.children[char]</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        <span class="co"># You may find a character sequence which is not a word- but a prefix. Check for it. </span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> curr.is_end_of_word: <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span></span>
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i <span class="op">+</span> <span class="dv">1</span>, <span class="bu">len</span>(points)):</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>                x2, y2 <span class="op">=</span> points[j][<span class="dv">0</span>], points[j][<span class="dv">1</span>]</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>                dist <span class="op">=</span> <span class="bu">abs</span>(x1 <span class="op">-</span> x2) <span class="op">+</span> <span class="bu">abs</span>(y1 <span class="op">-</span> y2)</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Distance from point i to j is same as from j to i. So init both entries</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>                AList[i].append((j, dist))</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>                AList[j].append((i, dist))</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>        tree_edges <span class="op">=</span> kruskal(AList)</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>        minimum_cost <span class="op">=</span> compute_min_cost(tree_edges)</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> minimum_cost</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-</section>
-<section id="path-with-maximum-probability" class="level3">
-<h3 class="anchored" data-anchor-id="path-with-maximum-probability">2. <a href="https://leetcode.com/problems/path-with-maximum-probability/description/">Path with Maximum Probability</a></h3>
-<section id="using-dijkstra" class="level4">
-<h4 class="anchored" data-anchor-id="using-dijkstra">2.1 Using Dijkstra</h4>
-<p><strong>📚 Problem Overview:</strong></p>
-<p>We need to find the <em>maximum probability</em> of getting from a <code>start_node</code> to an <code>end_node</code> in a graph. Each edge in the graph has a <em>success probability</em>, and we want to maximize the total probability along the path. For example, if there’s a path <code>A -&gt; B -&gt; C</code> with probabilities <code>A -&gt; B = 0.5</code> and <code>B -&gt; C = 0.5</code>, the total probability for the path <code>A -&gt; C</code> is <span class="math inline">\(0.5 \times 0.5 = 0.25\)</span>.</p>
-<p><strong>💡 The Solution:</strong></p>
-<p>It’s similar to finding the shortest path, but here we are finding the <em>path with the highest probability</em>!</p>
-<ul>
-<li><p>We create an adjacency list where each node is connected to its neighbors with the probability of success for each edge.</p></li>
-<li><p><em>Max-Heap</em>: To keep track of the most promising path, we can use a <em>max-heap</em>. But since Python’s <code>heapq</code> is a <em>min-heap</em>, we store <em>negative probabilities</em> (because minimizing negatives is same as maximizing positives).</p></li>
-<li><p>We can run <em>Dijkstra’s algorithm</em>, but instead of minimizing distance, we maximize probability. We stop as soon as we reach the <code>end_node</code>.</p></li>
-</ul>
-<p>If we never reach the end node, we return <code>0.0</code> because there’s no valid path!</p>
-<section id="code-implementation-1" class="level5">
-<h5 class="anchored" data-anchor-id="code-implementation-1">💻 Code Implementation:</h5>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> maxProbability(<span class="va">self</span>, n: <span class="bu">int</span>, edges: List[List[<span class="bu">int</span>]], succProb: List[<span class="bu">float</span>], start_node: <span class="bu">int</span>, end_node: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Create an adjacency list</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        WList <span class="op">=</span> defaultdict(<span class="bu">list</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i, (start, end) <span class="kw">in</span> <span class="bu">enumerate</span>(edges):</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            probab <span class="op">=</span> succProb[i]</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            WList[start].append((end, probab))</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>            WList[end].append((start, probab))</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Max-heap (negative probabilities to simulate a max-heap)</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        heap <span class="op">=</span> [(<span class="op">-</span><span class="fl">1.0</span>, start_node)]  <span class="co"># (negative probability, node)</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        dist <span class="op">=</span> [<span class="op">-</span><span class="fl">1.0</span>] <span class="op">*</span> n            <span class="co"># Store the maximum probability to reach each node</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        dist[start_node] <span class="op">=</span> <span class="fl">1.0</span>        <span class="co"># Start node has a probability of 1</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> heap:</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Pop the node with the maximum probability</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>            current_prob, node <span class="op">=</span> heapq.heappop(heap)</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>            current_prob <span class="op">=</span> <span class="op">-</span>current_prob  <span class="co"># Convert back to positive</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>            <span class="co"># If we reached the end node, return the probability</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> node <span class="op">==</span> end_node:</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> current_prob</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Explore neighbors</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> neighbor, weight <span class="kw">in</span> WList[node]:</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>                new_prob <span class="op">=</span> current_prob <span class="op">*</span> weight</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Only update if we found a higher probability path to neighbor</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> new_prob <span class="op">&gt;</span> dist[neighbor]:</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>                    dist[neighbor] <span class="op">=</span> new_prob</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>                    heapq.heappush(heap, (<span class="op">-</span>new_prob, neighbor))</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>        <span class="co"># If we never reach the end node</span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fl">0.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-</section>
-<section id="cheapest-flight-within-k-stops" class="level3">
-<h3 class="anchored" data-anchor-id="cheapest-flight-within-k-stops">3. <a href="https://leetcode.com/problems/cheapest-flights-within-k-stops/description/">Cheapest Flight Within K Stops</a></h3>
-<section id="using-dijkstra-1" class="level4">
-<h4 class="anchored" data-anchor-id="using-dijkstra-1">3.1 Using Dijkstra</h4>
-<section id="code-implementation-2" class="level5">
-<h5 class="anchored" data-anchor-id="code-implementation-2">💻 Code Implementation:</h5>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> findCheapestPrice(<span class="va">self</span>, n, flights, src, dst, k):</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Create the adjacency list</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        adj_list <span class="op">=</span> {i: [] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n)}</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> flight <span class="kw">in</span> flights:</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>            from_city, to_city, price <span class="op">=</span> flight</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>            adj_list[from_city].append((to_city, price))</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Priority queue -&gt; (current price, city, stops)</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        pq <span class="op">=</span> [(<span class="dv">0</span>, src, <span class="dv">0</span>)]  <span class="co"># (price, city, stops)</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="co">## BFS with Heap</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># visited[city] stores min number of stops to reach the city</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        visited <span class="op">=</span> {}</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> pq:</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>            price, city, stops <span class="op">=</span> heapq.heappop(pq)</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>            <span class="co"># If we reach the destination, return the price</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> city <span class="op">==</span> dst:</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> price</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>            <span class="co"># If we have visited this city with fewer stops before, skip</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> city <span class="kw">in</span> visited <span class="kw">and</span> visited[city] <span class="op">&lt;</span> stops:</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Store the minimum number of stops to this city</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>            visited[city] <span class="op">=</span> stops</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>            <span class="co"># If we have more stops than k, continue to the next city</span></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> stops <span class="op">&gt;</span> k:</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Add neighbors to explore</span></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> neighbor, cost <span class="kw">in</span> adj_list[city]:</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>                new_price <span class="op">=</span> price <span class="op">+</span> cost</span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>                heapq.heappush(pq, (new_price, neighbor, stops <span class="op">+</span> <span class="dv">1</span>))</span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>        <span class="co"># If no valid route found</span></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> startsWith(<span class="va">self</span>, word:<span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Same as above, except no prefix check. Even if you find prefix, return True</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>        curr <span class="op">=</span> <span class="va">self</span>.root</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> char <span class="kw">in</span> word:</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> char <span class="kw">not</span> <span class="kw">in</span> curr.children:</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>            curr <span class="op">=</span> curr.children[char]</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
-</section>
 </section>
 </section>
 
