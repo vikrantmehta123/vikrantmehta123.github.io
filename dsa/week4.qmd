@@ -22,7 +22,7 @@ There are 3 people in the town. Person 1 trusts Person 3, and Person 2 also trus
 
 *Explanation:*
 
-There are 3 people in the town. Person 1 trusts Person 3, and Person 2 also trusts Person 3. Person 3 trusts Person 1, which means Person 3 is not trusted by everyone (because Person 1 and Person 2 trust Person 3, but Person 3 also trusts Person 1). The town judge must trust nobody and be trusted by everyone else. Since Person 3 doesn't meet this condition (because they trust Person 1), there is no town judge. So we return -`.
+There are 3 people in the town. Person 1 trusts Person 3, and Person 2 also trusts Person 3. Person 3 trusts Person 1, which means Person 3 is not trusted by everyone (because Person 1 and Person 2 trust Person 3, but Person 3 also trusts Person 1). The town judge must trust nobody and be trusted by everyone else. Since Person 3 doesn't meet this condition (because they trust Person 1), there is no town judge. So we return -1.
 
 #### 1.1 By Counting Indegrees
 
@@ -48,7 +48,7 @@ To solve this, we can use dictionaries:
 - How can we use these dictionaries to find the town judge?  
 We can check if someone has an outdegree of 0 and an indegree of `n-1`. Since the town judge is unique, whenever we find such person, we can return it.
 
-Time complexity: $O(n)$:
+Time complexity: $O(|E| + n)$, where $|E|$ is the number of edges in the graph, and $n$ is the number of nodes.
 
 ##### 💻 Code Implementation:
 ```python
@@ -107,7 +107,7 @@ There are a total of $2$ courses to take. To take course $1$ you should have fin
 
 🔍 Problem Understanding:
 
-We have a list of prerequisites where each pair $prerequisites[i] = [a_i, b_i]$ means that you need to complete $b_i$ before taking $a_i$. In simpler terms, $a_i$ depends on $b_i$. How can we convert this into a graph? And, the big question: how do we find a sequence of courses that respects all the dependencies? 🤔 Which algorithm should we use?
+We have a list of prerequisites where each pair $prerequisites[i] = [a_i, b_i]$ means that you need to complete $b_i$ before taking $a_i$. In simpler terms, $a_i$ depends on $b_i$. How can we convert this into a graph? And, the big question: how do we find a sequence of courses that respects all the dependencies? Which algorithm should we use?🤔
 
 We can use topological sorting to get this sequence. 
 
@@ -170,6 +170,7 @@ class Solution:
 The approach used is similar to the above approach. However, we are using better data structures to increase our performance. Instead of keeping an adjacency matrix, we are using doubly ended queues and adjacency lists. 
 
 Here's how:
+
 - Keep a deque for vertices with zero degree queue such that the insert at end and delete from start operations are both constant time.
 - Keep a dictionary of indegrees which counts the indegrees for each vertex
 
@@ -243,6 +244,7 @@ We have a board with $n^2$ cells, and from any cell, we can make up to 6 possibl
 
 
 *Pseudocode:*
+
 - We first need to convert the board into a graph. 
     - For every cell, check the next six cells. 
         - If the cell has a ladder or a snake, then we need to find out where the ladder ends which is given in cell: ```board[row][col]```
