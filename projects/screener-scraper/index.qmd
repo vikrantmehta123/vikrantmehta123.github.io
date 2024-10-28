@@ -1,0 +1,37 @@
+---
+title: "Screener Scraper"
+author: "Vikrant Mehta"
+date: "2024-10-29"
+image: "Screener Scraper.png"
+categories: [Software Engineering]
+description: "Manually getting data from websites like Screener can be tedious, especially if you want to run a simple computational model. I built a tool to automate the time-consuming work."
+---
+
+### Project Overview
+
+A few years ago, I came across a book *Warren Buffett's Ground Rules* by Jeremy Miller. In the book, we find discussions on how Warren used to invest in his early years. But for me, the real treasure was the Appendix section. There you got a worked out example of how Warren valued a business when he was running his partnership. 
+
+The computation was simple, really, and might apply to most use cases, but not all. Since then, I used to go on [Screener](https://screener.in), and meticulously try to value each and every company from a screen (a custom filter for the companies) of mine. The screen itself was inspired from the advice of Benjamin Graham from the book `The Intelligent Investor`. 
+
+Then I figured, I could use the Python and Selenium to automate this process. Instead of manually going over each company, I'll let me script shortlist a few companies for me and then I'll evaluate the shortlisted companies. That's why I built **Screener Scraper**.
+
+Screener Scraper takes as input a screen on [Screener](https://screener.in), and filters out the *free puffs* based on the book. This is by no means a definitive valuation, but it saves me a ton of time!
+
+### Tech Stack Used
+1. Python
+2. Libraries like `Selenium` and `BeautifulSoup`
+
+### How to Use?
+
+1. Ensure you have provided your cookies and CSRF tokens from Screener in a file named `secrets.env`.
+
+2. When prompted, input the URL of your custom screen from Screener. 
+
+3. The scraper will go through each of the companies in your screen, annd computes the liquidation valuation for each company. 
+
+4. A `.csv` file will be generated containing all the crucial data you need for your analysis, along with the liquidation valuation. 
+
+Happy analyzing!
+
+**GitHub Repository**  
+For more details, the full source code can be found on GitHub: [Source Code](https://github.com/vikrantmehta123/screener-scraper)
