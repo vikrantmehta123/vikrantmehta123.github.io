@@ -1,0 +1,111 @@
+---
+title: "How Good Is Sleep!"
+author: "Vikrant Mehta"
+date: "2024-10-28"
+categories: [Books, Psychology]
+description: "Why do we sleep? How do we sleep? What are dreams? Until now, sleep was a mystery. But the developments in technology allow us to answer such questions. In his bestselling book “ Why We Sleep: The New Science of Sleep and Dreams”, neurologist and sleep researcher Matt Walker answers the same questions. He takes us on a journey from ‘Sleep is good’ to ‘How good is sleep?’"
+---
+
+What if someone told you that there exists a pill that is for free and it will make you live long, and be healthy and smart? I would jump right at it! But that pill is always with us and it is for free. It’s called *sleep*.
+
+In this post, I have summarized the book and the key learnings from the book. You can also listen to the audio summary on the *Booklet* app. Be sure to check out *[sleep tips](#sleep-tips)*. 
+
+## Part 1 
+
+### Why Do We Sleep?
+
+How do we know that it’s time to sleep? There are two reasons: Circadian Rhythm and Sleep Pressure. 
+
+Your body has its own clock. It tells you when to do what. It will tell you when to sleep, when to eat, when to drink. This is called the circadian rhythm, which is different for everyone. That’s why there are people who like staying up late at night and wake up late, and also those who go to bed early and get up early. None of the two is wrong, they’re just different. 
+
+The other half of the answer is something called Sleep Pressure. With each wakeful moment, a chemical called ‘ Adenosine’ gets accumulated in your brain. When enough Adenosine gets accumulated, you feel sleepy. This is called ‘ Sleep Pressure.’ When you are awake for the whole day( 12 to 16 hours), there is enough Adenosine to make you sleepy. And a sleep of eight hours is good enough to remove this Adenosine from the brain. 
+
+When the circadian rhythm and sleep pressure coordinate, you feel a strong urge to sleep. That’s why we go to bed every night. 
+
+### How Do We Sleep?
+
+Researchers carefully observed sleeping babies ( cute, right?). What they found was that their eyeballs don’t remain still all the time. There are periods when the eyeballs move around rapidly, and there are periods when the eyeballs remain still. This happens with adults too. The researchers named these two periods as REM sleep ( Rapid Eye Movement) which is when you dream, and NREM ( Non Rapid Eye Movement) which is when you are in deep sleep. 
+
+The brain waves in REM are no different from your brain waves right now. It is when your body is paralysed, but your brain waves show very high activity. And because your body is paralysed, you don’t act on your dreams. 
+
+### Who Sleeps?
+
+Every organism on the planet that has a lifespan of more than a few days, enjoys sleep or sleep-like activity, right from unicellular bacteria to giants like whales. 
+There are fascinating stories in the animal kingdom about sleep. Let’s take dolphins as an example. They need to float in water, and at the same time, they need to keep an eye out for predators. How would they sleep? Their brain takes turns in sleeping. First, one half of the brain falls into deep NREM sleep. After it has had a healthy sleep, the other half of the brain sleeps, which means they can function good enough with just one brain. And, when they are awake, both halves of their brain work in perfect coordination. Imagine having that as a superpower!  
+
+
+## Part 2
+
+Sleep offers so many benefits, from health to memory, from immunity to performance, that the question to ask is not ‘ Why do we sleep?’ But rather ‘ Why did we ever wake up?’
+What are those benefits of sleep? Can lack of sleep kill? 
+
+### Sleep To Learn and Perform
+
+In a study, participants were asked to learn some facts. One group was allowed to take a nap afterwards, while the other group wasn’t. Later, both groups were again given some new facts to learn. The group which was allowed to take a nap performed 20 percent better at learning new info than the group which didn’t get to sleep.
+
+Our short term info is stored in a brain region called the Hippocampus, whose storage capacity is small. Sleep frees up space in your brain to learn new information by transferring this info to a long term storage site which is the cortex, which can store huge amounts of information. At the same time, we remember better, since the information is safe in the cortex. Sleep transfers the files and hits the save button. It doesn’t matter whether you’re studying for a history test or trying to perfect a tennis backhand: Sleep will aid your learning.
+But we don’t need to remember yesterday’s menu or what clothes you wore yesterday, right? Sleep helps you forget such unimportant things. It clears the clutter from your brain. That means,  sleep helps you to learn and to forget too. 
+
+One fun fact: If you tell your brain to remember a particular thing, and then go to sleep, your sleeping brain will selectively choose that thing to transfer and save. How cool is that!
+
+### Lack of Sleep and You
+
+In a study, researchers checked the concentration levels of people with 8, 6 ,4 and no hours of sleep for a few days. The first group slept for 8 hours and was the best performer. The second group slept for 6 hours, and it was the second best. The group with 4 hours of sleep was the third. And as we can guess, the group with no sleep performed the worst. 
+
+For the people who slept less than eight hours, the performance gradually worsened. And this worsening didn’t stop, it never stops. You keep on performing worse and worse each day.
+
+The main thing to worry about is not the lack of concentration but rather, it is that we fail to realise that our concentration has dropped. Not a single person in the above experiment accepted the fact that his concentration has dropped. The low levels of concentration become the norm, and we start underperforming.
+
+Lack of sleep has ties with diseases, from heart attacks to diabetes, from cancer to mental disorders. In fact, there is not a single psychiatric disorder where sleep disturbance is not a symptom.
+
+Here, we’re not talking about extreme cases of sleep deprivation, but routinely getting just 5-6 hours of sleep. Can such sleep deprivation kill you? Yes! Combine sleep deprivation with a setback, and you have a recipe for suicidal thoughts or addictions. Combine sleep deprivation with driving, and you have a recipe for a car accident. 
+The rule of thumb is : If you want to live longer and healthier, do not mess with sleep.
+
+## Part 3
+
+We haven’t yet talked about dreams. So what are dreams? How do we dream? Do dreams have a meaning?
+
+### How Do We Dream?
+REM sleep is when you dream. When you enter REM sleep, which is about 5 times every night ( you enter NREM sleep 5 times also), there is a great increase in the activity of some brain areas, while there is a sharp decrease in activity of some other areas.
+
+The areas of the brain that show great increase in activity are the ones which are associated with movement, emotions, memory, and visual areas. This is why, when we dream, we dream of things with past experiences or things with strong emotions or we see dreams in great detail. 
+
+And the ones that show a great decrease are the ones which control rational thinking. This is why dreams don’t have any connection to reality, as the logical brain is turned off during this period.
+
+### Do Dreams Have a Meaning?
+
+We have myths around saying that dreams have meaning or dreams predict the future. In reality, the dreams do not have any meaning. They have functions but they don’t have meaning. 
+
+### Why Do We Dream?
+
+Although dreams don’t have meaning, they have functions. Not just one, but multiple ones!
+To know the first function, the researchers looked at patients with depression. They were depressed due divorces, or break ups. The researchers collected their dream reports for a whole year. The people who reported having dreams which were related to their cause of depression ( due to divorces, etc.), were free of all symptoms. They didn’t have depression anymore. But the people whose dreams weren’t related to their cause, showed a very small change in symptoms. The first function of dreams is that they reduce the intensity of experiences. Have you ever had a scary experience? If you think of it now, you probably won’t feel it intensely. That’s probably because of dreams!
+
+Due to REM sleep, we are also more accurate in reading facial expressions and emotions in other people. Our Emotional Quotient is at its best when we get our REM sleep.
+
+We all have studied the periodic table in school. Dmitri Mendeleev was the person who organised the elements in the periodic table. But he had to fail before he could succeed in organising the elements. He felt that there was some logic, some order behind all the elements in the world. He was so obsessed over the problem that he tried to solve it for years. And every time he tried, he failed. He would have quit, if it was not for a dream. He saw very clearly in his dream, all the elements arranged in a perfect logical order. He woke up immediately and wrote it down. He had solved the mystery of organising elements. We still use the same order even today.
+
+That’s what dreams do. In the REM sleep, the brain takes all the information it has acquired, and arranges it in proper shelves. So we can connect, rearrange and understand the information better. All this reflects in creativity; we are more creative if we have healthy REM sleep. 
+
+This function of REM sleep really blew my mind away: Researchers gave a group of people a few anagrams ( a word where letters are jumbled. Eg: Ltbtoe for Bottle ). First, the group was asked to solve anagrams before they went to sleep. Then the researchers woke them up twice in their NREM sleep and twice in their REM sleep for a very short period, and gave them some other anagrams to solve. when the participants were woken up from REM sleep, they performed up to 30% better than NREM sleep as well as when they were awake. Problem solving is a fascinating function that REM sleep, and dreams perform. The answers will just come naturally to you. 
+
+### Can You Control Your Dreams?
+There may be some of you who can control your dreams. Most of us cannot control dreams but some of us can. But even the scientists are confused about whether you should or should not control your dreams.
+
+## Sleep Tips
+This book is an eye- opener that convinces us to close our eyes. Here are a few tips for you to help you close your eyes better:
+
+1. Make a sleep schedule. Do the same activities before you go to sleep everyday. 
+2. Go out in the sunlight. Your body clock will run on schedule.
+3. Avoid caffeine and alcohol, at least seven hours before sleep.
+4. Don’t drink too many fluids and don’t eat a heavy dinner.
+5. Don’t take a nap after 3 pm.
+6. Exercise but not right before sleep.
+7. Don’t use your screens at least an hour before sleep.
+8. Take a hot bath before bed. 
+9. Have a dark bedroom. 
+10. Don’t lie in bed awake. If you can’t sleep, get out of bed and do something that relaxes you (like reading). 
+
+I have fallen in love with sleep because of this book. For the first time, I will sleep for a long time without having regrets later!
+
+---
