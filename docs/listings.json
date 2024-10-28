@@ -10,7 +10,6 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/building-a-rag-application-using-fastapi/index.html",
       "/posts/why-we-sleep/index.html",
       "/posts/creating-http-server-from-scratch/index.html",
       "/posts/first-project-using-fastai/index.html",
