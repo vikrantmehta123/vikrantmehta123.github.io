@@ -2,6 +2,7 @@
 title: "Money Map"
 author: "Vikrant Mehta"
 date: "2024-10-18"
+image: "Money Map.png"
 categories: [Software Engineering]
 description: "Money Map is a financial tool that lets you run simulations with different inputs and get an approximation of your financial plans."
 ---
