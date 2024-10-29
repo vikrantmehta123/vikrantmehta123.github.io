@@ -141,7 +141,6 @@ class Solution:
         return max_dist if max_dist != float('inf') else -1 # Check if all nodes can be reached or not.
 ```
 
-
 ### 3 [Maximum Spending After Buying Items](https://leetcode.com/problems/maximum-spending-after-buying-items/description/)
 
 **🎯 Understanding the Test Cases:**
@@ -373,4 +372,75 @@ class Solution:
 
         # minimum of top k largest number = kth largest in the list
         return heapq.heappop(heap)
+```
+
+### 6. [Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/description/)
+
+##### 💻 Code Implementation:
+```python
+from collections import deque
+class Solution:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if not root:
+            return [ ]
+        
+        # Queue to run BFS with
+        q = deque()
+        q.append(root)
+        
+        levelorder = [ ]
+        while q:
+            level = [ ] # One level
+
+            for i in range(len(q)):
+                node = q.popleft()
+                level.append(node.val)
+
+                # Only two neighbors possible- right child or left child
+                if node.left: q.append(node.left)
+                if node.right: q.append(node.right)
+
+            levelorder.append(level)
+        return levelorder
+```
+
+### 7. [Maximum Level Sum of a Binary Tree](https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/description/)
+
+##### 💻 Code Implementation:
+```python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maxLevelSum(self, root: Optional[TreeNode]) -> int:
+        # Error Case
+        if not root:
+            return [ ]
+
+        # Queue for running BFS   
+        q = deque()
+        q.append(root)
+
+        # Compute Level Orders
+        levelorder = [ ]
+        while q:
+            row = [ ]
+            for i in range(len(q)):
+                node = q.popleft()
+                row.append(node.val)
+                if node.left: q.append(node.left)
+                if node.right: q.append(node.right)
+            levelorder.append(row)
+        
+        # Find maximum of the level orders
+        maximum = float('-inf')
+        maxlevel = -1
+        for i, level in enumerate(levelorder):
+            if sum(level) > maximum:
+                maxlevel = i
+                maximum = sum(level)
+        return maxlevel + 1 
 ```

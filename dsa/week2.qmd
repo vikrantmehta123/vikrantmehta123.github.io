@@ -435,17 +435,14 @@ class Solution:
 ##### 💻 Code Implementation:
 ```python
 class Solution(object):
-    def checkIfExist(self, arr):
-        """
-        :type arr: List[int]
-        :rtype: bool
-        """
+    def checkIfExist(self, arr:List[int]) -> bool:
         arr.sort() # sort array first
 
         for i, num in enumerate(arr):
             # If value is odd, it's half can't exist
             if num % 2 != 0:
                 continue
+
             # Search for num / 2 in the array
             idx = self.binarysearch(arr, num / 2)
 
@@ -466,6 +463,7 @@ class Solution(object):
             elif L[mid ] > value:
                 high = mid  - 1
             else:
-                return mid # Found the value
+                return mid # Found the value, so return the index at which the value was found
+                
         return -1 # Couldn't find value
 ```
