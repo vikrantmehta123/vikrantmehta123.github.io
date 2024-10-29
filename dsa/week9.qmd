@@ -346,3 +346,145 @@ class Solution:
                     M[i,j] = M[i-1,j] + M[i,j-1]
         return int(M[x-1,y-1])
 ```
+
+### 8. [Word Break](https://leetcode.com/problems/word-break/description/)
+
+##### 💻 Code Implementation:
+```python
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        # Length of the input string
+        n = len(s)
+        
+        # Convert word dictionary to a set for O(1) lookup
+        word_set = set(wordDict)
+        
+        # Initialize the dp array, where dp[i] represents the minimum number of extra chars needed from index i to the end
+        dp = [float('inf')] * (n + 1)
+        dp[n] = 0  # Base case: no extra characters are needed at the end of the string
+        
+        # Populate the dp array from right to left
+        for i in range(n - 1, -1, -1):
+            # Start by treating the character at s[i] as an extra character
+            dp[i] = dp[i + 1] + 1
+            
+            # Check substrings starting from index i to find words in the dictionary
+            for j in range(i + 1, n + 1):
+                substring = s[i:j]
+                
+                # If the substring is a valid word, minimize extra chars by checking dp[j]
+                if substring in word_set:
+                    dp[i] = min(dp[i], dp[j])
+
+                # Early break if dp[i] reaches 0 (no extra chars needed from i onward)
+                if dp[i] == 0:
+                    break
+        
+        # If dp[0] is 0, then the whole string can be segmented without extra chars
+        return dp[0] == 0
+```
+
+### 9. [Maximal Square](https://leetcode.com/problems/maximal-square/description/)
+
+##### 💻 Code Implementation:
+```python
+class Solution:
+    def maximalSquare(self, matrix: List[List[str]]) -> int:
+        # Dimensions of the matrix
+        m, n = len(matrix), len(matrix[0])
+
+        # Initialize scores table
+        scores = [[0] * n for _ in range(m)]
+
+        # Build the scores table from bottom-right to top-left
+        for i in range(m - 1, -1, -1):
+            for j in range(n - 1, -1, -1):
+                if matrix[i][j] == "1":
+                    # Calculate score for each cell based on "1"s around it
+                    score = 1
+                    if i < m - 1 and j < n - 1:
+                        score += int(matrix[i + 1][j + 1])
+                    if i < m - 1:
+                        score += int(matrix[i + 1][j])
+                    if j < n - 1:
+                        score += int(matrix[i][j + 1])
+                    
+                    scores[i][j] = score
+
+
+        # Initialize DP table
+        # dp[i] = maximum size of square from (i, j) cell
+        dp = [[0] * n for _ in range(m)]
+        
+        # Populate the DP table bottom up
+        for i in range(m - 1, -1, -1):
+            for j in range(n - 1, -1, -1):
+                if matrix[i][j] == "1":
+                    # Check for the size of square based on neighboring cells
+                    if i < m - 1 and j < n - 1:
+                        if (scores[i + 1][j] == scores[i + 1][j + 1] == scores[i][j + 1] 
+                            and scores[i][j] > 0):
+                            dp[i][j] = 1 + min(dp[i + 1][j + 1], dp[i + 1][j], dp[i][j + 1])
+                        elif scores[i][j] == 4:
+                            dp[i][j] = 2
+                        else:
+                            dp[i][j] = 1
+                    else:
+                        dp[i][j] = 1
+
+        # Find the maximum square size
+        max_square_size = max(max(row) for row in dp)
+        
+        return max_square_size ** 2 # Return Area of the square
+```
+
+### 10. [Maximum Number of Moves in a Grid](https://leetcode.com/problems/maximum-number-of-moves-in-a-grid/)
+
+##### 💻 Code Implementation:
+```python
+def maxMoves(grid):
+    # Dimensions of the grid
+    rows, cols = len(grid), len(grid[0])
+
+    # dp[i][j] will store the maximum moves possible starting from cell (i, j)
+    dp = [[0] * cols for _ in range(rows)]
+    max_moves = 0  # This will store the overall maximum moves starting from any cell in the first column
+
+    # Fill the DP table column by column, from right to left
+    for col in range(cols - 2, -1, -1):
+        for row in range(rows - 1, -1, -1):
+
+            # Check the possible cells we can move to in the next column
+            next_cell_up = grid[row - 1][col + 1] if row > 0 else 0
+            dp_next_up = dp[row - 1][col + 1] if row > 0 else 0
+
+            next_cell_right = grid[row][col + 1]
+            dp_next_right = dp[row][col + 1]
+
+            next_cell_down = grid[row + 1][col + 1] if row < rows - 1 else 0
+            dp_next_down = dp[row + 1][col + 1] if row < rows - 1 else 0
+
+            current_cell = grid[row][col]
+
+            # Determine the maximum moves from this cell (row, col)
+            if current_cell >= next_cell_up and current_cell >= next_cell_right and current_cell >= next_cell_down:
+                # No move possible since all adjacent cells have equal or smaller values
+                dp[row][col] = 0
+            else:
+                # Calculate the maximum moves by considering each possible valid move direction
+                max_next_moves = 0
+                if current_cell < next_cell_up:
+                    max_next_moves = max(max_next_moves, dp_next_up)
+                if current_cell < next_cell_right:
+                    max_next_moves = max(max_next_moves, dp_next_right)
+                if current_cell < next_cell_down:
+                    max_next_moves = max(max_next_moves, dp_next_down)
+                
+                dp[row][col] = 1 + max_next_moves
+
+            # Update the maximum moves if we're in the first column
+            if col == 0:
+                max_moves = max(max_moves, dp[row][col])
+
+    return max_moves
+```

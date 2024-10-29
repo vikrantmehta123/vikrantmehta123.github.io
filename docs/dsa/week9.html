@@ -288,6 +288,9 @@ window.Quarto = {
   <li><a href="#coin-change" id="toc-coin-change" class="nav-link" data-scroll-target="#coin-change">5. Coin Change</a></li>
   <li><a href="#best-time-to-buy-and-sell-stock-iii" id="toc-best-time-to-buy-and-sell-stock-iii" class="nav-link" data-scroll-target="#best-time-to-buy-and-sell-stock-iii">6. Best Time to Buy and Sell Stock III</a></li>
   <li><a href="#unique-paths-ii" id="toc-unique-paths-ii" class="nav-link" data-scroll-target="#unique-paths-ii">7. Unique Paths-II</a></li>
+  <li><a href="#word-break" id="toc-word-break" class="nav-link" data-scroll-target="#word-break">8. Word Break</a></li>
+  <li><a href="#maximal-square" id="toc-maximal-square" class="nav-link" data-scroll-target="#maximal-square">9. Maximal Square</a></li>
+  <li><a href="#maximum-number-of-moves-in-a-grid" id="toc-maximum-number-of-moves-in-a-grid" class="nav-link" data-scroll-target="#maximum-number-of-moves-in-a-grid">10. Maximum Number of Moves in a Grid</a></li>
   </ul>
 </nav>
     </div>
@@ -597,9 +600,151 @@ window.Quarto = {
 <span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
 <span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>                    M[i,j] <span class="op">=</span> M[i<span class="op">-</span><span class="dv">1</span>,j] <span class="op">+</span> M[i,j<span class="op">-</span><span class="dv">1</span>]</span>
 <span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">int</span>(M[x<span class="op">-</span><span class="dv">1</span>,y<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-
 </section>
+</section>
+</section>
+<section id="word-break" class="level3">
+<h3 class="anchored" data-anchor-id="word-break">8. <a href="https://leetcode.com/problems/word-break/description/">Word Break</a></h3>
+<section id="code-implementation-7" class="level5">
+<h5 class="anchored" data-anchor-id="code-implementation-7">💻 Code Implementation:</h5>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> wordBreak(<span class="va">self</span>, s: <span class="bu">str</span>, wordDict: List[<span class="bu">str</span>]) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Length of the input string</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="bu">len</span>(s)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Convert word dictionary to a set for O(1) lookup</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        word_set <span class="op">=</span> <span class="bu">set</span>(wordDict)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Initialize the dp array, where dp[i] represents the minimum number of extra chars needed from index i to the end</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        dp <span class="op">=</span> [<span class="bu">float</span>(<span class="st">'inf'</span>)] <span class="op">*</span> (n <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        dp[n] <span class="op">=</span> <span class="dv">0</span>  <span class="co"># Base case: no extra characters are needed at the end of the string</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Populate the dp array from right to left</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n <span class="op">-</span> <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Start by treating the character at s[i] as an extra character</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>            dp[i] <span class="op">=</span> dp[i <span class="op">+</span> <span class="dv">1</span>] <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Check substrings starting from index i to find words in the dictionary</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i <span class="op">+</span> <span class="dv">1</span>, n <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>                substring <span class="op">=</span> s[i:j]</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>                <span class="co"># If the substring is a valid word, minimize extra chars by checking dp[j]</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> substring <span class="kw">in</span> word_set:</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>                    dp[i] <span class="op">=</span> <span class="bu">min</span>(dp[i], dp[j])</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Early break if dp[i] reaches 0 (no extra chars needed from i onward)</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> dp[i] <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">break</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>        <span class="co"># If dp[0] is 0, then the whole string can be segmented without extra chars</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> dp[<span class="dv">0</span>] <span class="op">==</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="maximal-square" class="level3">
+<h3 class="anchored" data-anchor-id="maximal-square">9. <a href="https://leetcode.com/problems/maximal-square/description/">Maximal Square</a></h3>
+<section id="code-implementation-8" class="level5">
+<h5 class="anchored" data-anchor-id="code-implementation-8">💻 Code Implementation:</h5>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> maximalSquare(<span class="va">self</span>, matrix: List[List[<span class="bu">str</span>]]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Dimensions of the matrix</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        m, n <span class="op">=</span> <span class="bu">len</span>(matrix), <span class="bu">len</span>(matrix[<span class="dv">0</span>])</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Initialize scores table</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        scores <span class="op">=</span> [[<span class="dv">0</span>] <span class="op">*</span> n <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(m)]</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Build the scores table from bottom-right to top-left</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(m <span class="op">-</span> <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(n <span class="op">-</span> <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> matrix[i][j] <span class="op">==</span> <span class="st">"1"</span>:</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># Calculate score for each cell based on "1"s around it</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>                    score <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> i <span class="op">&lt;</span> m <span class="op">-</span> <span class="dv">1</span> <span class="kw">and</span> j <span class="op">&lt;</span> n <span class="op">-</span> <span class="dv">1</span>:</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>                        score <span class="op">+=</span> <span class="bu">int</span>(matrix[i <span class="op">+</span> <span class="dv">1</span>][j <span class="op">+</span> <span class="dv">1</span>])</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> i <span class="op">&lt;</span> m <span class="op">-</span> <span class="dv">1</span>:</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>                        score <span class="op">+=</span> <span class="bu">int</span>(matrix[i <span class="op">+</span> <span class="dv">1</span>][j])</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> j <span class="op">&lt;</span> n <span class="op">-</span> <span class="dv">1</span>:</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>                        score <span class="op">+=</span> <span class="bu">int</span>(matrix[i][j <span class="op">+</span> <span class="dv">1</span>])</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>                    </span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>                    scores[i][j] <span class="op">=</span> score</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Initialize DP table</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>        <span class="co"># dp[i] = maximum size of square from (i, j) cell</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>        dp <span class="op">=</span> [[<span class="dv">0</span>] <span class="op">*</span> n <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(m)]</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Populate the DP table bottom up</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(m <span class="op">-</span> <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(n <span class="op">-</span> <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> matrix[i][j] <span class="op">==</span> <span class="st">"1"</span>:</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># Check for the size of square based on neighboring cells</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> i <span class="op">&lt;</span> m <span class="op">-</span> <span class="dv">1</span> <span class="kw">and</span> j <span class="op">&lt;</span> n <span class="op">-</span> <span class="dv">1</span>:</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>                        <span class="cf">if</span> (scores[i <span class="op">+</span> <span class="dv">1</span>][j] <span class="op">==</span> scores[i <span class="op">+</span> <span class="dv">1</span>][j <span class="op">+</span> <span class="dv">1</span>] <span class="op">==</span> scores[i][j <span class="op">+</span> <span class="dv">1</span>] </span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>                            <span class="kw">and</span> scores[i][j] <span class="op">&gt;</span> <span class="dv">0</span>):</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>                            dp[i][j] <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="bu">min</span>(dp[i <span class="op">+</span> <span class="dv">1</span>][j <span class="op">+</span> <span class="dv">1</span>], dp[i <span class="op">+</span> <span class="dv">1</span>][j], dp[i][j <span class="op">+</span> <span class="dv">1</span>])</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>                        <span class="cf">elif</span> scores[i][j] <span class="op">==</span> <span class="dv">4</span>:</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>                            dp[i][j] <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>                        <span class="cf">else</span>:</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>                            dp[i][j] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">else</span>:</span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>                        dp[i][j] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Find the maximum square size</span></span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>        max_square_size <span class="op">=</span> <span class="bu">max</span>(<span class="bu">max</span>(row) <span class="cf">for</span> row <span class="kw">in</span> dp)</span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> max_square_size <span class="op">**</span> <span class="dv">2</span> <span class="co"># Return Area of the square</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="maximum-number-of-moves-in-a-grid" class="level3">
+<h3 class="anchored" data-anchor-id="maximum-number-of-moves-in-a-grid">10. <a href="https://leetcode.com/problems/maximum-number-of-moves-in-a-grid/">Maximum Number of Moves in a Grid</a></h3>
+<section id="code-implementation-9" class="level5">
+<h5 class="anchored" data-anchor-id="code-implementation-9">💻 Code Implementation:</h5>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> maxMoves(grid):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Dimensions of the grid</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    rows, cols <span class="op">=</span> <span class="bu">len</span>(grid), <span class="bu">len</span>(grid[<span class="dv">0</span>])</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># dp[i][j] will store the maximum moves possible starting from cell (i, j)</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    dp <span class="op">=</span> [[<span class="dv">0</span>] <span class="op">*</span> cols <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(rows)]</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    max_moves <span class="op">=</span> <span class="dv">0</span>  <span class="co"># This will store the overall maximum moves starting from any cell in the first column</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Fill the DP table column by column, from right to left</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> col <span class="kw">in</span> <span class="bu">range</span>(cols <span class="op">-</span> <span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> row <span class="kw">in</span> <span class="bu">range</span>(rows <span class="op">-</span> <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Check the possible cells we can move to in the next column</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>            next_cell_up <span class="op">=</span> grid[row <span class="op">-</span> <span class="dv">1</span>][col <span class="op">+</span> <span class="dv">1</span>] <span class="cf">if</span> row <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>            dp_next_up <span class="op">=</span> dp[row <span class="op">-</span> <span class="dv">1</span>][col <span class="op">+</span> <span class="dv">1</span>] <span class="cf">if</span> row <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>            next_cell_right <span class="op">=</span> grid[row][col <span class="op">+</span> <span class="dv">1</span>]</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>            dp_next_right <span class="op">=</span> dp[row][col <span class="op">+</span> <span class="dv">1</span>]</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>            next_cell_down <span class="op">=</span> grid[row <span class="op">+</span> <span class="dv">1</span>][col <span class="op">+</span> <span class="dv">1</span>] <span class="cf">if</span> row <span class="op">&lt;</span> rows <span class="op">-</span> <span class="dv">1</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>            dp_next_down <span class="op">=</span> dp[row <span class="op">+</span> <span class="dv">1</span>][col <span class="op">+</span> <span class="dv">1</span>] <span class="cf">if</span> row <span class="op">&lt;</span> rows <span class="op">-</span> <span class="dv">1</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>            current_cell <span class="op">=</span> grid[row][col]</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Determine the maximum moves from this cell (row, col)</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> current_cell <span class="op">&gt;=</span> next_cell_up <span class="kw">and</span> current_cell <span class="op">&gt;=</span> next_cell_right <span class="kw">and</span> current_cell <span class="op">&gt;=</span> next_cell_down:</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>                <span class="co"># No move possible since all adjacent cells have equal or smaller values</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>                dp[row][col] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Calculate the maximum moves by considering each possible valid move direction</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>                max_next_moves <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> current_cell <span class="op">&lt;</span> next_cell_up:</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>                    max_next_moves <span class="op">=</span> <span class="bu">max</span>(max_next_moves, dp_next_up)</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> current_cell <span class="op">&lt;</span> next_cell_right:</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>                    max_next_moves <span class="op">=</span> <span class="bu">max</span>(max_next_moves, dp_next_right)</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> current_cell <span class="op">&lt;</span> next_cell_down:</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>                    max_next_moves <span class="op">=</span> <span class="bu">max</span>(max_next_moves, dp_next_down)</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>                dp[row][col] <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> max_next_moves</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Update the maximum moves if we're in the first column</span></span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> col <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>                max_moves <span class="op">=</span> <span class="bu">max</span>(max_moves, dp[row][col])</span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> max_moves</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
 </section>
 </section>
 
