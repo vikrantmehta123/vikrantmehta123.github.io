@@ -287,6 +287,8 @@ window.Quarto = {
   <li><a href="#merge-intervals" id="toc-merge-intervals" class="nav-link" data-scroll-target="#merge-intervals">4. Merge Intervals</a></li>
   <li><a href="#search-in-rotated-sorted-array" id="toc-search-in-rotated-sorted-array" class="nav-link" data-scroll-target="#search-in-rotated-sorted-array">5. Search in Rotated Sorted Array</a></li>
   <li><a href="#find-first-and-last-position-of-element-in-sorted-array" id="toc-find-first-and-last-position-of-element-in-sorted-array" class="nav-link" data-scroll-target="#find-first-and-last-position-of-element-in-sorted-array">6. Find First and Last Position of Element in Sorted Array</a></li>
+  <li><a href="#find-k-closest-elements" id="toc-find-k-closest-elements" class="nav-link" data-scroll-target="#find-k-closest-elements">7. Find K Closest Elements</a></li>
+  <li><a href="#check-if-n-and-its-double-exist" id="toc-check-if-n-and-its-double-exist" class="nav-link" data-scroll-target="#check-if-n-and-its-double-exist">8. Check If N and Its Double Exist</a></li>
   </ul>
 </nav>
     </div>
@@ -595,7 +597,7 @@ counts[2] = 2</code></pre>
 <p><em>Explanation:</em></p>
 <p>We need to find the starting and ending indices of the target number 8. In this case, 8 appears three times, so we return the range [3, 5], where index 3 is the first occurrence and index 5 is the last.</p>
 <section id="using-binary-search-1" class="level4">
-<h4 class="anchored" data-anchor-id="using-binary-search-1">5.1 Using Binary Search</h4>
+<h4 class="anchored" data-anchor-id="using-binary-search-1">6.1 Using Binary Search</h4>
 <p>📚 <strong>Problem Overview:</strong></p>
 <p>Again, we need a <span class="math inline">\(\log(n)\)</span> solution. So, we think Binary Search to come up with a solution.</p>
 <p><strong>💡 The Solution:</strong></p>
@@ -645,9 +647,98 @@ counts[2] = 2</code></pre>
 <span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> leftmost_occurrence <span class="op">==</span> <span class="op">-</span><span class="dv">1</span>:</span>
 <span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> [<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>]</span>
 <span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [leftmost_occurrence, rightmost_occurrence]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-
 </section>
+</section>
+</section>
+<section id="find-k-closest-elements" class="level3">
+<h3 class="anchored" data-anchor-id="find-k-closest-elements">7. <a href="https://leetcode.com/problems/find-k-closest-elements/description/">Find K Closest Elements</a></h3>
+<section id="code-implementation-7" class="level5">
+<h5 class="anchored" data-anchor-id="code-implementation-7">💻 Code Implementation:</h5>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> binarysearch(<span class="va">self</span>, nums, key):</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        left, right <span class="op">=</span> <span class="dv">0</span>, <span class="bu">len</span>(nums) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> left <span class="op">&lt;=</span> right:</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>            mid <span class="op">=</span> (left <span class="op">+</span> right) <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> nums[mid] <span class="op">==</span> key:</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> mid</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> nums[mid] <span class="op">&gt;</span> key:</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>                right <span class="op">=</span> mid <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>                left <span class="op">=</span> mid <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> left</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> findClosestElements(<span class="va">self</span>, arr: List[<span class="bu">int</span>], k: <span class="bu">int</span>, x: <span class="bu">int</span>) <span class="op">-&gt;</span> List[<span class="bu">int</span>]:</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Find the element</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>        searchindex <span class="op">=</span> <span class="va">self</span>.binarysearch(arr, x)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>        left, right <span class="op">=</span> searchindex<span class="op">-</span> <span class="dv">1</span>, searchindex</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Edge cases- number is the first number in array or the last</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> searchindex <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> arr[:k]</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> searchindex <span class="op">&gt;</span> <span class="bu">len</span>(arr) <span class="op">-</span> <span class="dv">1</span>:</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> arr[k:]</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>        L <span class="op">=</span> [ ]</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Keep sliding the two pointers till you have "k" closest elems</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> <span class="bu">len</span>(L) <span class="op">&lt;</span> k:</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> left <span class="op">&lt;</span> <span class="dv">0</span> <span class="kw">and</span> right <span class="op">&lt;</span> <span class="bu">len</span>(arr):</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>                L.append(arr[right])</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>                right <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> right <span class="op">&gt;</span> <span class="bu">len</span>(arr) <span class="op">-</span> <span class="dv">1</span> <span class="kw">and</span> left <span class="op">&gt;=</span> <span class="dv">0</span>:</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>                L.append(arr[left])</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>                left <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>                dist1 <span class="op">=</span> <span class="bu">abs</span>(arr[left] <span class="op">-</span> x)</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>                dist2 <span class="op">=</span> <span class="bu">abs</span>(arr[right] <span class="op">-</span> x)</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> dist1 <span class="op">&lt;=</span> dist2:</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>                    L.append(arr[left])</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>                    left <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>                    L.append(arr[right])</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>                    right <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">sorted</span>(L)<span class="co"># Return the sorted "k" nums</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="check-if-n-and-its-double-exist" class="level3">
+<h3 class="anchored" data-anchor-id="check-if-n-and-its-double-exist">8. <a href="https://leetcode.com/problems/check-if-n-and-its-double-exist/description/">Check If N and Its Double Exist</a></h3>
+<section id="code-implementation-8" class="level5">
+<h5 class="anchored" data-anchor-id="code-implementation-8">💻 Code Implementation:</h5>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution(<span class="bu">object</span>):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> checkIfExist(<span class="va">self</span>, arr):</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">        :type arr: List[int]</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">        :rtype: bool</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        arr.sort() <span class="co"># sort array first</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i, num <span class="kw">in</span> <span class="bu">enumerate</span>(arr):</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>            <span class="co"># If value is odd, it's half can't exist</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> num <span class="op">%</span> <span class="dv">2</span> <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Search for num / 2 in the array</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>            idx <span class="op">=</span> <span class="va">self</span>.binarysearch(arr, num <span class="op">/</span> <span class="dv">2</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>            <span class="co"># If num / 2 was found return True ( Also handle the special case where num == num / 2 i.e. when num is 0)</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> i <span class="op">!=</span> idx <span class="kw">and</span> idx <span class="op">!=</span> <span class="op">-</span><span class="dv">1</span>: </span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># No pair was found</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> binarysearch(<span class="va">self</span>, L, value): </span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>        low <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>        high <span class="op">=</span> <span class="bu">len</span>(L) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> low <span class="op">&lt;=</span> high: </span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>            mid <span class="op">=</span> (low <span class="op">+</span> high) <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> L[mid ] <span class="op">&lt;</span> value:</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>                low <span class="op">=</span> mid  <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> L[mid ] <span class="op">&gt;</span> value:</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>                high <span class="op">=</span> mid  <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> mid <span class="co"># Found the value</span></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span> <span class="co"># Couldn't find value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
 </section>
 </section>
 

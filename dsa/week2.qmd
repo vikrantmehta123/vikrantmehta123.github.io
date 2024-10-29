@@ -318,7 +318,7 @@ class Solution:
 
 We need to find the starting and ending indices of the target number 8. In this case, 8 appears three times, so we return the range [3, 5], where index 3 is the first occurrence and index 5 is the last.
 
-#### 5.1 Using Binary Search
+#### 6.1 Using Binary Search
 
 📚 **Problem Overview:**
 
@@ -379,4 +379,93 @@ class Solution:
         if leftmost_occurrence == -1:
             return [-1, -1]
         return [leftmost_occurrence, rightmost_occurrence]
+```
+
+### 7. [Find K Closest Elements](https://leetcode.com/problems/find-k-closest-elements/description/)
+
+##### 💻 Code Implementation:
+```python  
+class Solution:
+    def binarysearch(self, nums, key):
+        left, right = 0, len(nums) - 1
+        while left <= right:
+            mid = (left + right) // 2
+            if nums[mid] == key:
+                return mid
+            elif nums[mid] > key:
+                right = mid - 1
+            else:
+                left = mid + 1
+        return left
+    
+    def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
+        # Find the element
+        searchindex = self.binarysearch(arr, x)
+        left, right = searchindex- 1, searchindex
+
+        # Edge cases- number is the first number in array or the last
+        if searchindex < 0:
+            return arr[:k]
+        if searchindex > len(arr) - 1:
+            return arr[k:]
+        
+        L = [ ]
+        # Keep sliding the two pointers till you have "k" closest elems
+        while len(L) < k:
+            if left < 0 and right < len(arr):
+                L.append(arr[right])
+                right += 1
+            elif right > len(arr) - 1 and left >= 0:
+                L.append(arr[left])
+                left -= 1
+            else:
+                dist1 = abs(arr[left] - x)
+                dist2 = abs(arr[right] - x)
+                if dist1 <= dist2:
+                    L.append(arr[left])
+                    left -= 1
+                else:
+                    L.append(arr[right])
+                    right += 1
+        return sorted(L)# Return the sorted "k" nums
+```
+
+### 8. [Check If N and Its Double Exist](https://leetcode.com/problems/check-if-n-and-its-double-exist/description/)
+
+##### 💻 Code Implementation:
+```python
+class Solution(object):
+    def checkIfExist(self, arr):
+        """
+        :type arr: List[int]
+        :rtype: bool
+        """
+        arr.sort() # sort array first
+
+        for i, num in enumerate(arr):
+            # If value is odd, it's half can't exist
+            if num % 2 != 0:
+                continue
+            # Search for num / 2 in the array
+            idx = self.binarysearch(arr, num / 2)
+
+            # If num / 2 was found return True ( Also handle the special case where num == num / 2 i.e. when num is 0)
+            if i != idx and idx != -1: 
+                return True
+        
+        # No pair was found
+        return False
+    
+    def binarysearch(self, L, value): 
+        low = 0
+        high = len(L) - 1
+        while low <= high: 
+            mid = (low + high) // 2
+            if L[mid ] < value:
+                low = mid  + 1
+            elif L[mid ] > value:
+                high = mid  - 1
+            else:
+                return mid # Found the value
+        return -1 # Couldn't find value
 ```
