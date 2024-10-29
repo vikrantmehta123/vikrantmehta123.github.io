@@ -2,6 +2,7 @@
 title: "Mastering Anything With Deliberate Practice"
 author: "Vikrant Mehta"
 date: "2020-08-28"
+image: "Peak.jpg"
 categories: [Psychology, Books]
 description: ""
 ---
