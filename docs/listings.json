@@ -11,13 +11,14 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/why-we-sleep/index.html",
       "/posts/creating-http-server-from-scratch/index.html",
       "/posts/first-project-using-fastai/index.html",
       "/posts/challenge-accepted/index.html",
       "/posts/how-to-learn-dl/index.html",
       "/posts/meeting-bhavesh-bhatia/index.html",
-      "/posts/mastering-life-like-a-grandmaster/index.html"
+      "/posts/mastering-life-like-a-grandmaster/index.html",
+      "/posts/why-we-sleep/index.html",
+      "/posts/peak/index.html"
     ]
   }
 ]
