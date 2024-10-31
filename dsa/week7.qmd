@@ -12,13 +12,14 @@ date: "2024-10-03"
 
 We need to schedule the **maximum number of meetings** without any conflicts, given two arrays: `start` and `end`.
 
-🤔 Can you find out what type of problem this is?\
+🤔 Can you find out what type of problem this is?
 
 It is a classic interval scheduling problem. 
 
 From the lectures, we know we can solve such problems by sorting the schedules based on end times, and selecting the meetings that don't conflict.
 
 Here's how we can solve this:
+
 - Combine the `start` and `end` arrays into a single array of the form: $[(start_i, end_i)]$
 - Sort the list based on the end times- earliest end times come first.
 - Track of the end time of the last meeting.
@@ -108,6 +109,7 @@ Other combinations, like `[10, 10, 10, 10, 2, 1]`, are valid but require more co
 Note: In general, we cannot say that greedy algorithm will produce correct output for such problems ( we need to use dynamic programming to solve these ). But in this problem, larger denominations can represent multiple smaller ones. For example, 3 coins of value 2 can be replaced by 1 coin of value 5 and 1 coin of value 1. So, we can use fewer large coins to replace many smaller ones.
 
 Thus, we can use Greedy Approach:
+
 - Start with the largest denomination.
 - Subtract it from the amount until you can't anymore.
 - Move to the next largest and repeat.
@@ -224,3 +226,6 @@ class Solution:
         
         return jump_count
 ```
+
+### 6. [Course Schedule-III](https://leetcode.com/problems/course-schedule-iii/description/)
+

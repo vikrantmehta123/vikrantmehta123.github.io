@@ -9,6 +9,7 @@ date: "2024-10-03"
 **📚 Problem Overview:**
 
 We need to find the number of ways to reach the top of a staircase with `n` steps. At each step, you can either:
+
 1. Take a *single step*, or
 2. Take a *double step*.
 
@@ -176,6 +177,7 @@ $$MPS(triangle[row][col]) = triangle[row][col] + \min(MPS(triangle[row + 1][col]
 Since we are solving overlapping subproblems and then combining those subproblems to solve the original problem, we’ll use dynamic programming, starting from the bottom of the triangle and working our way up to the top.
 
 **💡 The Solution Approach:**
+
 - After processing the last row, that is- the row of the base cases, we can move one level up in the triangle. 
 - After processing that level, we get a minimum path of length 2 for each of the cells in the second last row. More generally, after processing a row, each element in that row would hold the minimum path sum from that element to the bottom of the triangle. 
 - After processing the entire triangle, the top element of the triangle would hold the minimum path sum from the top to the bottom of the triangle, which is the answer to the problem.
@@ -214,12 +216,11 @@ The first thought here can be that we need to use the greedy strategy. But as we
 **💡 The Solution Approach:**
 
 Since we have overlapping subproblems, we use dynamic programming:
-- Keep an array of length $amount + 1$, where each index ```i``` stores the minimum number of coins required to get change for amount ```i```. Let this array be called ```dp```.
+
 1. Create a `dp` array of size `amount + 1`, where `dp[i]` stores the minimum number of coins to make amount `i`. Initially, set all values to infinity (`inf`), except `dp[0] = 0`, because we need 0 coins to make amount 0.
 2. For each coin, update the `dp` array:
    - For every `amount` from 0 to the given amount, update the minimum coins:
    - $ \text{dp[i]} = \min(\text{dp[i]}, \text{dp[i - coin]} + 1) $
-
 3. After processing all amounts, if `dp[amount]` is still `inf`, return $-1$ (because it’s impossible to make that amount). Otherwise, return `dp[amount]`.   
 
 **Time Complexity:** $O(amount * coins)$
@@ -263,9 +264,10 @@ Since we’re allowed to make *two transactions*, for any given day, the total p
 
 For example, let’s take the prices list: `[3, 3, 5, 0, 0, 3, 1, 4]`.
 
-🔹 On *day 3* (price = 0):
-   - Maximum Profit *before* day 3: The best time to buy and sell *before* day 3 is buying at 3 (day 0) and selling at 5 (day 2). So, *5 - 3 = 2*.
-   - Maximum Profit *after* day 3: The best time to buy *after* day 3 is buying at 0 (day 3) and selling at 4 (day 7). So, *4 - 0 = 4*.
+On *day 3* (price = 0):
+
+- Maximum Profit *before* day 3: The best time to buy and sell *before* day 3 is buying at 3 (day 0) and selling at 5 (day 2). So, *5-3 = 2*.
+- Maximum Profit *after* day 3: The best time to buy *after* day 3 is buying at 0 (day 3) and selling at 4 (day 7). So, *4 - 0 = 4*.
 
 By adding them together, the total profit on day 3 would be **2 + 4 = 6**.
 

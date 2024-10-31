@@ -138,13 +138,14 @@ class Solution:
 ```
 
 ## Leet Code Problems on Linked Lists and Arrays
-Before you jump into these problems:
+Before you jump into these problems, here are some tips on solving linked list problems:
+
 1. When solving Linked List problems, **ALWAYS** draw the diagrams. 
 2. Whenever you see a Linked List problem, the first thing that you should do is: handle the base / edge cases like an empty linked list or a list with just one node. It'll save you a lot of time and stress, especially during the OPPE!
 
 ### 3. [Rotate List](https://leetcode.com/problems/rotate-list/description/)
 #### 3.1 Rotation Logic:
-- If $k \gt n$, then the number of effective rotations is: $k = k \mod n$. 
+- If $k \gt n$, then the number of effective rotations is: $k = k \% n$. 
 - Think about this as a three step problem:
     1. First, traverse $k$ nodes. This ```n - k```th node becomes the ```newhead``` of the rotated list.
     2. Next, connect the original list's tail to its ```head```to create a cycle in the linked list.
@@ -267,11 +268,14 @@ class Solution:
 ### 5. [Reverse Nodes in K Groups](https://leetcode.com/problems/reverse-nodes-in-k-group/description/)
 
 #### 5.1 Using Recursion
-- You know how to reverse a linked list from the Graded Assignment question. Given a number ```k```, can you reverse the first ```k``` nodes and return the ```head``` and ```tail``` after reversing?
-- Now that we have successfully reversed the first ```k``` nodes, can you repeat the same thing for the next ```k``` nodes? So we have a way of reversing groups of ```k``` nodes. 
-- But here's the important part: how do you connect these reversed groups?
+
+**Intuition:**
+
+You know how to reverse a linked list from the Graded Assignment question. Given a number ```k```, can you reverse the first ```k``` nodes and return the ```head``` and ```tail``` after reversing? Now that we have reversed the first ```k``` nodes, can you repeat the same thing for the next ```k``` nodes? We have a way of reversing groups of ```k``` nodes. 
+But here's the important part: how do you connect these reversed groups?
 
 🤔 Can you think of a recursive way?
+
 - Remember that the last reversed ```k``` nodes will be the first to return!
 - Let's take an example list: ```1 -> 2 -> 3 -> 4```, and ```k = 2```.
     - First, reverse ```1 -> 2``` as ```2 -> 1```, and return the head as ```2``` and tail as ```1```.
@@ -338,6 +342,7 @@ Let’s think about how we can find the middle element in a linked list, similar
 But in a linked list, we don’t have direct access to an element by index. So, how could we find the middle element?
 
 Here's how:
+
 1. First, we need to compute `len(L)`. How can we do this? We could iterate through the entire list, counting each node as we go.
 2. Once we know the length, we can compute the middle index just like we did with the array: `mid = len(L) // 2`
 3. Finally, we would traverse the list again, stopping when we reach the middle node.

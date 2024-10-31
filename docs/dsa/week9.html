@@ -304,7 +304,11 @@ window.Quarto = {
 <section id="climbing-stairs" class="level3">
 <h3 class="anchored" data-anchor-id="climbing-stairs">1. <a href="https://leetcode.com/problems/climbing-stairs/description/">Climbing Stairs</a></h3>
 <p><strong>📚 Problem Overview:</strong></p>
-<p>We need to find the number of ways to reach the top of a staircase with <code>n</code> steps. At each step, you can either: 1. Take a <em>single step</em>, or 2. Take a <em>double step</em>.</p>
+<p>We need to find the number of ways to reach the top of a staircase with <code>n</code> steps. At each step, you can either:</p>
+<ol type="1">
+<li>Take a <em>single step</em>, or</li>
+<li>Take a <em>double step</em>.</li>
+</ol>
 <p><strong>🎯 Understanding the Test Cases:</strong></p>
 <p><em>Test Case 1:</em> <code>n = 3</code></p>
 <p>There are three ways to reach the third step:</p>
@@ -456,7 +460,12 @@ window.Quarto = {
 <li>The base cases are the last row of the triangle. There are no children below, so the values in the last row stay the same.</li>
 </ul>
 <p>Since we are solving overlapping subproblems and then combining those subproblems to solve the original problem, we’ll use dynamic programming, starting from the bottom of the triangle and working our way up to the top.</p>
-<p><strong>💡 The Solution Approach:</strong> - After processing the last row, that is- the row of the base cases, we can move one level up in the triangle. - After processing that level, we get a minimum path of length 2 for each of the cells in the second last row. More generally, after processing a row, each element in that row would hold the minimum path sum from that element to the bottom of the triangle. - After processing the entire triangle, the top element of the triangle would hold the minimum path sum from the top to the bottom of the triangle, which is the answer to the problem.</p>
+<p><strong>💡 The Solution Approach:</strong></p>
+<ul>
+<li>After processing the last row, that is- the row of the base cases, we can move one level up in the triangle.</li>
+<li>After processing that level, we get a minimum path of length 2 for each of the cells in the second last row. More generally, after processing a row, each element in that row would hold the minimum path sum from that element to the bottom of the triangle.</li>
+<li>After processing the entire triangle, the top element of the triangle would hold the minimum path sum from the top to the bottom of the triangle, which is the answer to the problem.</li>
+</ul>
 <section id="code-implementation-3" class="level5">
 <h5 class="anchored" data-anchor-id="code-implementation-3">💻 Code Implementation:</h5>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
@@ -487,8 +496,14 @@ window.Quarto = {
 <li>Can you figure out why the subproblems are overlapping?</li>
 </ul>
 <p><strong>💡 The Solution Approach:</strong></p>
-<p>Since we have overlapping subproblems, we use dynamic programming: - Keep an array of length <span class="math inline">\(amount + 1\)</span>, where each index <code>i</code> stores the minimum number of coins required to get change for amount <code>i</code>. Let this array be called <code>dp</code>. 1. Create a <code>dp</code> array of size <code>amount + 1</code>, where <code>dp[i]</code> stores the minimum number of coins to make amount <code>i</code>. Initially, set all values to infinity (<code>inf</code>), except <code>dp[0] = 0</code>, because we need 0 coins to make amount 0. 2. For each coin, update the <code>dp</code> array: - For every <code>amount</code> from 0 to the given amount, update the minimum coins: - $ = (, + 1) $</p>
-<ol start="3" type="1">
+<p>Since we have overlapping subproblems, we use dynamic programming:</p>
+<ol type="1">
+<li>Create a <code>dp</code> array of size <code>amount + 1</code>, where <code>dp[i]</code> stores the minimum number of coins to make amount <code>i</code>. Initially, set all values to infinity (<code>inf</code>), except <code>dp[0] = 0</code>, because we need 0 coins to make amount 0.</li>
+<li>For each coin, update the <code>dp</code> array:
+<ul>
+<li>For every <code>amount</code> from 0 to the given amount, update the minimum coins:</li>
+<li>$ = (, + 1) $</li>
+</ul></li>
 <li>After processing all amounts, if <code>dp[amount]</code> is still <code>inf</code>, return <span class="math inline">\(-1\)</span> (because it’s impossible to make that amount). Otherwise, return <code>dp[amount]</code>.</li>
 </ol>
 <p><strong>Time Complexity:</strong> <span class="math inline">\(O(amount * coins)\)</span></p>
@@ -528,7 +543,11 @@ window.Quarto = {
 <li>Maximum profit <em>after</em> that day.</li>
 </ol>
 <p>For example, let’s take the prices list: <code>[3, 3, 5, 0, 0, 3, 1, 4]</code>.</p>
-<p>🔹 On <em>day 3</em> (price = 0): - Maximum Profit <em>before</em> day 3: The best time to buy and sell <em>before</em> day 3 is buying at 3 (day 0) and selling at 5 (day 2). So, <em>5 - 3 = 2</em>. - Maximum Profit <em>after</em> day 3: The best time to buy <em>after</em> day 3 is buying at 0 (day 3) and selling at 4 (day 7). So, <em>4 - 0 = 4</em>.</p>
+<p>On <em>day 3</em> (price = 0):</p>
+<ul>
+<li>Maximum Profit <em>before</em> day 3: The best time to buy and sell <em>before</em> day 3 is buying at 3 (day 0) and selling at 5 (day 2). So, <em>5-3 = 2</em>.</li>
+<li>Maximum Profit <em>after</em> day 3: The best time to buy <em>after</em> day 3 is buying at 0 (day 3) and selling at 4 (day 7). So, <em>4 - 0 = 4</em>.</li>
+</ul>
 <p>By adding them together, the total profit on day 3 would be <strong>2 + 4 = 6</strong>.</p>
 <p>We repeat this process for each day to find the total maximum profit. The day with the highest total profit is where we should ideally transact to make the most money!</p>
 <p>The key idea here is that we can compute the <strong>before</strong> and <strong>after</strong> arrays in <strong>linear time</strong>.</p>

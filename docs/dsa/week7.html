@@ -286,6 +286,7 @@ window.Quarto = {
   <li><a href="#minimum-number-of-coins" id="toc-minimum-number-of-coins" class="nav-link" data-scroll-target="#minimum-number-of-coins">3. Minimum Number of Coins</a></li>
   <li><a href="#jump-game" id="toc-jump-game" class="nav-link" data-scroll-target="#jump-game">4. Jump Game</a></li>
   <li><a href="#jump-game-ii" id="toc-jump-game-ii" class="nav-link" data-scroll-target="#jump-game-ii">5 Jump Game-II</a></li>
+  <li><a href="#course-schedule-iii" id="toc-course-schedule-iii" class="nav-link" data-scroll-target="#course-schedule-iii">6. Course Schedule-III</a></li>
   </ul>
 </nav>
     </div>
@@ -302,11 +303,20 @@ window.Quarto = {
 <h4 class="anchored" data-anchor-id="using-greedy-approach">1.1 Using Greedy Approach</h4>
 <p><strong>📚 Problem Overview:</strong></p>
 <p>We need to schedule the <strong>maximum number of meetings</strong> without any conflicts, given two arrays: <code>start</code> and <code>end</code>.</p>
-<p>🤔 Can you find out what type of problem this is?<br>
-</p>
+<p>🤔 Can you find out what type of problem this is?</p>
 <p>It is a classic interval scheduling problem.</p>
 <p>From the lectures, we know we can solve such problems by sorting the schedules based on end times, and selecting the meetings that don’t conflict.</p>
-<p>Here’s how we can solve this: - Combine the <code>start</code> and <code>end</code> arrays into a single array of the form: <span class="math inline">\([(start_i, end_i)]\)</span> - Sort the list based on the end times- earliest end times come first. - Track of the end time of the last meeting. - For each new meeting: - If it overlaps with the previous one (starts before the previous one ends), then skip it. - Else, we increment the meeting count, and update the end time.</p>
+<p>Here’s how we can solve this:</p>
+<ul>
+<li>Combine the <code>start</code> and <code>end</code> arrays into a single array of the form: <span class="math inline">\([(start_i, end_i)]\)</span></li>
+<li>Sort the list based on the end times- earliest end times come first.</li>
+<li>Track of the end time of the last meeting.</li>
+<li>For each new meeting:
+<ul>
+<li>If it overlaps with the previous one (starts before the previous one ends), then skip it.</li>
+<li>Else, we increment the meeting count, and update the end time.</li>
+</ul></li>
+</ul>
 <section id="code-implementation" class="level5">
 <h5 class="anchored" data-anchor-id="code-implementation">💻 Code Implementation:</h5>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
@@ -382,7 +392,13 @@ window.Quarto = {
 <section id="using-greedy" class="level4">
 <h4 class="anchored" data-anchor-id="using-greedy">3.1 Using Greedy</h4>
 <p>Note: In general, we cannot say that greedy algorithm will produce correct output for such problems ( we need to use dynamic programming to solve these ). But in this problem, larger denominations can represent multiple smaller ones. For example, 3 coins of value 2 can be replaced by 1 coin of value 5 and 1 coin of value 1. So, we can use fewer large coins to replace many smaller ones.</p>
-<p>Thus, we can use Greedy Approach: - Start with the largest denomination. - Subtract it from the amount until you can’t anymore. - Move to the next largest and repeat. - Add each coin/note used to the result.</p>
+<p>Thus, we can use Greedy Approach:</p>
+<ul>
+<li>Start with the largest denomination.</li>
+<li>Subtract it from the amount until you can’t anymore.</li>
+<li>Move to the next largest and repeat.</li>
+<li>Add each coin/note used to the result.</li>
+</ul>
 <section id="code-implementation-2" class="level5">
 <h5 class="anchored" data-anchor-id="code-implementation-2">💻 Code Implementation:</h5>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
@@ -479,10 +495,13 @@ window.Quarto = {
 <span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">break</span></span>
 <span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>        </span>
 <span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> jump_count</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-
 </section>
 </section>
+</section>
+<section id="course-schedule-iii" class="level3">
+<h3 class="anchored" data-anchor-id="course-schedule-iii">6. <a href="https://leetcode.com/problems/course-schedule-iii/description/">Course Schedule-III</a></h3>
+
+
 </section>
 
 </main> <!-- /main -->

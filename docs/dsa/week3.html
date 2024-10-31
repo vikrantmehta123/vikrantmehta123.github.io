@@ -411,13 +411,17 @@ Space Complexity: <span class="math inline">\(O(n)\)</span></p>
 </section>
 <section id="leet-code-problems-on-linked-lists-and-arrays" class="level2">
 <h2 class="anchored" data-anchor-id="leet-code-problems-on-linked-lists-and-arrays">Leet Code Problems on Linked Lists and Arrays</h2>
-<p>Before you jump into these problems: 1. When solving Linked List problems, <strong>ALWAYS</strong> draw the diagrams. 2. Whenever you see a Linked List problem, the first thing that you should do is: handle the base / edge cases like an empty linked list or a list with just one node. It’ll save you a lot of time and stress, especially during the OPPE!</p>
+<p>Before you jump into these problems, here are some tips on solving linked list problems:</p>
+<ol type="1">
+<li>When solving Linked List problems, <strong>ALWAYS</strong> draw the diagrams.</li>
+<li>Whenever you see a Linked List problem, the first thing that you should do is: handle the base / edge cases like an empty linked list or a list with just one node. It’ll save you a lot of time and stress, especially during the OPPE!</li>
+</ol>
 <section id="rotate-list" class="level3">
 <h3 class="anchored" data-anchor-id="rotate-list">3. <a href="https://leetcode.com/problems/rotate-list/description/">Rotate List</a></h3>
 <section id="rotation-logic" class="level4">
 <h4 class="anchored" data-anchor-id="rotation-logic">3.1 Rotation Logic:</h4>
 <ul>
-<li>If <span class="math inline">\(k \gt n\)</span>, then the number of effective rotations is: <span class="math inline">\(k = k \mod n\)</span>.</li>
+<li>If <span class="math inline">\(k \gt n\)</span>, then the number of effective rotations is: <span class="math inline">\(k = k \% n\)</span>.</li>
 <li>Think about this as a three step problem:
 <ol type="1">
 <li>First, traverse <span class="math inline">\(k\)</span> nodes. This <code>n - k</code>th node becomes the <code>newhead</code> of the rotated list.</li>
@@ -545,12 +549,18 @@ Space Complexity: <span class="math inline">\(O(n)\)</span></p>
 <h3 class="anchored" data-anchor-id="reverse-nodes-in-k-groups">5. <a href="https://leetcode.com/problems/reverse-nodes-in-k-group/description/">Reverse Nodes in K Groups</a></h3>
 <section id="using-recursion" class="level4">
 <h4 class="anchored" data-anchor-id="using-recursion">5.1 Using Recursion</h4>
+<p><strong>Intuition:</strong></p>
+<p>You know how to reverse a linked list from the Graded Assignment question. Given a number <code>k</code>, can you reverse the first <code>k</code> nodes and return the <code>head</code> and <code>tail</code> after reversing? Now that we have reversed the first <code>k</code> nodes, can you repeat the same thing for the next <code>k</code> nodes? We have a way of reversing groups of <code>k</code> nodes. But here’s the important part: how do you connect these reversed groups?</p>
+<p>🤔 Can you think of a recursive way?</p>
 <ul>
-<li>You know how to reverse a linked list from the Graded Assignment question. Given a number <code>k</code>, can you reverse the first <code>k</code> nodes and return the <code>head</code> and <code>tail</code> after reversing?</li>
-<li>Now that we have successfully reversed the first <code>k</code> nodes, can you repeat the same thing for the next <code>k</code> nodes? So we have a way of reversing groups of <code>k</code> nodes.</li>
-<li>But here’s the important part: how do you connect these reversed groups?</li>
+<li>Remember that the last reversed <code>k</code> nodes will be the first to return!</li>
+<li>Let’s take an example list: <code>1 -&gt; 2 -&gt; 3 -&gt; 4</code>, and <code>k = 2</code>.
+<ul>
+<li>First, reverse <code>1 -&gt; 2</code> as <code>2 -&gt; 1</code>, and return the head as <code>2</code> and tail as <code>1</code>.</li>
+<li>Then, reverse <code>3 -&gt; 4</code> recursively as <code>4 -&gt; 3</code>, and return the head as <code>4</code> and tail as <code>3</code>.</li>
+<li>Now, Now, you just need to connect the tail of the first reversed group (1) to the head of the second reversed group (4). Voilà! You’ve connected the reversed groups.</li>
+</ul></li>
 </ul>
-<p>🤔 Can you think of a recursive way? - Remember that the last reversed <code>k</code> nodes will be the first to return! - Let’s take an example list: <code>1 -&gt; 2 -&gt; 3 -&gt; 4</code>, and <code>k = 2</code>. - First, reverse <code>1 -&gt; 2</code> as <code>2 -&gt; 1</code>, and return the head as <code>2</code> and tail as <code>1</code>. - Then, reverse <code>3 -&gt; 4</code> recursively as <code>4 -&gt; 3</code>, and return the head as <code>4</code> and tail as <code>3</code>. - Now, Now, you just need to connect the tail of the first reversed group (1) to the head of the second reversed group (4). Voilà! You’ve connected the reversed groups.</p>
 <section id="code-implementation-4" class="level5">
 <h5 class="anchored" data-anchor-id="code-implementation-4">💻 Code Implementation:</h5>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
@@ -611,7 +621,12 @@ Space Complexity: <span class="math inline">\(O(n)\)</span></p>
 <h4 class="anchored" data-anchor-id="using-iteration">6.1 Using Iteration</h4>
 <p>Let’s think about how we can find the middle element in a linked list, similar to how we do it in an array. We usually find the middle index by calculating <code>mid = len(L) // 2</code> and then return <code>L[mid]</code>. This works because arrays let us access any element directly by its index.</p>
 <p>But in a linked list, we don’t have direct access to an element by index. So, how could we find the middle element?</p>
-<p>Here’s how: 1. First, we need to compute <code>len(L)</code>. How can we do this? We could iterate through the entire list, counting each node as we go. 2. Once we know the length, we can compute the middle index just like we did with the array: <code>mid = len(L) // 2</code> 3. Finally, we would traverse the list again, stopping when we reach the middle node.</p>
+<p>Here’s how:</p>
+<ol type="1">
+<li>First, we need to compute <code>len(L)</code>. How can we do this? We could iterate through the entire list, counting each node as we go.</li>
+<li>Once we know the length, we can compute the middle index just like we did with the array: <code>mid = len(L) // 2</code></li>
+<li>Finally, we would traverse the list again, stopping when we reach the middle node.</li>
+</ol>
 <ul>
 <li>Time Complexity: <span class="math inline">\(O(n)\)</span></li>
 </ul>
