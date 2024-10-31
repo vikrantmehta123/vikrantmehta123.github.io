@@ -1,7 +1,11 @@
 ---
-title: "Leet Code Problems on Stacks, Queues, Linked Lists, and Arrays"
+title: "Stacks, Queues, Linked Lists, and Arrays"
 author: "Vikrant Mehta"
 date: "2024-10-03"
+categories: [DSA, Linked Lists, Queues, Stacks]
+page-layout: full
+toc: true
+order: 2
 ---
 
 ### 1. [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/description/)
@@ -25,9 +29,18 @@ Input: ```s = "[()]"```
 
 We only have three types of brackets: ```[], (), {}```. And we need to close the last opened bracaket first. What do you do when you need to close the last opened bracket first? You need a system where the last thing you add is the first thing you take out, right? This is the Last In, First Out (LIFO) system. So, what data structure works best for LIFO? A **stack**! A stack can help us keep track of the brackets. Whenever we find an opening bracket, we push it onto the stack. When we encounter a closing bracket, we pop the stack to see if it matches the last opened bracket.
 
-🤔 *Think about this:*
 
-Let’s say you’ve read the first two characters of a string and added them to the stack. Your stack might look like this: ```stack = ['(', '{']```. Now, what if the next character is ```}```? How do you know if this closing bracket matches the last opened one? To figure this out, we can use a simple mapping: each closing bracket corresponds to its opening bracket, like this: ```closing bracket : Corresponding opening bracket```. This way, we can check if every closing bracket matches the correct opening one.
+:::{.callout-tip}
+
+## 🤔Think about this:
+
+Let’s say you’ve read the first two characters of a string and added them to the stack. Your stack might look like this: 
+
+```stack = ['(', '{']```. 
+
+Now, what if the next character is ```}```? How do you know if this closing bracket matches the last opened one? To figure this out, we can use a simple mapping: each closing bracket corresponds to its opening bracket, like this: ```closing bracket : Corresponding opening bracket```. This way, we can check if every closing bracket matches the correct opening one.
+
+:::
 
 *⚠️ Edge Cases:*
 
@@ -92,7 +105,12 @@ But what’s the problem with this approach? It takes a lot of time—specifical
 
 When using brute force, we had to search the entire array to check if the next number existed. Do you think there’s a way to speed up this check? What if we had a data structure that allows us to check if a number exists in constant time?
 
-**Hint**: Think of a data structure that has constant-time lookups. 
+:::{.callout-tip}
+### Hint: 
+
+Think of a data structure that has constant-time lookups. 
+
+:::
 
 We can use a **set** here!
 
@@ -137,11 +155,14 @@ class Solution:
         return max_length
 ```
 
-## Leet Code Problems on Linked Lists and Arrays
+:::{.callout-tip}
+## Tips for Linked List Problems:
 Before you jump into these problems, here are some tips on solving linked list problems:
 
 1. When solving Linked List problems, **ALWAYS** draw the diagrams. 
 2. Whenever you see a Linked List problem, the first thing that you should do is: handle the base / edge cases like an empty linked list or a list with just one node. It'll save you a lot of time and stress, especially during the OPPE!
+
+:::
 
 ### 3. [Rotate List](https://leetcode.com/problems/rotate-list/description/)
 #### 3.1 Rotation Logic:
@@ -468,3 +489,5 @@ class Solution:
         # The merged list is next to the dummy node
         return dummy.next
 ```
+
+---

@@ -1,7 +1,11 @@
 ---
-title: "Leet Code Greedy Problems"
+title: "Greedy"
 author: "Vikrant Mehta"
 date: "2024-10-03"
+categories: [DSA, Greedy]
+page-layout: full
+toc: true
+order: 6
 ---
 
 ### 1. [N Meetings in One Room](https://www.geeksforgeeks.org/problems/n-meetings-in-one-room-1587115620/1)
@@ -227,5 +231,4 @@ class Solution:
         return jump_count
 ```
 
-### 6. [Course Schedule-III](https://leetcode.com/problems/course-schedule-iii/description/)
-
+--- 

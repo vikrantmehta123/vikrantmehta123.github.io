@@ -4,7 +4,6 @@ project:
 
 website:
   title: "Vikrant"
-  sidebar: false
   navbar:
     right:
       - icon: linkedin
@@ -23,25 +22,33 @@ website:
       - text: Projects
         href: projects.qmd 
       - text: DSA
-        menu:
-          - text: Sorting and Searching
-            href: dsa/week2.qmd
-          - text: Stacks, Queues, Linked Lists, and Arrays
-            href: dsa/week3.qmd
-          - text: Graphs
-            href: dsa/week4.qmd
-          - text: Shortest Paths and MCST
-            href: dsa/week5.qmd
-          - text: Heaps and Trees
-            href: dsa/week6.qmd
-          - text: Greedy Problems
-            href: dsa/week7.qmd
-          - text: Divide and Conquer Problems
-            href: dsa/week8.qmd
-          - text: Dynamic Programming
-            href: dsa/week9.qmd
-          - text: String Matching and Tries
-            href: dsa/week10.qmd
+        href: dsa/index.qmd
+        # menu:
+        #   - text: Sorting and Searching
+        #     href: dsa/week2.qmd
+        #   - text: Stacks, Queues, Linked Lists, and Arrays
+        #     href: dsa/week3.qmd
+        #   - text: Graphs
+        #     href: dsa/week4.qmd
+        #   - text: Shortest Paths and MCST
+        #     href: dsa/week5.qmd
+        #   - text: Heaps and Trees
+        #     href: dsa/week6.qmd
+        #   - text: Greedy Problems
+        #     href: dsa/week7.qmd
+        #   - text: Divide and Conquer Problems
+        #     href: dsa/week8.qmd
+        #   - text: Dynamic Programming
+        #     href: dsa/week9.qmd
+        #   - text: String Matching and Tries
+        #     href: dsa/week10.qmd
+
+  sidebar:
+      - id: dsanotes
+        style: docked
+        search: true
+        contents: dsa
+        sort: order
 
 format:
   html:

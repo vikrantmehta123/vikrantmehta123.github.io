@@ -1,7 +1,11 @@
 ---
-title: "Leet Code Problems on Graphs"
+title: "Graphs: BFS & DFS"
 author: "Vikrant Mehta"
 date: "2024-10-03"
+categories: [DSA, BFS, DFS]
+page-layout: full
+toc: true
+order: 3
 ---
 
 ### 1. [Find the Town Judge](https://leetcode.com/problems/find-the-town-judge/description/)
@@ -30,8 +34,12 @@ There are 3 people in the town. Person 1 trusts Person 3, and Person 2 also trus
 
 We have an array `trusts`, where each entry `trust[i] = [a_i, b_i]` tells us that `a_i` trusts `b_i`. What if we turned this into a graph? 
 
-- **Question:** If `a_i` trusts `b_i`, how could we represent this in a graph?  
-If ```a_i``` trusts ```b_i```, then we can consider it an edge from ```a_i``` to ```b_i```. 
+:::{.callout-tip}
+
+## Question:
+If `a_i` trusts `b_i`, how could we represent this in a graph? If ```a_i``` trusts ```b_i```, then we can consider it an edge from ```a_i``` to ```b_i```. 
+
+:::
 
 **Finding the Town Judge:**
 
@@ -113,7 +121,13 @@ We can use topological sorting to get this sequence.
 
 If $b_i$ needs to be completed before $a_i$, we add a directed edge from $b_i \rightarrow a_i$. Note the direction of the edge. For this problem, we are converting the `prerequisites` array into graph using adjacency matrix. Once we have converted this problem into a graph problem, we can use the topological sorting.
 
-**Question:** When would we say that we have successfully found the sequence of courses satisfying the dependencies? 
+
+:::{.callout-tip}
+
+## Question:
+When would we say that we have successfully found the sequence of courses satisfying the dependencies? 
+
+:::
 
 When we the sequence includes all the courses, and no course is left. If a course is left out, there’s likely a cycle or unresolved dependency.
 
@@ -542,7 +556,12 @@ We are given a matrix `isConnected` where each entry `[i][j]` tells us if there 
 
 A **province** is a group of nodes that are all connected. The task is to count how many such provinces exist.
 
+
+:::{.callout-tip}
+
 🤔 Can you think of a similar problem that we saw in the lectures?
+
+:::
 
 This is a **connected components** problem. We need to find how many separate groups of connected nodes exist in the graph.
 
@@ -605,3 +624,5 @@ class Solution:
             
         return component_number 
 ```
+
+---

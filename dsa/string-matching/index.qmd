@@ -1,7 +1,11 @@
 ---
-title: "Leet Code Problems on String Matching and Tries"
+title: "String Matching and Tries"
 author: "Vikrant Mehta"
 date: "2024-10-03"
+categories: [DSA, String Matching, Tries]
+page-layout: full
+toc: true
+order: 9
 ---
 
 ### 1. [Implement a Trie](https://leetcode.com/problems/implement-trie-prefix-tree/)
@@ -61,3 +65,5 @@ class Trie:
             curr = curr.children[char]
         return True
 ```
+
+---

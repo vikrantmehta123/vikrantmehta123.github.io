@@ -1,7 +1,11 @@
 ---
-title: "Leet Code Problems on Shortest Paths and Minimum Cost Spanning Trees"
+title: "Shortest Paths and Minimum Cost Spanning Trees"
 author: "Vikrant Mehta"
 date: "2024-10-03"
+categories: [DSA, Shortest Path, Spanning Trees]
+page-layout: full
+toc: true
+order: 4
 ---
 
 
@@ -23,7 +27,13 @@ There are many ways to connect all points. For example:
 
 But the *optimal* way connects them with a total distance of *20*, as shown in the problem description. 
 
-Key idea: From any point, you can connect to any other point, and the edge cost is the Manhattan distance. The goal is to minimize the total cost (sum of all edges).
+:::{.callout-important}
+
+## Key Idea:
+
+From any point, you can connect to any other point, and the edge cost is the Manhattan distance. The goal is to minimize the total cost (sum of all edges).
+
+:::
 
 #### 1.1 Minimum Cost Spanning Trees 
 
@@ -206,3 +216,5 @@ class Solution:
         # If no valid route found
         return -1
 ```
+
+---

@@ -1,7 +1,11 @@
 ---
-title: "Leet Code Dynamic Programming Problems"
+title: "Dynamic Programming"
 author: "Vikrant Mehta"
 date: "2024-10-03"
+categories: [DSA, Dynamic Programming]
+page-layout: full
+toc: true
+order: 8
 ---
 
 ### 1. [Climbing Stairs](https://leetcode.com/problems/climbing-stairs/description/)
@@ -386,61 +390,7 @@ class Solution:
         return dp[0] == 0
 ```
 
-### 9. [Maximal Square](https://leetcode.com/problems/maximal-square/description/)
-
-##### 💻 Code Implementation:
-```python
-class Solution:
-    def maximalSquare(self, matrix: List[List[str]]) -> int:
-        # Dimensions of the matrix
-        m, n = len(matrix), len(matrix[0])
-
-        # Initialize scores table
-        scores = [[0] * n for _ in range(m)]
-
-        # Build the scores table from bottom-right to top-left
-        for i in range(m - 1, -1, -1):
-            for j in range(n - 1, -1, -1):
-                if matrix[i][j] == "1":
-                    # Calculate score for each cell based on "1"s around it
-                    score = 1
-                    if i < m - 1 and j < n - 1:
-                        score += int(matrix[i + 1][j + 1])
-                    if i < m - 1:
-                        score += int(matrix[i + 1][j])
-                    if j < n - 1:
-                        score += int(matrix[i][j + 1])
-                    
-                    scores[i][j] = score
-
-
-        # Initialize DP table
-        # dp[i] = maximum size of square from (i, j) cell
-        dp = [[0] * n for _ in range(m)]
-        
-        # Populate the DP table bottom up
-        for i in range(m - 1, -1, -1):
-            for j in range(n - 1, -1, -1):
-                if matrix[i][j] == "1":
-                    # Check for the size of square based on neighboring cells
-                    if i < m - 1 and j < n - 1:
-                        if (scores[i + 1][j] == scores[i + 1][j + 1] == scores[i][j + 1] 
-                            and scores[i][j] > 0):
-                            dp[i][j] = 1 + min(dp[i + 1][j + 1], dp[i + 1][j], dp[i][j + 1])
-                        elif scores[i][j] == 4:
-                            dp[i][j] = 2
-                        else:
-                            dp[i][j] = 1
-                    else:
-                        dp[i][j] = 1
-
-        # Find the maximum square size
-        max_square_size = max(max(row) for row in dp)
-        
-        return max_square_size ** 2 # Return Area of the square
-```
-
-### 10. [Maximum Number of Moves in a Grid](https://leetcode.com/problems/maximum-number-of-moves-in-a-grid/)
+### 9. [Maximum Number of Moves in a Grid](https://leetcode.com/problems/maximum-number-of-moves-in-a-grid/)
 
 ##### 💻 Code Implementation:
 ```python
@@ -490,3 +440,5 @@ def maxMoves(grid):
 
     return max_moves
 ```
+
+--- 

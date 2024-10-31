@@ -1,7 +1,11 @@
 ---
-title: "Leet Code Problems on Sorting and Searching"
+title: "Sorting and Searching"
 author: "Vikrant Mehta"
 date: "2024-10-03"
+categories: [DSA, Sorting and Searching]
+page-layout: full
+toc: true
+order: 1
 ---
 
 ### 1. [Longest Subsequence With Limited Sum](https://leetcode.com/problems/longest-subsequence-with-limited-sum/description/)
@@ -470,12 +474,24 @@ class Solution(object):
 
 ### 9. [H-Index](https://leetcode.com/problems/h-index/description/)
 
+For this problem, it's easier to look at the solution first and then look at the intuition behind it. Here's the solution:
+
+
 ```python
 class Solution:
     def hIndex(self, citations: List[int]) -> int:
         citations.sort(reverse=True)
         for i, citation in enumerate(citations):
-            if citation <= i:
+            if citation <= i: 
                 return i
         return len(citations)
 ```
+
+It's incredible how simple this looks. Let's unpack the code:
+
+- We sort the `citations` array because we want the maximum number of citation that fulfills some condition.
+- What does `i` in the `for` loop mean? It's the number of citations that are greater than the current one. 
+
+That's it! We wanted the  the maximum value of `h` such that there are least `h` papers that have each been cited at least `h` times.
+
+--- 

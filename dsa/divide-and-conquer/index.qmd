@@ -1,7 +1,11 @@
 ---
-title: "Leet Code Divide and Conquer Problems"
+title: "Divide and Conquer"
 author: "Vikrant Mehta"
 date: "2024-10-03"
+categories: [DSA, Divide and Conquer]
+page-layout: full
+toc: true
+order: 7
 ---
 
 ### 1. [Merge K Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/description/)
@@ -64,3 +68,5 @@ class Solution:
 
         return self.mergeTwoLists(left_half, right_half)
 ```
+
+--- 
