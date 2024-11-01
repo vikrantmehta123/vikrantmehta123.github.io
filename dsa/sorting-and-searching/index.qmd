@@ -28,7 +28,8 @@ For `queries[2] = 21`: We can take the whole array `[4, 5, 2, 1]`, with a sum of
 - To find out the maximum number of elements less than or equal to some number, just add the *smallest* numbers. 
 - Sort the list first.
 - For every query in ```queries```, find out how many elements can be added by iterating over the array ```nums```.
-- Complexity: $O(m \cdot n)$
+
+Time Complexity: $O(m \cdot n)$
 
 ##### 💻 Code Implementation:
 ```python
@@ -59,7 +60,8 @@ class Solution(object):
 - Sort the list first. 
 - Keep a ```prefix_sum``` array that has this interpretation: `i`th index stores the sum of first `i` smallest elements. Note that this array will be sorted.
 - For each ```queries[i]```, use binary search on `prefix_sum` to find out the largest element less than equal to ```queries[i]```
-- Complexity: $O(n \cdot \log(n))$
+
+Time Complexity: $O(n \cdot \log(n))$
 
 ##### 💻 Code Implementation:
 ```python
@@ -107,11 +109,13 @@ class Solution:
 In this test case, the number $1$ occurs thrice, the number $2$ occurs twice, and the number $3$ occurs once. Since we have to return top $2$ most frequent numbers, we return $1$ and $2$. Important to note here is that the question says nothing about whether the ```nums``` array is sorted or not. If it is not explicitly given in the question, we cannot assume it.
 
 #### 2.1 Using Dictionaries and Sorting
+
 - Initialize a dictionary. For every element in ```nums```, you count occurrences of that element. We can do this in a single pass. Plus this has the added benefit of eliminating duplicates, which we will use later. A useful library class to explore here is: `from collections import Counter`
 - For every unique element from the `nums` array, create a new 2D array where each element is of the format: `[element from nums, it's count]`
 - Sort this array based on the counts in descending order. 
 - Pick the first ```k``` elements.
-- Complexity: $O(m \cdot \log(m))$, where $m$ is the number of unique elements in ```nums```.
+
+Time Complexity: $O(m \cdot \log(m))$, where $m$ is the number of unique elements in ```nums```.
 
 ##### 💻 Code Implementation:
 ```python
@@ -330,7 +334,11 @@ Again, we need a $\log(n)$ solution. So, we think Binary Search to come up with 
 
 **💡 The Solution:**
 
+:::{.callout-tip}
+
 We know binary search is fast, but it stops when we find the target. What if we keep going to find both the first and last occurrences?
+
+:::
 
 Here's how we can do it:
 
@@ -487,11 +495,11 @@ class Solution:
         return len(citations)
 ```
 
-It's incredible how simple this looks. Let's unpack the code:
+Let's unpack the code:
 
-- We sort the `citations` array because we want the maximum number of citation that fulfills some condition.
-- What does `i` in the `for` loop mean? It's the number of citations that are greater than the current one. 
+- We sort the `citations` array because we want the highest citation that fulfills some condition.
+- What does `i` in the `for` loop mean? It's the number of citations that are greater than the current one. That is to say that `i`th citation has `i` more papers with citations greater than it.
 
-That's it! We wanted the  the maximum value of `h` such that there are least `h` papers that have each been cited at least `h` times.
+We wanted the the maximum value of `i` such that there are at least `i` papers that have each been cited at least `i` times. That's what we check in the `if` condition!
 
 --- 

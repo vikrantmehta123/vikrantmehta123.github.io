@@ -370,8 +370,8 @@ window.Quarto = {
 <li>To find out the maximum number of elements less than or equal to some number, just add the <em>smallest</em> numbers.</li>
 <li>Sort the list first.</li>
 <li>For every query in <code>queries</code>, find out how many elements can be added by iterating over the array <code>nums</code>.</li>
-<li>Complexity: <span class="math inline">\(O(m \cdot n)\)</span></li>
 </ul>
+<p>Time Complexity: <span class="math inline">\(O(m \cdot n)\)</span></p>
 <section id="code-implementation" class="level5">
 <h5 class="anchored" data-anchor-id="code-implementation">💻 Code Implementation:</h5>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution(<span class="bu">object</span>):</span>
@@ -403,8 +403,8 @@ window.Quarto = {
 <li>Sort the list first.</li>
 <li>Keep a <code>prefix_sum</code> array that has this interpretation: <code>i</code>th index stores the sum of first <code>i</code> smallest elements. Note that this array will be sorted.</li>
 <li>For each <code>queries[i]</code>, use binary search on <code>prefix_sum</code> to find out the largest element less than equal to <code>queries[i]</code></li>
-<li>Complexity: <span class="math inline">\(O(n \cdot \log(n))\)</span></li>
 </ul>
+<p>Time Complexity: <span class="math inline">\(O(n \cdot \log(n))\)</span></p>
 <section id="code-implementation-1" class="level5">
 <h5 class="anchored" data-anchor-id="code-implementation-1">💻 Code Implementation:</h5>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
@@ -453,8 +453,8 @@ window.Quarto = {
 <li>For every unique element from the <code>nums</code> array, create a new 2D array where each element is of the format: <code>[element from nums, it's count]</code></li>
 <li>Sort this array based on the counts in descending order.</li>
 <li>Pick the first <code>k</code> elements.</li>
-<li>Complexity: <span class="math inline">\(O(m \cdot \log(m))\)</span>, where <span class="math inline">\(m\)</span> is the number of unique elements in <code>nums</code>.</li>
 </ul>
+<p>Time Complexity: <span class="math inline">\(O(m \cdot \log(m))\)</span>, where <span class="math inline">\(m\)</span> is the number of unique elements in <code>nums</code>.</p>
 <section id="code-implementation-2" class="level5">
 <h5 class="anchored" data-anchor-id="code-implementation-2">💻 Code Implementation:</h5>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
@@ -657,7 +657,19 @@ counts[2] = 2</code></pre>
 <p>📚 <strong>Problem Overview:</strong></p>
 <p>Again, we need a <span class="math inline">\(\log(n)\)</span> solution. So, we think Binary Search to come up with a solution.</p>
 <p><strong>💡 The Solution:</strong></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>We know binary search is fast, but it stops when we find the target. What if we keep going to find both the first and last occurrences?</p>
+</div>
+</div>
 <p>Here’s how we can do it:</p>
 <p><em>Leftmost Occurrence:</em> - Run a binary search, but when you find 8, don’t stop! Keep searching the left half to find the first occurrence.</p>
 <p><em>Rightmost Occurrence:</em> - Similar idea, but now after finding 8, explore the right half to find the last occurrence.</p>
@@ -803,12 +815,12 @@ counts[2] = 2</code></pre>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> citation <span class="op">&lt;=</span> i: </span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> i</span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">len</span>(citations)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>It’s incredible how simple this looks. Let’s unpack the code:</p>
+<p>Let’s unpack the code:</p>
 <ul>
-<li>We sort the <code>citations</code> array because we want the maximum number of citation that fulfills some condition.</li>
-<li>What does <code>i</code> in the <code>for</code> loop mean? It’s the number of citations that are greater than the current one.</li>
+<li>We sort the <code>citations</code> array because we want the highest citation that fulfills some condition.</li>
+<li>What does <code>i</code> in the <code>for</code> loop mean? It’s the number of citations that are greater than the current one. That is to say that <code>i</code>th citation has <code>i</code> more papers with citations greater than it.</li>
 </ul>
-<p>That’s it! We wanted the the maximum value of <code>h</code> such that there are least <code>h</code> papers that have each been cited at least <code>h</code> times.</p>
+<p>We wanted the the maximum value of <code>i</code> such that there are at least <code>i</code> papers that have each been cited at least <code>i</code> times. That’s what we check in the <code>if</code> condition!</p>
 <hr>
 
 

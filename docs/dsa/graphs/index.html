@@ -367,8 +367,7 @@ window.Quarto = {
 <p>There are 3 people in the town. Person 1 trusts Person 3, and Person 2 also trusts Person 3. Person 3 trusts Person 1, which means Person 3 is not trusted by everyone (because Person 1 and Person 2 trust Person 3, but Person 3 also trusts Person 1). The town judge must trust nobody and be trusted by everyone else. Since Person 3 doesn’t meet this condition (because they trust Person 1), there is no town judge. So we return -1.</p>
 <section id="by-counting-indegrees" class="level4">
 <h4 class="anchored" data-anchor-id="by-counting-indegrees">1.1 By Counting Indegrees</h4>
-<p><strong>How Can We Think of Trust as a Graph?🤔</strong></p>
-<p>We have an array <code>trusts</code>, where each entry <code>trust[i] = [a_i, b_i]</code> tells us that <code>a_i</code> trusts <code>b_i</code>. What if we turned this into a graph?</p>
+<p>We have an array <code>trusts</code>, where each entry <code>trust[i] = [a_i, b_i]</code> tells us that <code>a_i</code> trusts <code>b_i</code>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -379,9 +378,10 @@ Question:
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If <code>a_i</code> trusts <code>b_i</code>, how could we represent this in a graph? If <code>a_i</code> trusts <code>b_i</code>, then we can consider it an edge from <code>a_i</code> to <code>b_i</code>.</p>
+<p>If <code>a_i</code> trusts <code>b_i</code>, how could we represent this in a graph?</p>
 </div>
 </div>
+<p>If <code>a_i</code> trusts <code>b_i</code>, then we can consider it an edge from <code>a_i</code> to <code>b_i</code>.</p>
 <p><strong>Finding the Town Judge:</strong></p>
 <p>The town judge is a person who:</p>
 <ol type="1">
@@ -444,9 +444,35 @@ We can check if someone has an outdegree of 0 and an indegree of <code>n-1</code
 <section id="topological-sorting" class="level4">
 <h4 class="anchored" data-anchor-id="topological-sorting">2.1 Topological Sorting</h4>
 <p>🔍 Problem Understanding:</p>
-<p>We have a list of prerequisites where each pair <span class="math inline">\(prerequisites[i] = [a_i, b_i]\)</span> means that you need to complete <span class="math inline">\(b_i\)</span> before taking <span class="math inline">\(a_i\)</span>. In simpler terms, <span class="math inline">\(a_i\)</span> depends on <span class="math inline">\(b_i\)</span>. How can we convert this into a graph? And, the big question: how do we find a sequence of courses that respects all the dependencies? Which algorithm should we use?🤔</p>
-<p>We can use topological sorting to get this sequence.</p>
-<p>If <span class="math inline">\(b_i\)</span> needs to be completed before <span class="math inline">\(a_i\)</span>, we add a directed edge from <span class="math inline">\(b_i \rightarrow a_i\)</span>. Note the direction of the edge. For this problem, we are converting the <code>prerequisites</code> array into graph using adjacency matrix. Once we have converted this problem into a graph problem, we can use the topological sorting.</p>
+<p>We have a list of prerequisites where each pair <span class="math inline">\(prerequisites[i] = [a_i, b_i]\)</span> means that you need to complete <span class="math inline">\(b_i\)</span> before taking <span class="math inline">\(a_i\)</span>. In simpler terms, <span class="math inline">\(a_i\)</span> depends on <span class="math inline">\(b_i\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Question🤔:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>How can we convert this into a graph?</p>
+</div>
+</div>
+<p>If <span class="math inline">\(b_i\)</span> needs to be completed before <span class="math inline">\(a_i\)</span>, we add a directed edge from <span class="math inline">\(b_i \rightarrow a_i\)</span>. Note the direction of the edge. For this problem, we are converting the <code>prerequisites</code> array into graph using adjacency matrix.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>How do we find a sequence of courses that respects all the dependencies? Which algorithm should we use?</p>
+</div>
+</div>
+<p>Once we have converted this problem into a graph problem, we can use the <strong>topological sorting</strong> to find the sequence that respects all the dependencies. You can also solve this problem using <strong>BFS</strong> or <strong>DFS</strong> by detecting cycles in the graph. Here, we’re using topological sort.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -460,7 +486,7 @@ Question:
 <p>When would we say that we have successfully found the sequence of courses satisfying the dependencies?</p>
 </div>
 </div>
-<p>When we the sequence includes all the courses, and no course is left. If a course is left out, there’s likely a cycle or unresolved dependency.</p>
+<p>When we the sequence includes all the courses, and no course is left. If a course is left out, that means we can’t complete all the courses because there’s a cycle in the graph.</p>
 <section id="code-implementation-1" class="level5">
 <h5 class="anchored" data-anchor-id="code-implementation-1">💻 Code Implementation:</h5>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
@@ -670,20 +696,27 @@ Question:
 <p>📚 <strong>Problem Overview:</strong></p>
 <p>We need to order a list of items so that all items in the same group are listed next to each other. Additionally, some items have dependencies, meaning one item must be completed before another. We can use topological sort to solve this problem.</p>
 <p>🤔 <strong>The Issue:</strong></p>
-<p>If we just run topological sort on the <code>beforeItems</code> array, it might work for some test cases. But can you think of the test cases where this approach will fail?</p>
+<p>If we just run topological sort on the <code>beforeItems</code> array, it might work for some test cases, but not all.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Question:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Can you think of the test cases where this approach will fail?</p>
+</div>
+</div>
 <p><em>Imagine this situation:</em></p>
 <pre><code>Group 0: Items [1, 2]
 Group 1: Items [3, 4]</code></pre>
 <p><em>Here’s the setup:</em></p>
-<p>Item 1 has no dependencies (<code>indegree[1] = 0</code>)<br>
-Item 3 also has no dependencies (<code>indegree[3] = 0</code>)<br>
-Item 2 and Item 4 each have one dependency (<code>indegree[2] = 1 and indegree[4] = 1</code>)<br>
-</p>
+<p>Item 1 has no dependencies (<code>indegree[1] = 0</code>). Item 3 also has no dependencies (<code>indegree[3] = 0</code>). Item 2 and Item 4 each have one dependency (<code>indegree[2] = 1 and indegree[4] = 1</code>).</p>
 <p><em>Now, assume:</em></p>
-<p>Item 2 must come before Item 4<br>
-Item 1 must come before Item 2<br>
-This means the correct order should be: 1 → 2 → 4.<br>
-</p>
+<p>Item 2 must come before Item 4. Item 1 must come before Item 2. This means the correct order should be: 1 → 2 → 4.</p>
 <p>The problem arises when choosing between Item 1 and Item 3, as both have no dependencies. If we choose Item 3 first, we should list the other items from Group 1 next to it, leading to an order like this: 3, 4. This leaves us with Group 0 and the sequence 1, 2. The final order would be 3, 4, 1, 2, which breaks the dependency 1 → 2 → 4. (Draw these nodes and edges to get a clearer picture!)</p>
 <p>💡 <strong>The Solution:</strong></p>
 <p>To solve this, we need to track the dependencies of both individual items and groups. Here’s how we can do that:</p>

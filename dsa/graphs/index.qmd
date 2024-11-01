@@ -30,16 +30,16 @@ There are 3 people in the town. Person 1 trusts Person 3, and Person 2 also trus
 
 #### 1.1 By Counting Indegrees
 
-**How Can We Think of Trust as a Graph?🤔**
-
-We have an array `trusts`, where each entry `trust[i] = [a_i, b_i]` tells us that `a_i` trusts `b_i`. What if we turned this into a graph? 
+We have an array `trusts`, where each entry `trust[i] = [a_i, b_i]` tells us that `a_i` trusts `b_i`. 
 
 :::{.callout-tip}
 
 ## Question:
-If `a_i` trusts `b_i`, how could we represent this in a graph? If ```a_i``` trusts ```b_i```, then we can consider it an edge from ```a_i``` to ```b_i```. 
+If `a_i` trusts `b_i`, how could we represent this in a graph?
 
 :::
+
+If ```a_i``` trusts ```b_i```, then we can consider it an edge from ```a_i``` to ```b_i```. 
 
 **Finding the Town Judge:**
 
@@ -115,12 +115,25 @@ There are a total of $2$ courses to take. To take course $1$ you should have fin
 
 🔍 Problem Understanding:
 
-We have a list of prerequisites where each pair $prerequisites[i] = [a_i, b_i]$ means that you need to complete $b_i$ before taking $a_i$. In simpler terms, $a_i$ depends on $b_i$. How can we convert this into a graph? And, the big question: how do we find a sequence of courses that respects all the dependencies? Which algorithm should we use?🤔
+We have a list of prerequisites where each pair $prerequisites[i] = [a_i, b_i]$ means that you need to complete $b_i$ before taking $a_i$. In simpler terms, $a_i$ depends on $b_i$. 
 
-We can use topological sorting to get this sequence. 
+:::{.callout-tip}
 
-If $b_i$ needs to be completed before $a_i$, we add a directed edge from $b_i \rightarrow a_i$. Note the direction of the edge. For this problem, we are converting the `prerequisites` array into graph using adjacency matrix. Once we have converted this problem into a graph problem, we can use the topological sorting.
+## Question🤔:
+How can we convert this into a graph? 
 
+:::
+
+If $b_i$ needs to be completed before $a_i$, we add a directed edge from $b_i \rightarrow a_i$. Note the direction of the edge. For this problem, we are converting the `prerequisites` array into graph using adjacency matrix. 
+
+
+:::{.callout-tip}
+
+How do we find a sequence of courses that respects all the dependencies? Which algorithm should we use?
+
+:::
+
+Once we have converted this problem into a graph problem, we can use the **topological sorting** to find the sequence that respects all the dependencies. You can also solve this problem using **BFS** or **DFS** by detecting cycles in the graph. Here, we're using topological sort.
 
 :::{.callout-tip}
 
@@ -129,7 +142,7 @@ When would we say that we have successfully found the sequence of courses satisf
 
 :::
 
-When we the sequence includes all the courses, and no course is left. If a course is left out, there’s likely a cycle or unresolved dependency.
+When we the sequence includes all the courses, and no course is left. If a course is left out, that means we can't complete all the courses because there's a cycle in the graph.
 
 ##### 💻 Code Implementation:
 ```python
@@ -347,7 +360,15 @@ We need to order a list of items so that all items in the same group are listed 
 
 🤔 **The Issue:**
 
-If we just run topological sort on the `beforeItems` array, it might work for some test cases. But can you think of the test cases where this approach will fail?
+If we just run topological sort on the `beforeItems` array, it might work for some test cases, but not all. 
+
+:::{.callout-tip}
+
+## Question:
+
+Can you think of the test cases where this approach will fail?
+
+:::
 
 *Imagine this situation:*
 ```
@@ -356,15 +377,15 @@ Group 1: Items [3, 4]
 ```
 *Here’s the setup:*
 
-Item 1 has no dependencies (`indegree[1] = 0`)\
-Item 3 also has no dependencies (`indegree[3] = 0`)\
-Item 2 and Item 4 each have one dependency (`indegree[2] = 1 and indegree[4] = 1`)\
+Item 1 has no dependencies (`indegree[1] = 0`).
+Item 3 also has no dependencies (`indegree[3] = 0`).
+Item 2 and Item 4 each have one dependency (`indegree[2] = 1 and indegree[4] = 1`).
 
 *Now, assume:*
 
-Item 2 must come before Item 4\
-Item 1 must come before Item 2\
-This means the correct order should be: 1 → 2 → 4.\
+Item 2 must come before Item 4. 
+Item 1 must come before Item 2. 
+This means the correct order should be: 1 → 2 → 4.
 
 The problem arises when choosing between Item 1 and Item 3, as both have no dependencies. If we choose Item 3 first, we should list the other items from Group 1 next to it, leading to an order like this: 3, 4. This leaves us with Group 0 and the sequence 1, 2. The final order would be 3, 4, 1, 2, which breaks the dependency 1 → 2 → 4. (Draw these nodes and edges to get a clearer picture!)
 

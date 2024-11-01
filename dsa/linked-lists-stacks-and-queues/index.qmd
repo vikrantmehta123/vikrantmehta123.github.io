@@ -120,10 +120,12 @@ So, how can we solve this using sets?
 - But wait! If we use this method directly, some numbers might get checked more than once, which still gives us $O(n^2)$ time. How can we improve this?
 
 Which numbers can start a consecutive sequence?
+
 - Only those numbers ```n``` where ```n-1``` is not in the set. Only these numbers can be the starting points of the longest consecutive sequence. Do you see why?
 - By finding these starting points, we can run our loop efficiently on only these elements.
-- Time Complexity: $O(n)$
-- Space Complexity: $O(n)$
+
+Time Complexity: $O(n)$
+Space Complexity: $O(n)$
 
 ##### 💻 Code Implementation:
 ```python
@@ -295,13 +297,17 @@ class Solution:
 You know how to reverse a linked list from the Graded Assignment question. Given a number ```k```, can you reverse the first ```k``` nodes and return the ```head``` and ```tail``` after reversing? Now that we have reversed the first ```k``` nodes, can you repeat the same thing for the next ```k``` nodes? We have a way of reversing groups of ```k``` nodes. 
 But here's the important part: how do you connect these reversed groups?
 
+:::{.callout-tip}
+
 🤔 Can you think of a recursive way?
 
-- Remember that the last reversed ```k``` nodes will be the first to return!
+:::
+
+- Remember that the last reversed ```k``` nodes will be the first to return when called recursively!
 - Let's take an example list: ```1 -> 2 -> 3 -> 4```, and ```k = 2```.
     - First, reverse ```1 -> 2``` as ```2 -> 1```, and return the head as ```2``` and tail as ```1```.
     - Then, reverse ```3 -> 4``` recursively as ```4 -> 3```, and return the head as ```4``` and tail as ```3```.
-    - Now, Now, you just need to connect the tail of the first reversed group (1) to the head of the second reversed group (4). Voilà! You've connected the reversed groups.
+    - Now, you just need to connect the tail of the first reversed group (1) to the head of the second reversed group (4). Voilà! You've connected the reversed groups.
 
 ##### 💻 Code Implementation:
 ```python
@@ -368,7 +374,7 @@ Here's how:
 2. Once we know the length, we can compute the middle index just like we did with the array: `mid = len(L) // 2`
 3. Finally, we would traverse the list again, stopping when we reach the middle node.
 
-- Time Complexity: $O(n)$
+Time Complexity: $O(n)$
 
 ##### 💻 Code Implementation:
 ```python
@@ -455,7 +461,11 @@ class Solution:
 
 We now know how to delete the middle node. Can you try to solve this problem using the ideas from that question?
 
+:::{.callout-tip}
+
 Here's a hint: Deleting the ```nth``` node from the end is the same as deleting ```(length - n)th``` node from the front. 
+
+:::
 
 ### 9. [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/description/)
 
