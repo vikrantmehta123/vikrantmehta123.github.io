@@ -368,7 +368,7 @@ window.Quarto = {
 <p><em>Test Case 2:</em></p>
 <p><em>Explanation:</em> The string <code>"(]"</code> is invalid because the open bracket <code>(</code> is not closed by the correct type of bracket. The closing bracket <code>]</code> doesn’t match the opening <code>(</code>, so the string evaluates to <code>False</code>.</p>
 <p><strong>🔍 Problem Understanding:</strong></p>
-<p>We only have three types of brackets: <code>[], (), {}</code>. And we need to close the last opened bracaket first. What do you do when you need to close the last opened bracket first? You need a system where the last thing you add is the first thing you take out, right? This is the Last In, First Out (LIFO) system. So, what data structure works best for LIFO? A <strong>stack</strong>! A stack can help us keep track of the brackets. Whenever we find an opening bracket, we push it onto the stack. When we encounter a closing bracket, we pop the stack to see if it matches the last opened bracket.</p>
+<p>We only have three types of brackets: <code>[], (), {}</code>. And we need to close the last opened bracket first. What do you do when you need to close the last opened bracket first? You need a system where the last thing you add is the first thing you take out, right? This is the Last In, First Out (LIFO) system. So, what data structure works best for LIFO? A <strong>stack</strong>! A stack can help us keep track of the brackets. Whenever we find an opening bracket, we push it onto the stack. When we encounter a closing bracket, we pop the stack to see if it matches the last opened bracket.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">

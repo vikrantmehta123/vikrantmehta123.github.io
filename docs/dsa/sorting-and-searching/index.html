@@ -344,7 +344,9 @@ window.Quarto = {
   <li><a href="#find-first-and-last-position-of-element-in-sorted-array" id="toc-find-first-and-last-position-of-element-in-sorted-array" class="nav-link" data-scroll-target="#find-first-and-last-position-of-element-in-sorted-array">6. Find First and Last Position of Element in Sorted Array</a></li>
   <li><a href="#find-k-closest-elements" id="toc-find-k-closest-elements" class="nav-link" data-scroll-target="#find-k-closest-elements">7. Find K Closest Elements</a></li>
   <li><a href="#check-if-n-and-its-double-exist" id="toc-check-if-n-and-its-double-exist" class="nav-link" data-scroll-target="#check-if-n-and-its-double-exist">8. Check If N and Its Double Exist</a></li>
+  <li><a href="#question" id="toc-question" class="nav-link" data-scroll-target="#question">Question:</a></li>
   <li><a href="#h-index" id="toc-h-index" class="nav-link" data-scroll-target="#h-index">9. H-Index</a></li>
+  <li><a href="#capacity-to-ship-packages-within-d-days" id="toc-capacity-to-ship-packages-within-d-days" class="nav-link" data-scroll-target="#capacity-to-ship-packages-within-d-days">10. Capacity to Ship Packages Within D Days</a></li>
   </ul>
 </nav>
     </div>
@@ -424,18 +426,17 @@ window.Quarto = {
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>            answer[i] <span class="op">=</span> count</span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> answer</span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> binarysearch( <span class="va">self</span>,v, L):  <span class="co">#v = target element</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        low, high <span class="op">=</span> <span class="dv">0</span>, <span class="bu">len</span>(L) <span class="op">-</span> <span class="dv">1</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> low <span class="op">&lt;=</span> high: </span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>            mid <span class="op">=</span> (low <span class="op">+</span> high) <span class="op">//</span> <span class="dv">2</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> L[mid ] <span class="op">&lt;</span> v:</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>                low <span class="op">=</span> mid  <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> L[mid ] <span class="op">&gt;</span> v:</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>                high <span class="op">=</span> mid  <span class="op">-</span> <span class="dv">1</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> mid <span class="op">+</span> <span class="dv">1</span> <span class="co"># return the next index than where the element was found</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> low <span class="co"># Returns index where the element should go if not found</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> binarysearch( <span class="va">self</span>,v, L):  <span class="co">#v = target element</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        low, high <span class="op">=</span> <span class="dv">0</span>, <span class="bu">len</span>(L) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> low <span class="op">&lt;=</span> high: </span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>            mid <span class="op">=</span> (low <span class="op">+</span> high) <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> L[mid ] <span class="op">&lt;</span> v:</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>                low <span class="op">=</span> mid  <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> L[mid ] <span class="op">&gt;</span> v:</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>                high <span class="op">=</span> mid  <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> mid <span class="op">+</span> <span class="dv">1</span> <span class="co"># return the next index than where the element was found</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> low <span class="co"># Returns index where the element should go if not found</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 </section>
@@ -769,6 +770,47 @@ Tip
 </section>
 <section id="check-if-n-and-its-double-exist" class="level3">
 <h3 class="anchored" data-anchor-id="check-if-n-and-its-double-exist">8. <a href="https://leetcode.com/problems/check-if-n-and-its-double-exist/description/">Check If N and Its Double Exist</a></h3>
+<p><strong>🎯 Understanding the Test Cases:</strong></p>
+<p><em>Test Case 1:</em></p>
+<p><code>arr = [10,2,5,3]</code></p>
+<p><em>Explanation:</em></p>
+<p>In this array, arr[2] = 5 is half of arr[0] = 10. Since they’re at different indices and one is double the other, we return <code>True</code>.</p>
+<section id="using-binary-search-2" class="level4">
+<h4 class="anchored" data-anchor-id="using-binary-search-2">8.1 Using Binary Search</h4>
+<p>📚 <strong>Problem Overview:</strong></p>
+<p>We’re looking to see if any number in the array has a double or half that’s also in the array. Binary Search can make this faster! Let’s sort the array so we can search more efficiently.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Observe:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If a number is odd, it can’t have an integer half, so we can skip it!</p>
+</div>
+</div>
+<section id="pseudocode" class="level5">
+<h5 class="anchored" data-anchor-id="pseudocode">Pseudocode:</h5>
+<ul>
+<li><strong>Sort</strong> the array.</li>
+<li>For each number in the array:
+<ul>
+<li>Check if it’s odd or even.</li>
+<li>If it’s odd, move to the next one.</li>
+<li>If it’s even, binary search for its half.</li>
+<li>If the half exists and indices are different, return True.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="question" class="level2 callout-info">
+<h2 class="anchored" data-anchor-id="question">Question:</h2>
+<p>Given this problem, can you think of a case where the indices of a number and it’s double will be the same?</p>
+</section>
 <section id="code-implementation-8" class="level5">
 <h5 class="anchored" data-anchor-id="code-implementation-8">💻 Code Implementation:</h5>
 <div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution(<span class="bu">object</span>):</span>
@@ -783,7 +825,7 @@ Tip
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Search for num / 2 in the array</span></span>
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>            idx <span class="op">=</span> <span class="va">self</span>.binarysearch(arr, num <span class="op">/</span> <span class="dv">2</span>)</span>
 <span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>            <span class="co"># If num / 2 was found return True ( Also handle the special case where num == num / 2 i.e. when num is 0)</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>            <span class="co"># If num / 2 was found and indices are different return True</span></span>
 <span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> i <span class="op">!=</span> idx <span class="kw">and</span> idx <span class="op">!=</span> <span class="op">-</span><span class="dv">1</span>: </span>
 <span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> <span class="va">True</span></span>
 <span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>        </span>
@@ -804,10 +846,15 @@ Tip
 <span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>                </span>
 <span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span> <span class="co"># Couldn't find value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-</section>
 <section id="h-index" class="level3">
 <h3 class="anchored" data-anchor-id="h-index">9. <a href="https://leetcode.com/problems/h-index/description/">H-Index</a></h3>
-<p>For this problem, it’s easier to look at the solution first and then look at the intuition behind it. Here’s the solution:</p>
+<p><strong>🎯 Understanding the Test Cases:</strong></p>
+<p>Please refer to the Leet Code discussion on test cases for an explanation of test cases.</p>
+<section id="using-sorting" class="level4">
+<h4 class="anchored" data-anchor-id="using-sorting">9.1 Using Sorting</h4>
+<p>📚 <strong>Problem Overview:</strong></p>
+<p>🎯 What’s the Goal?</p>
+<p>We want to find the maximum H-index for a researcher, where <code>H</code> is the highest number such that at least <code>H</code> papers have been cited at least <code>H</code> times. Let’s look at the solution first, which we will unpack then.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> hIndex(<span class="va">self</span>, citations: List[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        citations.sort(reverse<span class="op">=</span><span class="va">True</span>)</span>
@@ -817,10 +864,70 @@ Tip
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">len</span>(citations)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Let’s unpack the code:</p>
 <ul>
-<li>We sort the <code>citations</code> array because we want the highest citation that fulfills some condition.</li>
-<li>What does <code>i</code> in the <code>for</code> loop mean? It’s the number of citations that are greater than the current one. That is to say that <code>i</code>th citation has <code>i</code> more papers with citations greater than it.</li>
+<li><p>We sort the <code>citations</code> array in descending order.</p></li>
+<li><p>Loop Through Each Citation:</p>
+<ul>
+<li><code>i</code> is the count of papers with at least that many citations.</li>
+<li>If <code>citation &lt;= i</code>, we return <code>i</code> as our H-index, because there are exactly <code>i</code> papers with at least <code>i</code> citations.</li>
+</ul></li>
 </ul>
-<p>We wanted the the maximum value of <code>i</code> such that there are at least <code>i</code> papers that have each been cited at least <code>i</code> times. That’s what we check in the <code>if</code> condition!</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If this feels confusing, do spend some time in think about the <code>if</code> condition.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="capacity-to-ship-packages-within-d-days" class="level3">
+<h3 class="anchored" data-anchor-id="capacity-to-ship-packages-within-d-days">10. <a href="https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/description/">Capacity to Ship Packages Within D Days</a></h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> shipWithinDays(<span class="va">self</span>, weights: List[<span class="bu">int</span>], days: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Take minimum possible and maximum possible answers as left and right</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        left, right <span class="op">=</span> <span class="bu">max</span>(weights), <span class="bu">sum</span>(weights)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        ans <span class="op">=</span> right</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Binary search like implementation</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> left <span class="op">&lt;=</span> right:</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>            weight_capacity <span class="op">=</span> ( left <span class="op">+</span> right ) <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>            day_count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>            curr_load <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>            L <span class="op">=</span> [ ]</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>            temp <span class="op">=</span> [ ]</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>            <span class="co"># For a given weight_capacity, find it's answer</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(weights)):</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>                weight <span class="op">=</span> weights[i]</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> curr_load <span class="op">+</span> weight <span class="op">&lt;=</span> weight_capacity:</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>                    temp.append(weight)</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>                    curr_load <span class="op">+=</span> weight</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> i <span class="op">==</span> <span class="bu">len</span>(weights) <span class="op">-</span> <span class="dv">1</span>:</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>                        day_count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>                        L.append(temp)</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>                    L.append(temp)</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>                    temp <span class="op">=</span> [ weight ]</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>                    curr_load <span class="op">=</span> weight</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>                    day_count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> i <span class="op">==</span> <span class="bu">len</span>(weights) <span class="op">-</span> <span class="dv">1</span>:</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>                        day_count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>                        L.append(temp)</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Binary search logic</span></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> day_count <span class="op">&gt;</span> days:</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>                left <span class="op">=</span> weight_capacity <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>                ans <span class="op">=</span> <span class="bu">min</span>(ans, weight_capacity)</span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>                right <span class="op">=</span> weight_capacity <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> ans</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <hr>
 
 
