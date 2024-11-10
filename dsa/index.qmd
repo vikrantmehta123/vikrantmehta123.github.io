@@ -5,11 +5,13 @@ sidebar: true
 toc: false
 page-navigation: true
 title-block-banner: true
+author: "Vikrant Mehta"
+date: "2024-11-10"
 ---
 
 Welcome to the supplementary GitHub repository for the course **Programming, Data Structures, and Algorithms Using Python (BSCS2002)** which is offered as part of the **IITM BS in Data Science and Applications** program. You can find more information about the course [here](https://study.iitm.ac.in/ds/course_pages/BSCS2002.html). There is also an [online textbook](https://pdsaiitm.github.io/) that you can use as reference throughout the course.
 
-In this repository, you will find a solution explanations and code implementations for a list curated Leet Code problems that span the topics covered in the lectures. The problems are categorized such that they correspond to each week's course content. 
+I created this repository as a part of my work as a Teaching Assistant for this course. In this repository, you will find a solution explanations and code implementations for a list curated Leet Code problems that span the topics covered in the lectures. The problems are categorized such that they correspond to each week's course content. 
 
 ## 📝 Overview of Course Topics:
 - **Week 1**: Overview and recap of Python

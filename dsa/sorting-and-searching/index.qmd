@@ -561,6 +561,14 @@ If this feels confusing, do spend some time in think about the `if` condition.
 ### 10. [Capacity to Ship Packages Within D Days](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/description/)
 
 
+::: {.callout-tip}
+## Pattern Alert: 
+
+This is an important type of problem that you can solve using binary search plus sorting. In this pattern, you want to find the maximum of some minimum quantities, or the minimum of some maximum quantities. The general approach to solve these problems is:
+- Find the range of the solution
+- Binary search through the possible solution range
+:::
+
 ```python
 class Solution:
     def shipWithinDays(self, weights: List[int], days: int) -> int:

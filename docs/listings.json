@@ -11,6 +11,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/poor-charlies-almanack/index.html",
       "/posts/creating-http-server-from-scratch/index.html",
       "/posts/first-project-using-fastai/index.html",
       "/posts/challenge-accepted/index.html",
