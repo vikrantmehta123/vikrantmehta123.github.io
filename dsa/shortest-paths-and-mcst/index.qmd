@@ -27,7 +27,7 @@ There are many ways to connect all points. For example:
 
 But the *optimal* way connects them with a total distance of *20*, as shown in the problem description. 
 
-:::{.callout-important}
+:::{.callout-tip}
 
 ## Key Idea:
 

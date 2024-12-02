@@ -463,7 +463,7 @@ We now know how to delete the middle node. Can you try to solve this problem usi
 
 :::{.callout-tip}
 
-Here's a hint: Deleting the ```nth``` node from the end is the same as deleting ```(length - n)th``` node from the front. 
+Hint: Deleting the ```nth``` node from the end is the same as deleting ```(length - n)th``` node from the front. 
 
 :::
 

@@ -168,9 +168,6 @@ Time Complexity: $O(n)$
 ```python
 class Solution:
     def sortColors(self, nums: List[int]) -> None:
-        """
-        Do not return anything, modify nums in-place instead.
-        """
         counts = { 
             0 : 0, 
             1: 0, 
@@ -342,9 +339,11 @@ We know binary search is fast, but it stops when we find the target. What if we 
 Here's how we can do it:
 
 *Leftmost Occurrence:*
+
 - Run a binary search, but when you find 8, don't stop! Keep searching the left half to find the first occurrence.
 
 *Rightmost Occurrence:*
+
 - Similar idea, but now after finding 8, explore the right half to find the last occurrence.
 
 By running two binary searches, we find both boundaries of the target range in $O(\log n)$ time. 
