@@ -473,7 +473,16 @@ We can represent the <code>times</code> array as an adjacency list:</p>
 <h4 class="anchored" data-anchor-id="brute-force">3.1 Brute Force</h4>
 <p>We are given an <span class="math inline">\(m \times n\)</span> matrix, and we can take out values only from the right end of each row. Further, the amount spent on a day is defined as <code>day number * value of the product</code>.</p>
 <p>To maximize spending over <code>m * n</code> days, can you think of which element do we need to remove first? It should be the smallest element that we can remove, because the spending can be maximized if larger values are taken near the end of <code>m * n</code>th day. So, from each rows’ last column, we need to pop the one that is the smallest.</p>
-<p><em>Pseudocode:</em> - Keep a variable for max spending. - Iterate day counter $ m n$ times - Keep a minimum value variable. - Find out the minimum last element for every row- since we can only take elements from the rightmost end. - Pop and multiply the minimum with the day counter and add this to the max spending.</p>
+<p><em>Pseudocode:</em></p>
+<ul>
+<li>Keep a variable for max spending.</li>
+<li>Iterate day counter <span class="math inline">\(m \times n\)</span> times
+<ul>
+<li>Keep a minimum value variable.</li>
+<li>Find out the minimum last element for every row- since we can only take elements from the rightmost end.</li>
+<li>Pop and multiply the minimum with the day counter and add this to the max spending.</li>
+</ul></li>
+</ul>
 <p>Time Complexity: <span class="math inline">\(O(m^2n)\)</span></p>
 <section id="code-implementation-2" class="level5">
 <h5 class="anchored" data-anchor-id="code-implementation-2">💻 Code Implementation:</h5>
@@ -509,19 +518,19 @@ We can represent the <code>times</code> array as an adjacency list:</p>
 7 &amp; 5
 \end{bmatrix}
 \]</span></p>
-<p>The heap will consist of all the rightmost elements: $heap = [ 3, 5] $. From this minheap, we can remove the minimum easily. After <code>delete_min</code> operation, heap looks like: $ heap = [ 5] $ and the matrix <code>values</code> looks like this:</p>
+<p>The heap will consist of all the rightmost elements: <span class="math inline">\(heap = [ 3, 5]\)</span>. From this minheap, we can remove the minimum easily. After <code>delete_min</code> operation, heap looks like: $ heap = [ 5]$ and the matrix <code>values</code> looks like this:</p>
 <p><span class="math display">\[
 \begin{bmatrix}
 4 \\
 7 &amp; 5
 \end{bmatrix}
 \]</span></p>
-<p>Now, for the first row, the rightmost element is <span class="math inline">\(4\)</span>. We need to add it to the minheap for the next iteration for this approach to work well as this: $ heap = [4, 5]$. To do this well, we’ll keep track of the row_index to note from which row was this minimum popped.</p>
+<p>Now, for the first row, the rightmost element is <span class="math inline">\(4\)</span>. We need to add it to the minheap for the next iteration for this approach to work well as this: <span class="math inline">\(heap = [4, 5]\)</span>. To do this well, we’ll keep track of the row_index to note from which row was this minimum popped.</p>
 <p>Here’s the pseudocode:</p>
 <ul>
 <li>Keep the max spending variable</li>
 <li>Create the minheap for the rightmost elements.</li>
-<li>Iterate day counter over $ m n$ times</li>
+<li>Iterate day counter over <span class="math inline">\(m \times n\)</span> times</li>
 <li>Remove the minimum from the Minheap.</li>
 <li>From the row from which the minimum was popped, insert the new last element in the heap.</li>
 </ul>

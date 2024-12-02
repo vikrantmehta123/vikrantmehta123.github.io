@@ -37,7 +37,7 @@ Since there are three ways we return 3.
 - *Base Cases*:
     - To reach step `0`, you need to take $0$ steps ( no need to take any step!).
     - To reach step `1`, there is only $1$ way. 
-    - To reach step $2$, there are two ways: $ 0 \rightarrow 1 \rightarrow 2$ and $0 \rightarrow 2 $
+    - To reach step $2$, there are two ways: $0 \rightarrow 1 \rightarrow 2$ and $0 \rightarrow 2$
 
 - *Recursive Relationship:*
     - If you're on step `n`, you don't require further steps.
@@ -102,6 +102,7 @@ You need to rob houses along a street, but you can’t rob two *adjacent houses*
 **💡 The Solution:**
 
 We use a dynamic programming array `maximum_amount` where each `maximum_amount[i]` holds the maximum money you can rob *up to* house `i`:
+
 - *Base cases*:
   - `maximum_amount[0] = nums[0]`
   - `maximum_amount[1] = max(nums[0], nums[1])`
@@ -224,7 +225,7 @@ Since we have overlapping subproblems, we use dynamic programming:
 1. Create a `dp` array of size `amount + 1`, where `dp[i]` stores the minimum number of coins to make amount `i`. Initially, set all values to infinity (`inf`), except `dp[0] = 0`, because we need 0 coins to make amount 0.
 2. For each coin, update the `dp` array:
    - For every `amount` from 0 to the given amount, update the minimum coins:
-   - $ \text{dp[i]} = \min(\text{dp[i]}, \text{dp[i - coin]} + 1) $
+   - $\text{dp[i]} = \min(\text{dp[i]}, \text{dp[i - coin]} + 1)$
 3. After processing all amounts, if `dp[amount]` is still `inf`, return $-1$ (because it’s impossible to make that amount). Otherwise, return `dp[amount]`.   
 
 **Time Complexity:** $O(amount * coins)$
@@ -280,6 +281,7 @@ We repeat this process for each day to find the total maximum profit. The day wi
 The key idea here is that we can compute the **before** and **after** arrays in **linear time**.
 
 For the *after* array:
+
    - We start from the end of the prices list and keep track of the *largest number* we’ve seen so far. This largest number will be the *selling price* for any `prices[i]` we see along the way.
    - So, for each day, the profit is the difference between the *largest number* (sell price) and `prices[i]` (buy price).
 

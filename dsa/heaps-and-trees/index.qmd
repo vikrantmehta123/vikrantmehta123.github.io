@@ -159,8 +159,9 @@ To maximize spending over ```m * n``` days, can you think of which element do we
 It should be the smallest element that we can remove, because the spending can be maximized if larger values are taken near the end of ```m * n```th day. So, from each rows' last column, we need to pop the one that is the smallest. 
 
 *Pseudocode:*
+
 - Keep a variable for max spending.
-- Iterate day counter $ m \times n$ times
+- Iterate day counter $m \times n$ times
     - Keep a minimum value variable. 
     - Find out the minimum last element for every row- since we can only take elements from the rightmost end.
     - Pop and multiply the minimum with the day counter and add this to the max spending. 
@@ -204,7 +205,7 @@ $$
 \end{bmatrix}
 $$
 
-The heap will consist of all the rightmost elements: $heap = [ 3, 5] $. From this minheap, we can remove the minimum easily. After ```delete_min``` operation, heap looks like: $ heap = [ 5] $ and the matrix ```values``` looks like this:
+The heap will consist of all the rightmost elements: $heap = [ 3, 5]$. From this minheap, we can remove the minimum easily. After ```delete_min``` operation, heap looks like: $ heap = [ 5]$ and the matrix ```values``` looks like this:
 
 $$ 
 \begin{bmatrix}
@@ -213,13 +214,13 @@ $$
 \end{bmatrix}
 $$
 
-Now, for the first row, the rightmost element is $4$. We need to add it to the minheap for the next iteration for this approach to work well as this: $ heap = [4, 5]$. To do this well, we'll keep track of the row_index to note from which row was this minimum popped.
+Now, for the first row, the rightmost element is $4$. We need to add it to the minheap for the next iteration for this approach to work well as this: $heap = [4, 5]$. To do this well, we'll keep track of the row_index to note from which row was this minimum popped.
 
 Here's the pseudocode:
 
 - Keep the max spending variable
 - Create the minheap for the rightmost elements. 
-- Iterate day counter over $ m \times n$ times
+- Iterate day counter over $m \times n$ times
 - Remove the minimum from the Minheap. 
 - From the row from which the minimum was popped, insert the new last element in the heap.
 
