@@ -1,0 +1,23 @@
+---
+title: "Wavenet"
+author: "Vikrant Mehta"
+date: "2024-12-04"
+image: "Wavenet.png"
+categories: [Data Science]
+description: "My implementation of a hierarchicaly neural network for language modeling, inspired from Andrej Karpathy's YouTube Series."
+---
+
+### Project Overview
+
+I enjoy building things from scratch. In this project, I tried to build the Wavenet like architecture for a language modeling task from scratch. For the most part, I tried to follow Andrej Karpathy's Tutorial on YouTube, along with certain additional notes that I took along the way to understand PyTorch's broadcasting and batched matrix multiplication.
+
+In this Jupyter notebook, I trained a character level language model that predicts the next character based on a context of eight characters. I implemented the neural network modules from scratch, without using PyTorch, except for tensor operations. In this architecture, the flatten layers hierarchically fuse character embeddings along the layers and achieve a decent loss. 
+
+The dataset used for the project is a names dataset, which was what was used in the YouTube tutorial as well. 
+
+### Tech Stack Used
+1. Python Jupyter Notebooks
+2. PyTorch
+
+**GitHub Repository**  
+For more details, the full source code can be found on GitHub: [Source Code](https://github.com/vikrantmehta123/makemore/blob/main/wavenet/wavenet.ipynb)
