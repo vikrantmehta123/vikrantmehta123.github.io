@@ -15,15 +15,15 @@ I created this repository as a part of my work as a Teaching Assistant for this 
 
 ## 📝 Overview of Course Topics:
 - **Week 1**: Overview and recap of Python
-- **Week 2**: Sorting and Searching Algorithms- Binary Search, Quick Sort, Merge Sort, Insertion Sort, Selection Sort.
-- **Week 3**: Stacks, Heaps, Linked Lists, Arrays, and Hashing
-- **Week 4**: Graph Algorithms- BFS, DFS, Topological Sorting, DAG
-- **Week 5**: Graph Algorithms- Shortest Paths, Minimum Cost Spanning Trees
-- **Week 6**: Union Find, Priority Queues, Heaps, Binary Search Trees
-- **Week 7**: Balanced Search Trees, Greedy Algorithms- Huffman Coding, Interval Scheduling
-- **Week 8**: Divide and Conquer- Quick Select, Closest Pair of Points, Counting Inversions
-- **Week 9**: Dynamic Programming- Grid Paths, Edit Distance, Longest Common Subsequence
-- **Week 10**: String Matching- Boyer-Moore, Rabin-Karp, KMP, Tries, Regular Expressions
+- [**Week 2**](https://vikrantmehta123.github.io/dsa/sorting-and-searching/): Sorting and Searching Algorithms- Binary Search, Quick Sort, Merge Sort, Insertion Sort, Selection Sort.
+- [**Week 3**](https://vikrantmehta123.github.io/dsa/linked-lists-stacks-and-queues/): Stacks, Heaps, Linked Lists, Arrays, and Hashing
+- [**Week 4**](https://vikrantmehta123.github.io/dsa/graphs/): Graph Algorithms- BFS, DFS, Topological Sorting, DAG
+- [**Week 5**](https://vikrantmehta123.github.io/dsa/shortest-paths-and-mcst/): Graph Algorithms- Shortest Paths, Minimum Cost Spanning Trees
+- [**Week 6**](https://vikrantmehta123.github.io/dsa/heaps-and-trees/): Union Find, Priority Queues, Heaps, Binary Search Trees
+- [**Week 7**](https://vikrantmehta123.github.io/dsa/greedy/): Balanced Search Trees, Greedy Algorithms- Huffman Coding, Interval Scheduling
+- [**Week 8**](https://vikrantmehta123.github.io/dsa/divide-and-conquer/): Divide and Conquer- Quick Select, Closest Pair of Points, Counting Inversions
+- [**Week 9**](https://vikrantmehta123.github.io/dsa/dynamic-programming/): Dynamic Programming- Grid Paths, Edit Distance, Longest Common Subsequence
+- [**Week 10**](https://vikrantmehta123.github.io/dsa/string-matching/): String Matching- Boyer-Moore, Rabin-Karp, KMP, Tries, Regular Expressions
 - **Week 11**: Network Flows, Linear Programming, NP Hardness
 - **Week 12**: Summary
 
