@@ -1,0 +1,26 @@
+---
+title: "The Shakespeare In Me"
+author: "Vikrant Mehta"
+date: "2024-12-14"
+image: "transformers.jpg"
+categories: [Data Science]
+description: "In this project, we implement transformers from scratch to create our own GPT that sounds like Shakespeare."
+---
+
+### Project Overview
+
+In this project, I tried to create a character level, decoder only GPT from scratch. I used the "Tiny Shakespeare" dataset to train the model, and implemented the entire transformer architecture including multi-headed attention blocks, residual connections and layer normalizations using PyTorch.  
+
+I relied heavily on Andrej Karpathy's tutorial and Mitesh Khapra Sir's lectures to understand the internals of transformers better. 
+
+I trained the model on Google Colab GPU for 40 mins, and after training the model for 5000 epochs, I got a pretty convincing Shakespeare-like output, which I have added in the `more.txt` file. The loss at this point was around 1.40, which produces a decent output.
+
+### Tech Stack
+
+1. PyTorch
+2. Python Jupyter Notebooks
+
+**GitHub Repository**  
+For more details, the full source code can be found on GitHub: [Source Code](https://github.com/vikrantmehta123/makemore/blob/main/gpt/gpt.ipynb)
+
+And for a curious reading, the output could be found here: [more.txt](https://github.com/vikrantmehta123/makemore/blob/main/gpt/more.txt)

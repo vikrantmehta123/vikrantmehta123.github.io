@@ -2,6 +2,7 @@
   {
     "listing": "/projects.html",
     "items": [
+      "/projects/shakespeare-in-me/index.html",
       "/projects/wavenet/index.html",
       "/projects/screener-scraper/index.html",
       "/projects/http-server-from-scratch/index.html",
