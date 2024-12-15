@@ -4,7 +4,7 @@ author: "Vikrant Mehta"
 date: "2024-12-14"
 image: "transformers.jpg"
 categories: [Data Science]
-description: "In this project, we implement transformers from scratch to create our own GPT that sounds like Shakespeare."
+description: "In this project, I implemented transformers architecture from scratch to create a decoder only GPT that sounds like Shakespeare."
 ---
 
 ### Project Overview
