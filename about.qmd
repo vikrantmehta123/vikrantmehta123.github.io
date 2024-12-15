@@ -9,6 +9,8 @@ about:
     - icon: github
       text: Github
       href: https://github.com/vikrantmehta123
+    - text: CV
+      href: ./assets/CV.pdf
 ---
 
 :::{#hero-layout}
