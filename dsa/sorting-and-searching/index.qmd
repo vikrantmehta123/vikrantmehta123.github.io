@@ -475,9 +475,9 @@ If a number is odd, it can’t have an integer half, so we can skip it!
     - If the half exists and indices are different, return True.
 
 
-:::{.callout-info}
+::: {.callout-info}
 
-## Question:
+#### Question:
 
 Given this problem, can you think of a case where the indices of a number and it's double will be the same?
 
@@ -561,7 +561,7 @@ If this feels confusing, do spend some time in think about the `if` condition.
 
 
 ::: {.callout-tip}
-## Pattern Alert: 
+### Pattern Alert: 
 
 This is an important type of problem that you can solve using binary search plus sorting. In this pattern, you want to find the maximum of some minimum quantities, or the minimum of some maximum quantities. The general approach to solve these problems is:
 
@@ -581,27 +581,20 @@ class Solution:
             weight_capacity = ( left + right ) // 2
             day_count = 0
             curr_load = 0
-            L = [ ]
-            temp = [ ]
 
             # For a given weight_capacity, find it's answer
             for i in range(len(weights)):
                 weight = weights[i]
                 if curr_load + weight <= weight_capacity:
-                    temp.append(weight)
+
                     curr_load += weight
                     if i == len(weights) - 1:
                         day_count += 1
-                        L.append(temp)
                 else:
-                    L.append(temp)
-                    temp = [ weight ]
                     curr_load = weight
                     day_count += 1
                     if i == len(weights) - 1:
                         day_count += 1
-                        L.append(temp)
-
             # Binary search logic
             if day_count > days:
                 left = weight_capacity + 1

@@ -344,7 +344,6 @@ window.Quarto = {
   <li><a href="#find-first-and-last-position-of-element-in-sorted-array" id="toc-find-first-and-last-position-of-element-in-sorted-array" class="nav-link" data-scroll-target="#find-first-and-last-position-of-element-in-sorted-array">6. Find First and Last Position of Element in Sorted Array</a></li>
   <li><a href="#find-k-closest-elements" id="toc-find-k-closest-elements" class="nav-link" data-scroll-target="#find-k-closest-elements">7. Find K Closest Elements</a></li>
   <li><a href="#check-if-n-and-its-double-exist" id="toc-check-if-n-and-its-double-exist" class="nav-link" data-scroll-target="#check-if-n-and-its-double-exist">8. Check If N and Its Double Exist</a></li>
-  <li><a href="#question" id="toc-question" class="nav-link" data-scroll-target="#question">Question:</a></li>
   <li><a href="#h-index" id="toc-h-index" class="nav-link" data-scroll-target="#h-index">9. H-Index</a></li>
   <li><a href="#capacity-to-ship-packages-within-d-days" id="toc-capacity-to-ship-packages-within-d-days" class="nav-link" data-scroll-target="#capacity-to-ship-packages-within-d-days">10. Capacity to Ship Packages Within D Days</a></li>
   </ul>
@@ -809,9 +808,8 @@ Observe:
 </ul>
 </section>
 </section>
-</section>
-<section id="question" class="level2 callout-info">
-<h2 class="anchored" data-anchor-id="question">Question:</h2>
+<section id="question" class="level4 callout-info">
+<h4 class="anchored" data-anchor-id="question">Question:</h4>
 <p>Given this problem, can you think of a case where the indices of a number and it’s double will be the same?</p>
 </section>
 <section id="code-implementation-8" class="level5">
@@ -848,6 +846,7 @@ Observe:
 <span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> mid <span class="co"># Found the value, so return the index at which the value was found</span></span>
 <span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>                </span>
 <span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span> <span class="co"># Couldn't find value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 </section>
 <section id="h-index" class="level3">
 <h3 class="anchored" data-anchor-id="h-index">9. <a href="https://leetcode.com/problems/h-index/description/">H-Index</a></h3>
@@ -919,35 +918,28 @@ Pattern Alert:
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>            weight_capacity <span class="op">=</span> ( left <span class="op">+</span> right ) <span class="op">//</span> <span class="dv">2</span></span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>            day_count <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>            curr_load <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>            L <span class="op">=</span> [ ]</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>            temp <span class="op">=</span> [ ]</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>            <span class="co"># For a given weight_capacity, find it's answer</span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(weights)):</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>                weight <span class="op">=</span> weights[i]</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> curr_load <span class="op">+</span> weight <span class="op">&lt;=</span> weight_capacity:</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>                    temp.append(weight)</span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>                    curr_load <span class="op">+=</span> weight</span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> i <span class="op">==</span> <span class="bu">len</span>(weights) <span class="op">-</span> <span class="dv">1</span>:</span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>                        day_count <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>                        L.append(temp)</span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>                    L.append(temp)</span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>                    temp <span class="op">=</span> [ weight ]</span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>                    curr_load <span class="op">=</span> weight</span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>                    day_count <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> i <span class="op">==</span> <span class="bu">len</span>(weights) <span class="op">-</span> <span class="dv">1</span>:</span>
-<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>                        day_count <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>                        L.append(temp)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>            <span class="co"># For a given weight_capacity, find it's answer</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(weights)):</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>                weight <span class="op">=</span> weights[i]</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> curr_load <span class="op">+</span> weight <span class="op">&lt;=</span> weight_capacity:</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>                    curr_load <span class="op">+=</span> weight</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> i <span class="op">==</span> <span class="bu">len</span>(weights) <span class="op">-</span> <span class="dv">1</span>:</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>                        day_count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>                    curr_load <span class="op">=</span> weight</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>                    day_count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> i <span class="op">==</span> <span class="bu">len</span>(weights) <span class="op">-</span> <span class="dv">1</span>:</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>                        day_count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Binary search logic</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> day_count <span class="op">&gt;</span> days:</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>                left <span class="op">=</span> weight_capacity <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>                ans <span class="op">=</span> <span class="bu">min</span>(ans, weight_capacity)</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>                right <span class="op">=</span> weight_capacity <span class="op">-</span> <span class="dv">1</span></span>
 <span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Binary search logic</span></span>
-<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> day_count <span class="op">&gt;</span> days:</span>
-<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>                left <span class="op">=</span> weight_capacity <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
-<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>                ans <span class="op">=</span> <span class="bu">min</span>(ans, weight_capacity)</span>
-<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>                right <span class="op">=</span> weight_capacity <span class="op">-</span> <span class="dv">1</span></span>
-<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> ans</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> ans</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <hr>
 
 
