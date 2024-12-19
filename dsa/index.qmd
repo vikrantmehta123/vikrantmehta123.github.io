@@ -13,6 +13,8 @@ Welcome to the supplementary GitHub repository for the course **Programming, Dat
 
 I created this repository as a part of my work as a Teaching Assistant for this course. In this repository, you will find a solution explanations and code implementations for a list curated Leet Code problems that span the topics covered in the lectures. The problems are categorized such that they correspond to each week's course content. 
 
+The solutions presented here are mostly based on the codes discussed in the course to keep it familiar, but readers are encouraged to look at better and more efficient solutions that are available online. I will continue to add some additional problems in this repo in the future as well. 
+
 ## 📝 Overview of Course Topics:
 - **Week 1**: Overview and recap of Python
 - [**Week 2**](https://vikrantmehta123.github.io/dsa/sorting-and-searching/): Sorting and Searching Algorithms- Binary Search, Quick Sort, Merge Sort, Insertion Sort, Selection Sort.
