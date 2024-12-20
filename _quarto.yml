@@ -4,6 +4,7 @@ project:
 
 website:
   title: "Vikrant"
+  google-analytics: G-CKDPXJ4Y38
   navbar:
     right:
       - icon: linkedin
