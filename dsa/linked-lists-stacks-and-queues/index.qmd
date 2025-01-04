@@ -177,8 +177,9 @@ class Solution:
 ## Tips for Linked List Problems:
 Before you jump into these problems, here are some tips on solving linked list problems:
 
-1. When solving Linked List problems, **ALWAYS** draw the diagrams. 
-2. Whenever you see a Linked List problem, the first thing that you should do is: handle the base / edge cases like an empty linked list or a list with just one node. It'll save you a lot of time and stress, especially during the OPPE!
+1. Debugging linked lists can be a nightmare! So, it's always better to get the code right the first time. 
+2. When solving Linked List problems, it **ALWAYS** helps to draw the diagrams. 
+3. Whenever you see a Linked List problem, the first thing that you should do is: handle the base / edge cases like an empty linked list or a list with just one node. It'll save you a lot of time and stress, especially during the OPPE!
 
 :::
 
