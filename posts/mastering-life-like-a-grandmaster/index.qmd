@@ -1,10 +1,10 @@
 ---
-title: "Mastering Life Like a Grandmaster"
+title: "Grandmaster-ing Life"
 image: "./Mind Master.jpg"
 author: "Vikrant Mehta"
 date: "2024-10-13"
 categories: [Chess, Books]
-description: "Vishy Anand, the five-time world champion, is a person who inspires many. His advice, like his chess, is well thought out and worth listening to. Recently, he published his book: \"Mind Master: Winning Lessons from a Champion's life\". Read on to find out what's Vishy's take on life."
+description: "Vishy Anand, the five-time world chess champion, inspires many. His advice, like his chess, is well thought out. Recently, he published his book: \"Mind Master: Winning Lessons from a Champion's life\". Read on to find out Vishy's take on life."
 fig-cap-location: bottom
 ---
 
@@ -14,32 +14,34 @@ Those who want to read the book can buy it [here](https://www.amazon.in/Mind-Mas
 
 **1. Don't Obssess About Your Progress**
 
-It is important to keep track of your progress, but it's not at all helpful to obsess over how far you've come. Sometimes, it feels like you're getting nowhere, and then, out of nowhere, situations may change and you may achieve your goals within a week.
+While it's important to keep track of your progress, it's not at all helpful to obsess over how far you've come. Sometimes, it feels like you're getting nowhere, and then, out of nowhere, situations may change and you may achieve your goals within a week.
 
 For Vishy, it took seemingly forever to get his grandmaster norms. He missed out on the norms by the smallest margins- as small as half a point. He got frustrated and impatient. He was so close to achieving a goal he had worked so hard for. Fortunately, he had mentors and friends to support him through the journey. This slump was definitely difficult, but when he did get the norms, he earned all the three within a span of just a year!
 
-If you're feeling like you're getting nowhere, that's totally fine! If you're not finding a job, that's okay! If you're finding it hard to master deep learning, that's also alright! The key is to not obsess over your progress but to be tenacious. Have someone to support you. Who knows, the tides may turn within a week!
+If you're feeling like you're getting nowhere, that's totally fine! If you're not landing that dream job, that's okay! The key is to not obsess over your progress but to be tenacious. Have someone to support you. And who knows, the tides may turn within a week!
 
 **2. What Should You Do After You Achieve Your Goals?**
 
-Once Vishy realized that he wanted to become a grandmaster, he spent all his energy into the pursuit of achieving that goal. Becoming a grandmaster is what gave his life meaning. But what happened after he became grandmaster? 
+Once Vishy decided that he wanted to become a chess grandmaster, he spent all his energy into the pursuit of achieving that goal. Becoming a grandmaster is what gave his life meaning. But what happened after he became grandmaster?
 
-Vishy says, his life was empty. There was no meaning left once he'd achieved his goal. You may be surprised, but Vishy wasn't the exception. Most grandmasters feel this way once they become GMs. 
+Believe it or not, Vishy says that his life was empty. There was no meaning left once he'd achieved his goal. And Vishy wasn't the exception in this. Most grandmasters feel this way once they become GMs.
 
-Some of us may be fortunate enough to achieve our goals, but some of us may not be- we may have to quit. Then, it's all too easy to fall into the trap of despising ourselves for wasting efforts and time. It's all too easy to not find the purpose of life. 
+Some of us may be fortunate enough to achieve our goals, but some of us may not be, and we may have to quit. Then it may be all too easy to despise ourselves for wasting efforts and time. It's all too easy to not find the purpose of life.
 
-But we need to put our trust in *time*. For Vishy, it took him six months to get back to being excited about life. With time, we will get over this void and move on. But during this time, perhaps we take up a hobby, travel, or do something that we always wanted to do. 
+But we need to put our trust in *time*. For Vishy, it took him six months to get back to being excited about life. With time, we *will* get over this void and move on. But during this time, perhaps we take up a hobby, travel, or do something that we always wanted to do!
 
 **3. Will AI Take My Job?**
 
-For so long, brilliant chess was solely human feat. Grandmasters in the olden days relied on nothing but their effort and intellect. With time, computers started beating chess players. Now, no chess grandmaster prepares without using a chess engine. 
+For so long, brilliant chess was solely a human feat. Grandmasters in the olden days relied on nothing but their effort and intellect. With time and the advances in technology, computers started defeating chess players. Now, no chess grandmaster prepares without using a chess engine. 
 
-Chess witnessed the rise of AI. Vishy is perhaps the only person to have played in all three eras of chess. He saw what AI can do and how AI can impact us. Of course, Vishy has some advice for all of us. 
+Chess witnessed the rise of AI. Vishy is perhaps the only active player to have played in all three eras of chess. He saw what AI can do and how AI can impact us. Of course, he has some advice for all of us.
 
-We cannot deny the rise of AI. It's definitely going to change things. As professionals, it's up to us to adapt, learn, and unlearn. The way Vishy sees it, his work begins where AI's work ends. The job of an engine is to study the positions and come up with analyses and conclusions. Once the conclusions are ready, it's when Vishy's job starts. He needs to understand why the conclusions make sense and then use those conclusions to enhance his understanding of his game. 
+We cannot deny the rise of AI. It's definitely going to change things. As professionals, it's up to us to adapt, learn, and unlearn. The way Vishy sees it, his work begins where AI's work ends. The job of an engine is to study the positions and come up with analyses and conclusions. Once the conclusions are ready, it's when Vishy's job starts. He needs to understand why the conclusions make sense and then use those conclusions to enhance his understanding of his game.
 
 There's an open interpretation here- if we want, we can apply the same reasoning to any other field, and not just Chess. Is AI going to take over software developer jobs? It's definitely going to change them. Those who can adapt can brilliantly make use of AI's power to do their jobs better.
 
-Regardless of whether AI takes over or not, it's certainly our duty to be adaptable. Always be asking ourselves the questions: What do I need to learn? What do I need to unlearn? 
+Regardless of whether AI takes over or not, it's certainly our duty to be adaptable. Always be asking ourselves the questions: What do I need to learn? What do I need to unlearn?
 
 ![Mind Master By Vishy](Mind Master.jpg){width=75% height=60% fig-alt="Mind Master Book Image" fig-align="center"}
+
+---

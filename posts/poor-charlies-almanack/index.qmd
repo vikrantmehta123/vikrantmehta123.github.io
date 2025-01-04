@@ -1,5 +1,5 @@
 ---
-title: "Charlie's Advice"
+title: "A Wise Man's Counsel"
 author: "Vikrant Mehta"
 date: "2024-11-04"
 image: './Poor Charlies Almanack.png'
@@ -14,7 +14,7 @@ description: "I think Charlie Munger is one of the wisest men to have ever lived
 
 If you want to understand the world better, build a latticework of mental models from a variety of disciplines. What are mental models? They’re the “big ideas” that explain how things work. For example, loss aversion from psychology explains why we hate losing more than we love winning.
 
-Just *knowing* these ideas is not enough. You have to *use* them. Regularly. Everything is interconnected and you MUST see the interconnectedness with those models. As a frame of reference, Charlie estimates he has about 100 different mental models from different disciplines. 
+Just *knowing* these ideas is not enough. You have to *use* them. Regularly. Everything is interconnected and you *must* see the interconnectedness with those models. As a frame of reference, Charlie estimates he has about 100 different mental models from different disciplines. 
 
 If no one’s teaching you this stuff, then you should teach yourself!
 

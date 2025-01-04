@@ -1,16 +1,15 @@
 ---
-title: "A Visionary Leader"
+title: "Unstoppable"
 image: "./Bhavesh Bhatia.jpeg"
 author: "Vikrant Mehta"
 date: "2020-10-31"
 categories: [Business]
-description: "Bhavesh Bhatia's story is nothing short of inspirational. He started with a rented handcart as a store, and built a business employing more than 10,000 people. Read on to know how he did it."
+description: "Bhavesh Bhatia's story is nothing short of inspirational. He started with a rented handcart as a store, and built a business employing more than 10,000 people. But there's something more. Read on to know why Bhavesh is so special."
 ---
 
 ### Background
 
 Dad, a schizophrenic, with a minuscule salary of ₹700 per month; mom, a cancer patient; elder brother, deceased from a dog bite reaction; home at a place which was dominated by Naxalite activities, Gondia. With this as his background, came the light of the Bhatia family—Bhavesh.
-
 
 ![Personal Photo with Bhavesh Bhatia](Bhavesh%20Bhatia.jpeg)
 *Photo With Bhavesh Bhatia*
