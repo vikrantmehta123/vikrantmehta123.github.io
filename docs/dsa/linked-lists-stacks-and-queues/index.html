@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -397,38 +363,43 @@ window.Quarto = {
 <p>What happens if you have opening brackets left in the stack, but the string ends? Or what if there are closing brackets, but the stack is empty? How would you handle these situations?</p>
 <p>Time Complexity: <span class="math inline">\(O(n)\)</span><br>
 Space Complexity: <span class="math inline">\(O(n)\)</span></p>
-<section id="code-implementation" class="level5">
-<h5 class="anchored" data-anchor-id="code-implementation">💻 Code Implementation:</h5>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> isValid(<span class="va">self</span>, s: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Keep the mapping as 'closing bracket' : 'Correspoding opening bracket'</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        mapping <span class="op">=</span> { </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            <span class="st">')'</span> : <span class="st">'('</span>, </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">']'</span> : <span class="st">'['</span>, </span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">'}'</span> : <span class="st">'{'</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        stack <span class="op">=</span> [ ]</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># O(n)</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> char <span class="kw">in</span> s:</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> char <span class="kw">not</span> <span class="kw">in</span> mapping: <span class="co"># This means that the bracket is an open bracket</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                stack.append(char)  <span class="co"># Simply add the open bracket to the stack     </span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Corner case- stack has no elements but the string has closing bracket</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="bu">len</span>(stack) <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">return</span> <span class="va">False</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Check if opening bracket in the stack matches with the closing bracket in the string</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> mapping[char] <span class="op">!=</span> stack.pop():</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">return</span> <span class="va">False</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="co"># if stack is empty after checking every char of string</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        <span class="co"># that means that we found the closing bracket for every opening bracket. Thus, return True</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        <span class="co"># And vice versa. Return False</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">not</span> stack <span class="co"># Returns True if stack is empty, False otherwise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
+<details>
+<summary>
+<strong>Need help with implementation?</strong>
+</summary>
+<pre><code class="language-python">
+class Solution:
+    def isValid(self, s: str) -&gt; bool:
+        # Keep the mapping as 'closing bracket' : 'Correspoding opening bracket'
+        mapping = { 
+            ')' : '(', 
+            ']' : '[', 
+            '}' : '{'
+        }
+
+        stack = [ ]
+
+        # O(n)
+        for char in s:
+            if char not in mapping: # This means that the bracket is an open bracket
+                stack.append(char)  # Simply add the open bracket to the stack     
+            else:
+                # Corner case- stack has no elements but the string has closing bracket
+                if len(stack) == 0:
+                    return False
+
+                # Check if opening bracket in the stack matches with the closing bracket in the string
+                if mapping[char] != stack.pop():
+                    return False
+
+        # if stack is empty after checking every char of string
+        # that means that we found the closing bracket for every opening bracket. Thus, return True
+        # And vice versa. Return False
+
+        return not stack # Returns True if stack is empty, False otherwise
+</code>
+</pre>
+</details>
 </section>
 </section>
 <section id="longest-consecutive-sequence" class="level3">
@@ -471,34 +442,41 @@ Hint:
 <li>By finding these starting points, we can run our loop efficiently on only these elements.</li>
 </ul>
 <p>Time Complexity: <span class="math inline">\(O(n)\)</span> Space Complexity: <span class="math inline">\(O(n)\)</span></p>
-<section id="code-implementation-1" class="level5">
-<h5 class="anchored" data-anchor-id="code-implementation-1">💻 Code Implementation:</h5>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> longestConsecutive(<span class="va">self</span>, nums: List[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:    </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Convert nums to a set</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        num_set <span class="op">=</span> <span class="bu">set</span>(nums)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        starting_points <span class="op">=</span> <span class="bu">set</span>()</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Only those elements can be starting points where n - 1 is not in num_set</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># O(n)</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> num <span class="kw">in</span> nums:</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> num <span class="op">-</span> <span class="dv">1</span> <span class="kw">not</span> <span class="kw">in</span> num_set: </span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                starting_points.add(num)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        max_length <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Overall O(n), because the inner while loop is just going to run once for other elements</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> current_num <span class="kw">in</span> starting_points:</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>                current_length <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>                </span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>                <span class="cf">while</span> current_num <span class="op">+</span> <span class="dv">1</span> <span class="kw">in</span> num_set:</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>                    current_num <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>                    current_length <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>                </span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>                max_length <span class="op">=</span> <span class="bu">max</span>(max_length, current_length)</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> max_length</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details>
+<summary>
+<strong>Need help with implementation?</strong>
+</summary>
+<pre><code class="language-python">
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -&gt; int:    
+
+        # Convert nums to a set
+        num_set = set(nums)
+
+        starting_points = set()
+        
+        # Only those elements can be starting points where n - 1 is not in num_set
+        # O(n)
+        for num in nums:
+            if num - 1 not in num_set: 
+                starting_points.add(num)
+
+        max_length = 0
+        # Overall O(n), because the inner while loop is just going to run once for other elements
+        for current_num in starting_points:
+                current_length = 1
+                
+                while current_num + 1 in num_set:
+                    current_num += 1
+                    current_length += 1
+                
+                max_length = max(max_length, current_length)
+        
+        return max_length
+</code>
+</pre>
+</details>
+<hr>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -516,7 +494,7 @@ Tips for Linked List Problems:
 </ol>
 </div>
 </div>
-</section>
+<hr>
 </section>
 </section>
 <section id="rotate-list" class="level3">
@@ -532,66 +510,72 @@ Tips for Linked List Problems:
 <li>Finally, walk from the <code>newhead</code> for <code>n</code> nodes to find the <code>newtail</code>, which will become the tail of the rotated list by marking its next pointer as None.</li>
 </ol></li>
 </ul>
-<section id="code-implementation-2" class="level5">
-<h5 class="anchored" data-anchor-id="code-implementation-2">💻 Code Implementation:</h5>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Gets the length of node: 'n'</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_length(<span class="va">self</span>, head):</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> head</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        count <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>            count <span class="op">+=</span> <span class="dv">1</span>        </span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> count</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> rotateRight(<span class="va">self</span>, head: Optional[ListNode], k: <span class="bu">int</span>) <span class="op">-&gt;</span> Optional[ListNode]:</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="va">self</span>.get_length(head)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Corner case</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> head</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        k <span class="op">=</span> k <span class="op">%</span> n <span class="co"># Number of effective rotations</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># In the original list, you need to walk these many steps to get to new head</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        walk_these_many_steps <span class="op">=</span> n <span class="op">-</span> k </span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> k <span class="op">==</span> <span class="dv">0</span> <span class="kw">or</span> walk_these_many_steps <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> head</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Get the new head of the list that you will get after you rotate</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> head</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>        count <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>        newhead <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> count <span class="op">==</span> walk_these_many_steps:</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>                newhead <span class="op">=</span> current</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>            count <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Get to the end of the list so that you can link tail with the head. </span></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>        <span class="co"># But now your linked list is a cycle</span></span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> head</span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>        count <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="kw">not</span> current.<span class="bu">next</span>:</span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>                current.<span class="bu">next</span> <span class="op">=</span> head</span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Now you need to make the new tail point to None to break the cycle</span></span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> newhead</span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>        count <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current <span class="kw">and</span> count <span class="op">&lt;</span> n:</span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>            count <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> count <span class="op">==</span> n <span class="op">-</span> <span class="dv">1</span>:</span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>                current.<span class="bu">next</span> <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> newhead</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
+<p><em>Note</em>: Readers are encouraged to look for cleaner and more efficient solution on the platform and take this approach as a starting point.</p>
+<details>
+<summary>
+<strong>Need help with implementation?</strong>
+</summary>
+<pre><code class="language-python">
+class Solution:
+    # Gets the length of node: 'n'
+    def get_length(self, head):
+        current = head
+        count = 0
+        while current:
+            current = current.next
+            count += 1        
+        return count
+
+    def rotateRight(self, head: Optional[ListNode], k: int) -&gt; Optional[ListNode]:
+        n = self.get_length(head)
+        
+        # Corner case
+        if n &lt;= 1:
+            return head
+
+        k = k % n # Number of effective rotations
+
+        # In the original list, you need to walk these many steps to get to new head
+        walk_these_many_steps = n - k 
+
+        if k == 0 or walk_these_many_steps == 0:
+            return head
+
+        # Get the new head of the list that you will get after you rotate
+        current = head
+        count = 0
+        newhead = None
+        while current:
+            if count == walk_these_many_steps:
+                newhead = current
+                break
+
+            current = current.next
+            count += 1
+
+        # Get to the end of the list so that you can link tail with the head. 
+        # But now your linked list is a cycle
+        current = head
+        count = 0
+        while current:
+            if not current.next:
+                current.next = head
+                break
+            current = current.next
+
+        # Now you need to make the new tail point to None to break the cycle
+        current = newhead
+        count = 0
+        while current and count &lt; n:
+            current = current.next
+            count += 1
+            if count == n - 1:
+                current.next = None
+
+        return newhead
+</code>
+</pre>
+</details>
 </section>
 </section>
 <section id="swap-nodes-in-pairs" class="level3">
@@ -612,40 +596,45 @@ Tips for Linked List Problems:
 </figure>
 </div>
 <p>Now let’s code this!</p>
-<section id="code-implementation-3" class="level5">
-<h5 class="anchored" data-anchor-id="code-implementation-3">💻 Code Implementation:</h5>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definition for singly-linked list.</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># class ListNode:</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#     def __init__(self, val=0, next=None):</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#         self.val = val</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#         self.next = next</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> swapPairs(<span class="va">self</span>, head: Optional[ListNode]) <span class="op">-&gt;</span> Optional[ListNode]:</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>         <span class="co"># Create a Dummy node that becomes "prev"</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        dummy <span class="op">=</span> ListNode(<span class="dv">0</span>)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        dummy.<span class="bu">next</span> <span class="op">=</span> head</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        prev <span class="op">=</span> dummy </span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Since we are going to update using prev.next and prev.next.next</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># they both should exist</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> prev.<span class="bu">next</span> <span class="kw">and</span> prev.<span class="bu">next</span>.<span class="bu">next</span>:</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Find the "curr" and "nxt" nodes</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>            curr <span class="op">=</span> prev.<span class="bu">next</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>            nxt <span class="op">=</span> prev.<span class="bu">next</span>.<span class="bu">next</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Pink links for swap</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>            prev.<span class="bu">next</span> <span class="op">=</span> nxt</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>            curr.<span class="bu">next</span> <span class="op">=</span> nxt.<span class="bu">next</span></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>            nxt.<span class="bu">next</span> <span class="op">=</span> curr</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Move the "prev" pointer to the next pair</span></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>            prev <span class="op">=</span> curr</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>        <span class="co"># The new head of the list is next to the dummy node</span></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> dummy.<span class="bu">next</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
+<details>
+<summary>
+<strong>Need help with implementation?</strong>
+</summary>
+<pre><code class="language-python">
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def swapPairs(self, head: Optional[ListNode]) -&gt; Optional[ListNode]:
+         # Create a Dummy node that becomes "prev"
+        dummy = ListNode(0)
+        dummy.next = head
+        
+        prev = dummy 
+
+        # Since we are going to update using prev.next and prev.next.next
+        # they both should exist
+
+        while prev.next and prev.next.next:
+            # Find the "curr" and "nxt" nodes
+            curr = prev.next
+            nxt = prev.next.next
+            
+            # Pink links for swap
+            prev.next = nxt
+            curr.next = nxt.next
+            nxt.next = curr
+            
+            # Move the "prev" pointer to the next pair
+            prev = curr
+        
+        # The new head of the list is next to the dummy node
+        return dummy.next
+</code>
+</pre>
+</details>
 </section>
 </section>
 <section id="reverse-nodes-in-k-groups" class="level3">
@@ -676,58 +665,63 @@ Tip
 <li>Now, you just need to connect the tail of the first reversed group (1) to the head of the second reversed group (4). Voilà! You’ve connected the reversed groups.</li>
 </ul></li>
 </ul>
-<section id="code-implementation-4" class="level5">
-<h5 class="anchored" data-anchor-id="code-implementation-4">💻 Code Implementation:</h5>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Helper function: returns the number of nodes in the linked list</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_length(<span class="va">self</span>, head):</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        count <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> head</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current:</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>            count <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> count</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> reverse(<span class="va">self</span>, head, k, n):</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Edge Case: The group is empty</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> head:</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> head, <span class="va">None</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Edge case: If k &gt; n, then remaining nodes should remain as they are</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> k <span class="op">&gt;</span> n:</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> head, <span class="va">None</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Reverse the K nodes in groups starting from "head"</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> head</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>        prev <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        next_node <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>        count <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> current <span class="kw">and</span> count <span class="op">&lt;=</span> k:</span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Counting because we want to mark the tail also</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> count <span class="op">&lt;</span> k:</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>                next_node <span class="op">=</span> current.<span class="bu">next</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>                current.<span class="bu">next</span> <span class="op">=</span> prev       </span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>                prev <span class="op">=</span> current            </span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>                current <span class="op">=</span> next_node       </span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>            count <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>        curr_head <span class="op">=</span> prev <span class="co"># The head of the reversed k nodes</span></span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>        curr_tail <span class="op">=</span> head <span class="co"># tail of the reversed k nodes</span></span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Recursively call reverse on the next k nodes. Observe that the number of nodes in remaining list is: n - k</span></span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>        next_head, next_tail <span class="op">=</span> <span class="va">self</span>.reverse(next_node, k, n <span class="op">-</span> k)</span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Connect the current group's tail with the head of the next group</span></span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>        curr_tail.<span class="bu">next</span> <span class="op">=</span> next_head </span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> curr_head, curr_tail</span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> reverseKGroup(<span class="va">self</span>, head: Optional[ListNode], k: <span class="bu">int</span>) <span class="op">-&gt;</span> Optional[ListNode]:</span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="va">self</span>.get_length(head)</span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>        head, tail <span class="op">=</span> <span class="va">self</span>.reverse(head, k, n)</span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> head</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
+<details>
+<summary>
+<strong>Need help with implementation?</strong>
+</summary>
+<pre><code class="language-python">
+class Solution:
+    # Helper function: returns the number of nodes in the linked list
+    def get_length(self, head):
+        count = 0
+        current = head
+        while current:
+            current = current.next
+            count += 1
+        return count
+
+    def reverse(self, head, k, n):
+        # Edge Case: The group is empty
+        if not head:
+            return head, None
+
+        # Edge case: If k &gt; n, then remaining nodes should remain as they are
+        if k &gt; n:
+            return head, None
+
+        # Reverse the K nodes in groups starting from "head"
+        current = head
+        prev = None
+        next_node = None
+        count = 0
+        while current and count &lt;= k:
+            # Counting because we want to mark the tail also
+            if count &lt; k:
+                next_node = current.next
+                current.next = prev       
+                prev = current            
+                current = next_node       
+
+            count += 1
+        
+        curr_head = prev # The head of the reversed k nodes
+        curr_tail = head # tail of the reversed k nodes
+
+        # Recursively call reverse on the next k nodes. Observe that the number of nodes in remaining list is: n - k
+        next_head, next_tail = self.reverse(next_node, k, n - k)
+        
+        # Connect the current group's tail with the head of the next group
+        curr_tail.next = next_head 
+
+        return curr_head, curr_tail
+
+    def reverseKGroup(self, head: Optional[ListNode], k: int) -&gt; Optional[ListNode]:
+        n = self.get_length(head)
+        head, tail = self.reverse(head, k, n)
+        return head
+</code>
+</pre>
+</details>
 </section>
 </section>
 <section id="middle-of-the-linked-list" class="level3">
@@ -743,38 +737,43 @@ Tip
 <li>Finally, we would traverse the list again, stopping when we reach the middle node.</li>
 </ol>
 <p>Time Complexity: <span class="math inline">\(O(n)\)</span></p>
-<section id="code-implementation-5" class="level5">
-<h5 class="anchored" data-anchor-id="code-implementation-5">💻 Code Implementation:</h5>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_length(<span class="va">self</span>, head):</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">        Helper function- iterates over the entire linked list and returns the length of the list</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        counter <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> head:</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>            counter <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>            head <span class="op">=</span> head.<span class="bu">next</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> counter</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> middleNode(<span class="va">self</span>, head: Optional[ListNode]) <span class="op">-&gt;</span> Optional[ListNode]:</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Handle the base case</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> head:</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> </span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Compute the middle index </span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="va">self</span>.get_length(head)</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>        mid <span class="op">=</span> n <span class="op">//</span> <span class="dv">2</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Iterate mid number of steps</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        idx <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> idx <span class="op">&lt;</span> mid: </span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>            head <span class="op">=</span> head.<span class="bu">next</span> <span class="co"># note that we are updating the head. So after "mid" iterations, head = middle node</span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>            idx <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Since head = mid after iterating, we return head</span></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> head</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
+<details>
+<summary>
+<strong>Need help with implementation?</strong>
+</summary>
+<pre><code class="language-python">
+class Solution:
+    def get_length(self, head):
+        """
+        Helper function- iterates over the entire linked list and returns the length of the list
+        """
+        counter = 0
+        while head:
+            counter += 1
+            head = head.next
+        return counter
+
+
+    def middleNode(self, head: Optional[ListNode]) -&gt; Optional[ListNode]:
+        # Handle the base case
+        if not head:
+            return 
+
+        # Compute the middle index 
+        n = self.get_length(head)
+        mid = n // 2
+
+        # Iterate mid number of steps
+        idx = 0
+        while idx &lt; mid: 
+            head = head.next # note that we are updating the head. So after "mid" iterations, head = middle node
+            idx += 1
+        
+        # Since head = mid after iterating, we return head
+        return head
+</code>
+</pre>
+</details>
 </section>
 </section>
 <section id="delete-the-middle-node" class="level3">
@@ -791,37 +790,42 @@ Tip
 <ul>
 <li>Time Complexity: <span class="math inline">\(O(n)\)</span></li>
 </ul>
-<section id="code-implementation-6" class="level5">
-<h5 class="anchored" data-anchor-id="code-implementation-6">💻 Code Implementation:</h5>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_length(<span class="va">self</span>, head):</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">        Helper function- iterates over the entire linked list and returns the length of the list</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        counter <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> head:</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>            counter <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>            head <span class="op">=</span> head.<span class="bu">next</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> counter</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> deleteMiddle(<span class="va">self</span>, head: Optional[ListNode]) <span class="op">-&gt;</span> Optional[ListNode]:</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        mid <span class="op">=</span> <span class="va">self</span>.get_length(head) <span class="op">//</span> <span class="dv">2</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> head <span class="co"># Iterate using current because we want to return the head</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        idx <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Stopping one node before the middle node</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> idx <span class="op">&lt;</span> mid <span class="op">-</span> <span class="dv">1</span>:</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>            idx <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Change links of the node before to the next to next node by handling corner case</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> current.<span class="bu">next</span> <span class="kw">and</span> current.<span class="bu">next</span>.<span class="bu">next</span>:</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>            current.<span class="bu">next</span> <span class="op">=</span> current.<span class="bu">next</span>.<span class="bu">next</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>            current.<span class="bu">next</span> <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> head</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
+<details>
+<summary>
+<strong>Need help with implementation?</strong>
+</summary>
+<pre><code class="language-python">
+class Solution:
+    def get_length(self, head):
+        """
+        Helper function- iterates over the entire linked list and returns the length of the list
+        """
+        counter = 0
+        while head:
+            counter += 1
+            head = head.next
+        return counter
+
+    def deleteMiddle(self, head: Optional[ListNode]) -&gt; Optional[ListNode]:
+        mid = self.get_length(head) // 2
+        
+        current = head # Iterate using current because we want to return the head
+
+        idx = 0
+        # Stopping one node before the middle node
+        while idx &lt; mid - 1:
+            current = current.next
+            idx += 1
+        
+        # Change links of the node before to the next to next node by handling corner case
+        if current.next and current.next.next:
+            current.next = current.next.next
+        else:
+            current.next = None
+        return head
+</code>
+</pre>
+</details>
 </section>
 </section>
 <section id="delete-nth-node-from-end" class="level3">
@@ -847,37 +851,42 @@ Tip
 <section id="merge-two-sorted-lists" class="level3">
 <h3 class="anchored" data-anchor-id="merge-two-sorted-lists">9. <a href="https://leetcode.com/problems/merge-two-sorted-lists/description/">Merge Two Sorted Lists</a></h3>
 <p>Remember Merge Sort algorithm? Can you see how this question is similar to the <code>merge(A, B)</code> operation from the merge sort algorithm? Only instead of merging arrays, we’re merging linked lists! 🔗</p>
-<section id="code-implementation-7" class="level5">
-<h5 class="anchored" data-anchor-id="code-implementation-7">💻 Code Implementation:</h5>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> mergeTwoLists(<span class="va">self</span>, list1: Optional[ListNode], list2: Optional[ListNode]) <span class="op">-&gt;</span> Optional[ListNode]:</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Dummy node to serve as a proxy for head of the list to return      </span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        dummy <span class="op">=</span> ListNode()</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> dummy</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Iterate as long as neither list is exhausted</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> list1 <span class="kw">and</span> list2:</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> list1.val <span class="op">&lt;</span> list2.val:</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>                current.<span class="bu">next</span> <span class="op">=</span> list1</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>                list1 <span class="op">=</span> list1.<span class="bu">next</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>                current.<span class="bu">next</span> <span class="op">=</span> list2</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>                list2 <span class="op">=</span> list2.<span class="bu">next</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>            current <span class="op">=</span> current.<span class="bu">next</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Attach the remaining nodes of list1 or list2</span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> list1:</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>            current.<span class="bu">next</span> <span class="op">=</span> list1</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> list2:</span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>            current.<span class="bu">next</span> <span class="op">=</span> list2</span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>        <span class="co"># The merged list is next to the dummy node</span></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> dummy.<span class="bu">next</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details>
+<summary>
+<strong>Need help with implementation?</strong>
+</summary>
+<pre><code class="language-python">
+class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -&gt; Optional[ListNode]:
+
+        # Dummy node to serve as a proxy for head of the list to return      
+        dummy = ListNode()
+        current = dummy
+
+        # Iterate as long as neither list is exhausted
+        while list1 and list2:
+            if list1.val &lt; list2.val:
+                current.next = list1
+                list1 = list1.next
+            else:
+                current.next = list2
+                list2 = list2.next
+            current = current.next
+
+        # Attach the remaining nodes of list1 or list2
+        if list1:
+            current.next = list1
+        elif list2:
+            current.next = list2
+
+        # The merged list is next to the dummy node
+        return dummy.next
+</code>
+</pre>
+</details>
 <hr>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1446,6 +1455,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
 
 
 

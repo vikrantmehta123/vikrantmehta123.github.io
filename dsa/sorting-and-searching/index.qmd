@@ -374,6 +374,8 @@ Again, we need a $\log(n)$ solution. So, we think Binary Search to come up with 
 
 :::{.callout-tip}
 
+### Hint:
+
 We know binary search is fast, but it stops when we find the target. What if we keep going to find both the first and last occurrences?
 
 :::

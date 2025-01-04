@@ -49,8 +49,13 @@ What happens if you have opening brackets left in the stack, but the string ends
 Time Complexity: $O(n)$\
 Space Complexity: $O(n)$
 
-##### 💻 Code Implementation:
-```python
+<details>
+    <summary>
+        <strong>Need help with implementation?</strong>
+    </summary>
+
+<pre>
+<code class="language-python">
 class Solution:
     def isValid(self, s: str) -> bool:
         # Keep the mapping as 'closing bracket' : 'Correspoding opening bracket'
@@ -80,7 +85,9 @@ class Solution:
         # And vice versa. Return False
 
         return not stack # Returns True if stack is empty, False otherwise
-```
+</code>
+</pre>
+</details>
 
 ### 2. [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/description/)
 
@@ -127,8 +134,13 @@ Which numbers can start a consecutive sequence?
 Time Complexity: $O(n)$
 Space Complexity: $O(n)$
 
-##### 💻 Code Implementation:
-```python
+<details>
+    <summary>
+        <strong>Need help with implementation?</strong>
+    </summary>
+
+<pre>
+<code class="language-python">
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:    
 
@@ -155,7 +167,11 @@ class Solution:
                 max_length = max(max_length, current_length)
         
         return max_length
-```
+</code>
+</pre>
+</details>
+
+---
 
 :::{.callout-tip}
 ## Tips for Linked List Problems:
@@ -166,6 +182,8 @@ Before you jump into these problems, here are some tips on solving linked list p
 
 :::
 
+---
+
 ### 3. [Rotate List](https://leetcode.com/problems/rotate-list/description/)
 #### 3.1 Rotation Logic:
 - If $k \gt n$, then the number of effective rotations is: $k = k \% n$. 
@@ -174,8 +192,15 @@ Before you jump into these problems, here are some tips on solving linked list p
     2. Next, connect the original list's tail to its ```head```to create a cycle in the linked list.
     3. Finally, walk from the ```newhead``` for ```n``` nodes to find the ```newtail```, which will become the tail of the rotated list by marking its next pointer as None.
 
-##### 💻 Code Implementation:
-```python
+*Note*: Readers are encouraged to look for cleaner and more efficient solution on the platform and take this approach as a starting point.
+
+<details>
+    <summary>
+        <strong>Need help with implementation?</strong>
+    </summary>
+
+<pre>
+<code class="language-python">
 class Solution:
     # Gets the length of node: 'n'
     def get_length(self, head):
@@ -233,7 +258,9 @@ class Solution:
                 current.next = None
 
         return newhead
-```
+</code>
+</pre>
+</details>
 
 ### 4. [Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs/description/)
 #### 4.1 Intuition
@@ -253,8 +280,13 @@ Let’s break this problem down step by step with the help of an image. Imagine 
 
 Now let's code this!
 
-##### 💻 Code Implementation:
-```python
+<details>
+    <summary>
+        <strong>Need help with implementation?</strong>
+    </summary>
+
+<pre>
+<code class="language-python">
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
@@ -286,7 +318,9 @@ class Solution:
         
         # The new head of the list is next to the dummy node
         return dummy.next
-```
+</code>
+</pre>
+</details>
 
 ### 5. [Reverse Nodes in K Groups](https://leetcode.com/problems/reverse-nodes-in-k-group/description/)
 
@@ -309,8 +343,13 @@ But here's the important part: how do you connect these reversed groups?
     - Then, reverse ```3 -> 4``` recursively as ```4 -> 3```, and return the head as ```4``` and tail as ```3```.
     - Now, you just need to connect the tail of the first reversed group (1) to the head of the second reversed group (4). Voilà! You've connected the reversed groups.
 
-##### 💻 Code Implementation:
-```python
+<details>
+    <summary>
+        <strong>Need help with implementation?</strong>
+    </summary>
+
+<pre>
+<code class="language-python">
 class Solution:
     # Helper function: returns the number of nodes in the linked list
     def get_length(self, head):
@@ -360,7 +399,9 @@ class Solution:
         n = self.get_length(head)
         head, tail = self.reverse(head, k, n)
         return head
-```
+</code>
+</pre>
+</details>
 
 ### 6. [Middle of The Linked List](https://leetcode.com/problems/middle-of-the-linked-list/description/)
 #### 6.1 Using Iteration
@@ -376,8 +417,13 @@ Here's how:
 
 Time Complexity: $O(n)$
 
-##### 💻 Code Implementation:
-```python
+<details>
+    <summary>
+        <strong>Need help with implementation?</strong>
+    </summary>
+
+<pre>
+<code class="language-python">
 class Solution:
     def get_length(self, head):
         """
@@ -407,7 +453,9 @@ class Solution:
         
         # Since head = mid after iterating, we return head
         return head
-```
+</code>
+</pre>
+</details>
 
 ### 7. [Delete the Middle Node](https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/description/)
 #### 7.1 Using Iteration
@@ -424,8 +472,13 @@ What if the linked list has only one node? In this scenario, we need to handle c
 
 - Time Complexity: $O(n)$
 
-##### 💻 Code Implementation:
-```python
+<details>
+    <summary>
+        <strong>Need help with implementation?</strong>
+    </summary>
+
+<pre>
+<code class="language-python">
 class Solution:
     def get_length(self, head):
         """
@@ -454,7 +507,9 @@ class Solution:
         else:
             current.next = None
         return head
-```
+</code>
+</pre>
+</details>
 
 ### 8. [Delete nth Node From End](https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/)
 #### 8.1 Using Iteration
@@ -471,8 +526,13 @@ Hint: Deleting the ```nth``` node from the end is the same as deleting ```(lengt
 
 Remember Merge Sort algorithm? Can you see how this question is similar to the ```merge(A, B)``` operation from the merge sort algorithm? Only instead of merging arrays, we’re merging linked lists! 🔗 
 
-##### 💻 Code Implementation:
-```python
+<details>
+    <summary>
+        <strong>Need help with implementation?</strong>
+    </summary>
+
+<pre>
+<code class="language-python">
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
 
@@ -498,6 +558,8 @@ class Solution:
 
         # The merged list is next to the dummy node
         return dummy.next
-```
+</code>
+</pre>
+</details>
 
 ---
