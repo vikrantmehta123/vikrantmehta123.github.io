@@ -30,16 +30,16 @@ There are 3 people in the town. Person 1 trusts Person 3, and Person 2 also trus
 
 #### 1.1 By Counting Indegrees
 
-We have an array `trusts`, where each entry `trust[i] = [a_i, b_i]` tells us that `a_i` trusts `b_i`. 
+We have an array `trusts`, where each entry $trusts[i] = [a_i, b_i]$ tells us that $a_i$ trusts $b_i$. 
 
 :::{.callout-tip}
 
 ## Question:
-If `a_i` trusts `b_i`, how could we represent this in a graph?
+If $a_i$ trusts $b_i$, how could we represent this in a graph?
 
 :::
 
-If ```a_i``` trusts ```b_i```, then we can consider it an edge from ```a_i``` to ```b_i```. 
+If $a_i$ trusts $b_i$ then we can consider it an edge from $a_i$ to $b_i$. 
 
 **Finding the Town Judge:**
 
@@ -58,8 +58,13 @@ We can check if someone has an outdegree of 0 and an indegree of `n-1`. Since th
 
 Time complexity: $O(|E| + n)$, where $|E|$ is the number of edges in the graph, and $n$ is the number of nodes.
 
-##### 💻 Code Implementation:
-```python
+<details>
+    <summary>
+        <strong>Need help with implementation?</strong>
+    </summary>
+
+<pre>
+<code class="language-python">
 class Solution:
     def findJudge(self, n: int, trust: List[List[int]]) -> int:        
         if n <= 1:
@@ -87,8 +92,9 @@ class Solution:
                     townjudge = person 
                     break
         return townjudge        
-```
-
+</code>
+</pre>
+</details>
 
 ### 2. [Course Schedule-I](https://leetcode.com/problems/course-schedule/description/)
 
@@ -144,8 +150,13 @@ When would we say that we have successfully found the sequence of courses satisf
 
 When we the sequence includes all the courses, and no course is left. If a course is left out, that means we can't complete all the courses because there's a cycle in the graph.
 
-##### 💻 Code Implementation:
-```python
+<details>
+    <summary>
+        <strong>Need help with implementation?</strong>
+    </summary>
+
+<pre>
+<code class="language-python">
 class Solution:
     def preprocessing(self, numCourses, prerequisites) -> list[list[int]]:
         adjacency_matrix = [ [0 for i in range(numCourses)] for i in range(numCourses) ]
@@ -190,7 +201,9 @@ class Solution:
         toposortlist = self.toposort(adjacency_matrix)
         if len(toposortlist) == numCourses: return True
         return False
-```
+</code>
+</pre>
+</details>
 
 #### 2.2 Topological Sort: Better Implementation
 
@@ -203,9 +216,13 @@ Here's how:
 
 Time Complexity: $O(|V| + |E|)$
 
-##### 💻 Code Implementation:
+<details>
+    <summary>
+        <strong>Need help with implementation?</strong>
+    </summary>
 
-```python
+<pre>
+<code class="language-python">
 from collections import deque, Counter
 
 class Solution:
@@ -244,7 +261,9 @@ class Solution:
                     zerodegreeq.append(adj_vertex)                
         
         return len(toposortlist) == numCourse
-```
+</code>
+</pre>
+</details>
 
 ### 3. [Course Schedule-II](https://leetcode.com/problems/course-schedule-ii/description/)
 
@@ -280,44 +299,44 @@ We have a board with $n^2$ cells, and from any cell, we can make up to 6 possibl
 
 - Once we have the graph, we can run BFS on this graph, which will return the shortest path. 
 
-##### 💻 Code Implementation:
-```python
+<details>
+    <summary>
+        <strong>Need help with the implementation?</strong>
+    </summary>
+
+<pre>
+<code class="language-python">
+
 from collections import deque
-# Using BFS approch For Adjacency list, for path, maintaining the parent of each vertex
-# Using BFS approch maintaing the adjacent level number from source vertrex
+
+# The BFS code from the PDSA book
 def BFSListPathLevel(AList,v):
-    # Initialization
     (level,parent) = ({},{})
     for each_vertex in AList.keys():
         level[each_vertex] = -1
         parent[each_vertex] = -1
     
-    # Create Queue object q
     q = deque()
     
-    # Assigning the level 0 for start_vertex and insert it into the queue
     level[v] = 0
     q.append(v)
     
-    # Repeat the following until the queue is empty
     while q:
-        # Remove the one vertex from queue
         curr_vertex = q.popleft()
-        # Visit the each adjacent of curr_vertex(if level value is -1) and insert into the queue
         for adj_vertex in AList[curr_vertex]:
             if (level[adj_vertex] == -1):
-                # Assign the level value on each adjacent one more than the curr_vertex level
                 level[adj_vertex] = level[curr_vertex] + 1
-                # Assigne the curr_vertex as parent of adjacent vertex of curr_vertex
                 parent[adj_vertex] = curr_vertex
                 q.append(adj_vertex)
                 
     return(level,parent)
 
-
 class Solution:
     def get_indices(self, cell, n):
-        """A helper function to convert the Boustrophedon style sequence into a cell's row and column index"""
+        """
+        A helper function to convert the Boustrophedon style sequence 
+        into a cell's row and column index
+        """
         remainder = (n - 1) % 2
         row = (n - 1) - ((cell - 1) // n)
         if row % 2 == remainder:
@@ -347,7 +366,9 @@ class Solution:
         AList = self.preprocessing(board)
         level, parent = BFSListPathLevel(AList, 1)
         return level[n*n] # The last cell holds shortest path from start to the last cell
-```
+</code>
+</pre>
+</details>
 
 
 ### 5. [Sort Items By Groups Respecting Dependencies](https://leetcode.com/problems/sort-items-by-groups-respecting-dependencies/description/)
@@ -401,8 +422,13 @@ To solve this, we need to track the dependencies of both individual items and gr
     - Outer graph to perform topological sorting on the `group` graph.
     - Then, within each group, sort the items using topological sorting.
 
-##### 💻 Code Implementation:
-```python
+<details>
+    <summary>
+        <strong>Need help with the implementation?</strong>
+    </summary>
+
+<pre>
+<code class="language-python">
 from collections import deque
 
 class Solution:
@@ -511,8 +537,9 @@ class Solution:
         items_alist, group_alist, items_indegree, group_indegree = self.preprocessing(beforeItems,group, m, n, group_wise_items)
         
         return self.lpath(items_alist, group_alist, items_indegree, group_indegree, group_wise_items, n, group)
-```
-
+</code>
+</pre>
+</details>
 
 ### 6. [Find If Path Exists](https://leetcode.com/problems/find-if-path-exists-in-graph/description/)
 
@@ -538,7 +565,13 @@ for u, v in edges:
 ##### 💻 Code Implementation:
 Note: For a better, more neat code, we have used the ```deque``` data structure from the ```collections``` module in Python. We can use it to implement a ```queue``` used in BFS. It's a useful data structure to know.
 
-```python
+<details>
+    <summary>
+        <strong>Need help with the implementation?</strong>
+    </summary>
+
+<pre>
+<code class="language-python">
 from collections import deque
 
 class Solution:
@@ -562,7 +595,9 @@ class Solution:
                     queue.append(neighbor)
                     visited.add(neighbor)
         return False
-```
+</code>
+</pre>
+</details>
 
 ### 7. [Number of Provinces](https://leetcode.com/problems/number-of-provinces/description/)
 
@@ -590,8 +625,13 @@ This is a **connected components** problem. We need to find how many separate gr
 
 To solve this, we can use either **BFS** or **DFS**. For this explanation, we’ll go with **BFS** to explore each connected component one by one.
 
-##### 💻 Code Implementation:
-```python
+<details>
+    <summary>
+        <strong>Need help with the implementation?</strong>
+    </summary>
+
+<pre>
+<code class="language-python">
 from collections import deque
 
 class Solution:
@@ -644,7 +684,9 @@ class Solution:
             component_number += 1
             
         return component_number 
-```
+</code>
+</pre>
+</details>
 
 <!-- Add DFS Backtracking problems here. You can add a callout tip for problem patterns. -->
 

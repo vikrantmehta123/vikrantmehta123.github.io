@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -376,7 +342,7 @@ window.Quarto = {
 <p>There are 3 people in the town. Person 1 trusts Person 3, and Person 2 also trusts Person 3. Person 3 trusts Person 1, which means Person 3 is not trusted by everyone (because Person 1 and Person 2 trust Person 3, but Person 3 also trusts Person 1). The town judge must trust nobody and be trusted by everyone else. Since Person 3 doesn’t meet this condition (because they trust Person 1), there is no town judge. So we return -1.</p>
 <section id="by-counting-indegrees" class="level4">
 <h4 class="anchored" data-anchor-id="by-counting-indegrees">1.1 By Counting Indegrees</h4>
-<p>We have an array <code>trusts</code>, where each entry <code>trust[i] = [a_i, b_i]</code> tells us that <code>a_i</code> trusts <code>b_i</code>.</p>
+<p>We have an array <code>trusts</code>, where each entry <span class="math inline">\(trusts[i] = [a_i, b_i]\)</span> tells us that <span class="math inline">\(a_i\)</span> trusts <span class="math inline">\(b_i\)</span>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -387,10 +353,10 @@ Question:
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If <code>a_i</code> trusts <code>b_i</code>, how could we represent this in a graph?</p>
+<p>If <span class="math inline">\(a_i\)</span> trusts <span class="math inline">\(b_i\)</span>, how could we represent this in a graph?</p>
 </div>
 </div>
-<p>If <code>a_i</code> trusts <code>b_i</code>, then we can consider it an edge from <code>a_i</code> to <code>b_i</code>.</p>
+<p>If <span class="math inline">\(a_i\)</span> trusts <span class="math inline">\(b_i\)</span> then we can consider it an edge from <span class="math inline">\(a_i\)</span> to <span class="math inline">\(b_i\)</span>.</p>
 <p><strong>Finding the Town Judge:</strong></p>
 <p>The town judge is a person who:</p>
 <ol type="1">
@@ -407,36 +373,41 @@ Question:
 We can check if someone has an outdegree of 0 and an indegree of <code>n-1</code>. Since the town judge is unique, whenever we find such person, we can return it.</li>
 </ul>
 <p>Time complexity: <span class="math inline">\(O(|E| + n)\)</span>, where <span class="math inline">\(|E|\)</span> is the number of edges in the graph, and <span class="math inline">\(n\)</span> is the number of nodes.</p>
-<section id="code-implementation" class="level5">
-<h5 class="anchored" data-anchor-id="code-implementation">💻 Code Implementation:</h5>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> findJudge(<span class="va">self</span>, n: <span class="bu">int</span>, trust: List[List[<span class="bu">int</span>]]) <span class="op">-&gt;</span> <span class="bu">int</span>:        </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">1</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        indegrees <span class="op">=</span> { }</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        outdegrees <span class="op">=</span> { }</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># trust = [a_i, b_i]</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># a_i -&gt; b_i</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> a, b <span class="kw">in</span> trust:</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> a <span class="kw">not</span> <span class="kw">in</span> indegrees: indegrees[a] <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> b <span class="kw">not</span> <span class="kw">in</span> indegrees: indegrees[b] <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> a <span class="kw">not</span> <span class="kw">in</span> outdegrees: outdegrees[a] <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> b <span class="kw">not</span> <span class="kw">in</span> outdegrees: outdegrees[b] <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>            outdegrees[a] <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            indegrees[b] <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># If indegree == n - 1 and outdegree == 0, then we have found the town judge.</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        townjudge <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> person <span class="kw">in</span> indegrees:</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> outdegrees[person] <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> indegrees[person] <span class="op">&gt;=</span> n <span class="op">-</span> <span class="dv">1</span>:</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>                    townjudge <span class="op">=</span> person </span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">break</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> townjudge        </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
+<details>
+<summary>
+<strong>Need help with implementation?</strong>
+</summary>
+<pre><code class="language-python">
+class Solution:
+    def findJudge(self, n: int, trust: List[List[int]]) -&gt; int:        
+        if n &lt;= 1:
+            return 1
+
+        indegrees = { }
+        outdegrees = { }
+
+        # trust = [a_i, b_i]
+        # a_i -&gt; b_i
+        for a, b in trust:
+            if a not in indegrees: indegrees[a] = 0
+            if b not in indegrees: indegrees[b] = 0
+            if a not in outdegrees: outdegrees[a] = 0
+            if b not in outdegrees: outdegrees[b] = 0
+
+            outdegrees[a] += 1
+            indegrees[b] += 1
+        
+        # If indegree == n - 1 and outdegree == 0, then we have found the town judge.
+        townjudge = -1
+        for person in indegrees:
+            if outdegrees[person] == 0:
+                if indegrees[person] &gt;= n - 1:
+                    townjudge = person 
+                    break
+        return townjudge        
+</code>
+</pre>
+</details>
 </section>
 </section>
 <section id="course-schedule-i" class="level3">
@@ -496,53 +467,58 @@ Question:
 </div>
 </div>
 <p>When we the sequence includes all the courses, and no course is left. If a course is left out, that means we can’t complete all the courses because there’s a cycle in the graph.</p>
-<section id="code-implementation-1" class="level5">
-<h5 class="anchored" data-anchor-id="code-implementation-1">💻 Code Implementation:</h5>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> preprocessing(<span class="va">self</span>, numCourses, prerequisites) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">list</span>[<span class="bu">int</span>]]:</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        adjacency_matrix <span class="op">=</span> [ [<span class="dv">0</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(numCourses)] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(numCourses) ]</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> a, b <span class="kw">in</span> prerequisites:</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>            adjacency_matrix[b][a] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> adjacency_matrix</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Implementation of Topological sort for Adjacency matrix</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> toposort(<span class="va">self</span>, AMat):</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="co">#Initialization</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        (rows,cols) <span class="op">=</span> <span class="bu">len</span>(AMat), <span class="bu">len</span>(AMat[<span class="dv">0</span>])</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        indegree <span class="op">=</span> {}</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        toposortlist <span class="op">=</span> []</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        <span class="co">#Compute indegree for each vertex</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> col <span class="kw">in</span> <span class="bu">range</span>(cols):</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>            indegree[col] <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> row <span class="kw">in</span> <span class="bu">range</span>(rows):</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> AMat[row][col] <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>                    indegree[col] <span class="op">=</span> indegree[col] <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Topological sort Computing process</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(rows):</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Select the min level vertex for removing the graph which has indegree 0</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>            zero_indegree <span class="op">=</span> [k <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(cols) <span class="cf">if</span> indegree[k] <span class="op">==</span> <span class="dv">0</span>]</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="kw">not</span> zero_indegree:<span class="cf">return</span> toposortlist <span class="co">#Handle the case where there are no more zero indegree vertices</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>            j <span class="op">=</span> zero_indegree[<span class="dv">0</span>]</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Store the removed vertex j in toposortlist and reduce the indegree by one </span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>            toposortlist.append(j)</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>            indegree[j] <span class="op">=</span> indegree[j] <span class="op">-</span> <span class="dv">1</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Reduce the indegree of each adjacent of the removed vertex j by 1</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(cols):</span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> AMat[j][k] <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>                    indegree[k] <span class="op">=</span> indegree[k] <span class="op">-</span> <span class="dv">1</span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>                    </span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span>(toposortlist)</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> canFinish(<span class="va">self</span>, numCourses: <span class="bu">int</span>, prerequisites: List[List[<span class="bu">int</span>]]) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>        adjacency_matrix <span class="op">=</span> <span class="va">self</span>.preprocessing(numCourses, prerequisites)</span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>        toposortlist <span class="op">=</span> <span class="va">self</span>.toposort(adjacency_matrix)</span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(toposortlist) <span class="op">==</span> numCourses: <span class="cf">return</span> <span class="va">True</span></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
+<details>
+<summary>
+<strong>Need help with implementation?</strong>
+</summary>
+<pre><code class="language-python">
+class Solution:
+    def preprocessing(self, numCourses, prerequisites) -&gt; list[list[int]]:
+        adjacency_matrix = [ [0 for i in range(numCourses)] for i in range(numCourses) ]
+        for a, b in prerequisites:
+            adjacency_matrix[b][a] = 1
+        return adjacency_matrix
+
+    # Implementation of Topological sort for Adjacency matrix
+    def toposort(self, AMat):
+        #Initialization
+        (rows,cols) = len(AMat), len(AMat[0])
+        indegree = {}
+        toposortlist = []
+        
+        #Compute indegree for each vertex
+        for col in range(cols):
+            indegree[col] = 0
+            for row in range(rows):
+                if AMat[row][col] == 1:
+                    indegree[col] = indegree[col] + 1
+        
+        # Topological sort Computing process
+        for i in range(rows):
+            # Select the min level vertex for removing the graph which has indegree 0
+            zero_indegree = [k for k in range(cols) if indegree[k] == 0]
+            if not zero_indegree:return toposortlist #Handle the case where there are no more zero indegree vertices
+            
+            j = zero_indegree[0]
+            # Store the removed vertex j in toposortlist and reduce the indegree by one 
+            toposortlist.append(j)
+            indegree[j] = indegree[j] - 1
+            
+            # Reduce the indegree of each adjacent of the removed vertex j by 1
+            for k in range(cols):
+                if AMat[j][k] == 1:
+                    indegree[k] = indegree[k] - 1
+                    
+        return(toposortlist)
+
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -&gt; bool:
+        adjacency_matrix = self.preprocessing(numCourses, prerequisites)
+        toposortlist = self.toposort(adjacency_matrix)
+        if len(toposortlist) == numCourses: return True
+        return False
+</code>
+</pre>
+</details>
 </section>
 <section id="topological-sort-better-implementation" class="level4">
 <h4 class="anchored" data-anchor-id="topological-sort-better-implementation">2.2 Topological Sort: Better Implementation</h4>
@@ -553,47 +529,52 @@ Question:
 <li>Keep a dictionary of indegrees which counts the indegrees for each vertex</li>
 </ul>
 <p>Time Complexity: <span class="math inline">\(O(|V| + |E|)\)</span></p>
-<section id="code-implementation-2" class="level5">
-<h5 class="anchored" data-anchor-id="code-implementation-2">💻 Code Implementation:</h5>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> deque, Counter</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> canFinish(<span class="va">self</span>, numCourse, prerequisites):</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        AList <span class="op">=</span> { i: [] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(numCourse)}</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        indegree <span class="op">=</span> Counter()</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        visited <span class="op">=</span> { i:<span class="va">False</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(numCourse)}</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> course, prereq <span class="kw">in</span> prerequisites:</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>            AList[prereq].append(course)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>            indegree[course] <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Initialization</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        toposortlist <span class="op">=</span> []</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        zerodegreeq <span class="op">=</span> deque()</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Find the vertex with indegree 0 and added into the queue</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> u <span class="kw">in</span> <span class="bu">range</span>(numCourse):</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> indegree[u] <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>                zerodegreeq.append(u)</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Topological sort Computing process</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> (zerodegreeq):</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Remove one vertex from queue which have zero degree vertices</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>            curr_vertex <span class="op">=</span> zerodegreeq.popleft()       </span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Store the removed vertex in toposortlist and reduce the indegree by one </span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>            toposortlist.append(curr_vertex)</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>            indegree[curr_vertex] <span class="op">=</span> indegree[curr_vertex]<span class="op">-</span><span class="dv">1</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Repeat for each adjacent of the removed vertex</span></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> adj_vertex <span class="kw">in</span> AList[curr_vertex]:</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Reduce the indegree of each adjacent of the removed vertex by 1</span></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>                indegree[adj_vertex] <span class="op">=</span> indegree[adj_vertex] <span class="op">-</span> <span class="dv">1</span></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>                <span class="co"># If after reducing the degree of adjacent, it becomes zero then insert it into the queue</span></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> indegree[adj_vertex] <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>                    zerodegreeq.append(adj_vertex)                </span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">len</span>(toposortlist) <span class="op">==</span> numCourse</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
+<details>
+<summary>
+<strong>Need help with implementation?</strong>
+</summary>
+<pre><code class="language-python">
+from collections import deque, Counter
+
+class Solution:
+    def canFinish(self, numCourse, prerequisites):
+        AList = { i: [] for i in range(numCourse)}
+        indegree = Counter()
+        visited = { i:False for i in range(numCourse)}
+
+        for course, prereq in prerequisites:
+            AList[prereq].append(course)
+            indegree[course] += 1
+    
+        # Initialization
+        toposortlist = []
+        zerodegreeq = deque()
+        
+        # Find the vertex with indegree 0 and added into the queue
+        for u in range(numCourse):
+            if indegree[u] == 0:
+                zerodegreeq.append(u)
+        
+        # Topological sort Computing process
+        while (zerodegreeq):
+            # Remove one vertex from queue which have zero degree vertices
+            curr_vertex = zerodegreeq.popleft()       
+            # Store the removed vertex in toposortlist and reduce the indegree by one 
+            toposortlist.append(curr_vertex)
+            indegree[curr_vertex] = indegree[curr_vertex]-1
+            
+            # Repeat for each adjacent of the removed vertex
+            for adj_vertex in AList[curr_vertex]:
+                # Reduce the indegree of each adjacent of the removed vertex by 1
+                indegree[adj_vertex] = indegree[adj_vertex] - 1
+                # If after reducing the degree of adjacent, it becomes zero then insert it into the queue
+                if indegree[adj_vertex] == 0:
+                    zerodegreeq.append(adj_vertex)                
+        
+        return len(toposortlist) == numCourse
+</code>
+</pre>
+</details>
 </section>
 </section>
 <section id="course-schedule-ii" class="level3">
@@ -628,74 +609,74 @@ Question:
 </ul></li>
 <li>Once we have the graph, we can run BFS on this graph, which will return the shortest path.</li>
 </ul>
-<section id="code-implementation-3" class="level5">
-<h5 class="anchored" data-anchor-id="code-implementation-3">💻 Code Implementation:</h5>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> deque</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Using BFS approch For Adjacency list, for path, maintaining the parent of each vertex</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Using BFS approch maintaing the adjacent level number from source vertrex</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> BFSListPathLevel(AList,v):</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialization</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    (level,parent) <span class="op">=</span> ({},{})</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> each_vertex <span class="kw">in</span> AList.keys():</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        level[each_vertex] <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        parent[each_vertex] <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create Queue object q</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    q <span class="op">=</span> deque()</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Assigning the level 0 for start_vertex and insert it into the queue</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    level[v] <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    q.append(v)</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Repeat the following until the queue is empty</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> q:</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Remove the one vertex from queue</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        curr_vertex <span class="op">=</span> q.popleft()</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Visit the each adjacent of curr_vertex(if level value is -1) and insert into the queue</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> adj_vertex <span class="kw">in</span> AList[curr_vertex]:</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (level[adj_vertex] <span class="op">==</span> <span class="op">-</span><span class="dv">1</span>):</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Assign the level value on each adjacent one more than the curr_vertex level</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>                level[adj_vertex] <span class="op">=</span> level[curr_vertex] <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Assigne the curr_vertex as parent of adjacent vertex of curr_vertex</span></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>                parent[adj_vertex] <span class="op">=</span> curr_vertex</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>                q.append(adj_vertex)</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>                </span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(level,parent)</span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_indices(<span class="va">self</span>, cell, n):</span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""A helper function to convert the Boustrophedon style sequence into a cell's row and column index"""</span></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>        remainder <span class="op">=</span> (n <span class="op">-</span> <span class="dv">1</span>) <span class="op">%</span> <span class="dv">2</span></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>        row <span class="op">=</span> (n <span class="op">-</span> <span class="dv">1</span>) <span class="op">-</span> ((cell <span class="op">-</span> <span class="dv">1</span>) <span class="op">//</span> n)</span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> row <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> remainder:</span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>            col <span class="op">=</span> (cell <span class="op">%</span> n) <span class="op">-</span> <span class="dv">1</span> <span class="cf">if</span> cell <span class="op">%</span> n <span class="op">!=</span> <span class="dv">0</span> <span class="cf">else</span> n <span class="op">-</span> <span class="dv">1</span></span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>            col <span class="op">=</span> (n) <span class="op">-</span> (cell <span class="op">%</span> n) <span class="cf">if</span> cell <span class="op">%</span> n <span class="op">!=</span><span class="dv">0</span> <span class="cf">else</span> <span class="dv">0</span></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> row, col</span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> preprocessing(<span class="va">self</span>, board:List[List[<span class="bu">int</span>]]) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">list</span>[<span class="bu">int</span>]]:</span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Converts the board into a graph"""</span></span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="bu">len</span>(board)</span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>        AList <span class="op">=</span> {i:<span class="bu">set</span>() <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, n<span class="op">*</span>n <span class="op">+</span> <span class="dv">1</span>)}</span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, n<span class="op">*</span>n <span class="op">+</span> <span class="dv">1</span>):</span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i <span class="op">+</span> <span class="dv">1</span>, <span class="bu">min</span>(i <span class="op">+</span> <span class="dv">7</span>, n<span class="op">*</span>n <span class="op">+</span> <span class="dv">1</span>)): </span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>                row, col <span class="op">=</span> <span class="va">self</span>.get_indices(j, n)</span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>                val <span class="op">=</span> board[row][col]</span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> val <span class="op">==</span> <span class="op">-</span><span class="dv">1</span>:</span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>                    AList[i].add(j)</span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> val <span class="op">==</span> i:</span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>                        <span class="cf">continue</span></span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>                    AList[i].add(val)</span>
-<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> AList            </span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> snakesAndLadders(<span class="va">self</span>, board: List[List[<span class="bu">int</span>]]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="bu">len</span>(board)</span>
-<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>        AList <span class="op">=</span> <span class="va">self</span>.preprocessing(board)</span>
-<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>        level, parent <span class="op">=</span> BFSListPathLevel(AList, <span class="dv">1</span>)</span>
-<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> level[n<span class="op">*</span>n] <span class="co"># The last cell holds shortest path from start to the last cell</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
+<details>
+<summary>
+<strong>Need help with the implementation?</strong>
+</summary>
+<pre><code class="language-python">
+
+from collections import deque
+
+# The BFS code from the PDSA book
+def BFSListPathLevel(AList,v):
+    (level,parent) = ({},{})
+    for each_vertex in AList.keys():
+        level[each_vertex] = -1
+        parent[each_vertex] = -1
+    
+    q = deque()
+    
+    level[v] = 0
+    q.append(v)
+    
+    while q:
+        curr_vertex = q.popleft()
+        for adj_vertex in AList[curr_vertex]:
+            if (level[adj_vertex] == -1):
+                level[adj_vertex] = level[curr_vertex] + 1
+                parent[adj_vertex] = curr_vertex
+                q.append(adj_vertex)
+                
+    return(level,parent)
+
+class Solution:
+    def get_indices(self, cell, n):
+        """
+        A helper function to convert the Boustrophedon style sequence 
+        into a cell's row and column index
+        """
+        remainder = (n - 1) % 2
+        row = (n - 1) - ((cell - 1) // n)
+        if row % 2 == remainder:
+            col = (cell % n) - 1 if cell % n != 0 else n - 1
+        else:
+            col = (n) - (cell % n) if cell % n !=0 else 0
+        return row, col
+
+    def preprocessing(self, board:List[List[int]]) -&gt; list[list[int]]:
+        """Converts the board into a graph"""
+        n = len(board)
+        AList = {i:set() for i in range(1, n*n + 1)}
+        for i in range(1, n*n + 1):
+            for j in range(i + 1, min(i + 7, n*n + 1)): 
+                row, col = self.get_indices(j, n)
+                val = board[row][col]
+                if val == -1:
+                    AList[i].add(j)
+                else:
+                    if val == i:
+                        continue
+                    AList[i].add(val)
+        return AList            
+            
+    def snakesAndLadders(self, board: List[List[int]]) -&gt; int:
+        n = len(board)
+        AList = self.preprocessing(board)
+        level, parent = BFSListPathLevel(AList, 1)
+        return level[n*n] # The last cell holds shortest path from start to the last cell
+</code>
+</pre>
+</details>
 </section>
 </section>
 <section id="sort-items-by-groups-respecting-dependencies" class="level3">
@@ -742,117 +723,122 @@ Group 1: Items [3, 4]</code></pre>
 <li>Then, within each group, sort the items using topological sorting.</li>
 </ul></li>
 </ul>
-<section id="code-implementation-4" class="level5">
-<h5 class="anchored" data-anchor-id="code-implementation-4">💻 Code Implementation:</h5>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> deque</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_group_wise_elements(<span class="va">self</span>, group, m):</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Helper function to quickly access all items belonging to a group"""</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        group_wise_elements <span class="op">=</span> { i:[] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(m) }</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(group)):</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>            grp <span class="op">=</span> group[i] <span class="cf">if</span> group[i] <span class="op">&gt;=</span> <span class="dv">0</span> <span class="cf">else</span> <span class="op">-</span>i<span class="op">-</span><span class="dv">1</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> grp <span class="kw">not</span> <span class="kw">in</span> group_wise_elements:</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>                group_wise_elements[grp] <span class="op">=</span> []</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>            group_wise_elements[grp].append(i)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> group_wise_elements</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> preprocessing(<span class="va">self</span>, beforeItems, group, m, n, groupwise_items):</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">        Given the beforeItems array, this function converts it into two graphs- Groups and Items. </span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">        Along with it, we are also returning the indegrees of each of the graphs' nodes so that we </span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co">        can smoothly run topological sort. </span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>        group_indegree, items_indegree <span class="op">=</span> {}, {i:<span class="dv">0</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n)}</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>        items_alist <span class="op">=</span>  {i:[] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n)}</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>        group_alist <span class="op">=</span> {}</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> key <span class="kw">in</span> groupwise_items:</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>            group_alist[key] <span class="op">=</span> <span class="bu">set</span>()</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>            group_indegree[key] <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(beforeItems)):</span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>            before <span class="op">=</span> beforeItems[i]</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> num <span class="kw">in</span> before:</span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> num <span class="kw">not</span> <span class="kw">in</span> items_alist:</span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>                    items_alist[num] <span class="op">=</span> [ ]</span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>                items_alist[num].append(i)</span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>                items_indegree[i] <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>                grp_num <span class="op">=</span> group[num] <span class="cf">if</span> group[num] <span class="op">&gt;=</span> <span class="dv">0</span> <span class="cf">else</span> <span class="op">-</span>num<span class="op">-</span><span class="dv">1</span></span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>                grp_i <span class="op">=</span> group[i] <span class="cf">if</span> group[i] <span class="op">&gt;=</span> <span class="dv">0</span> <span class="cf">else</span> <span class="op">-</span>i<span class="op">-</span><span class="dv">1</span>  </span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> grp_num <span class="op">!=</span> grp_i:</span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> grp_num <span class="kw">not</span> <span class="kw">in</span> group_alist:</span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>                        group_alist[grp_num] <span class="op">=</span> <span class="bu">set</span>()</span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>                    group_alist[grp_num].add(grp_i)</span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> key <span class="kw">in</span> group_alist.keys():</span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>            group_alist[key] <span class="op">=</span> <span class="bu">list</span>(group_alist[key])</span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> start_node <span class="kw">in</span> group_alist.keys():</span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> end_node <span class="kw">in</span> group_alist[u]:</span>
-<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> end_node <span class="kw">not</span> <span class="kw">in</span> group_indegree:</span>
-<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>                    group_indegree[end_node] <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>                group_indegree[end_node] <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> items_alist, group_alist, items_indegree, group_indegree</span>
-<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> lpath(<span class="va">self</span>, items_alist, group_alist, items_indegree, group_indegree, groupwise_items, n, group):</span>
-<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""The actual nested topological sorting algorithm"""</span></span>
-<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>        output <span class="op">=</span> [ ]</span>
-<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>        grp_queue <span class="op">=</span> deque()</span>
-<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>        items_queue <span class="op">=</span> deque()</span>
-<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> grp <span class="kw">in</span> group_indegree:</span>
-<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> group_indegree[grp] <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>                grp_queue.append(grp)</span>
-<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Outer topological sort is for groups</span></span>
-<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> grp_queue:</span>
-<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>            curr_grp <span class="op">=</span> grp_queue.popleft()</span>
-<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a>            group_indegree[curr_grp] <span class="op">-=</span> <span class="dv">1</span></span>
-<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> adj_grp <span class="kw">in</span> group_alist[curr_grp]:</span>
-<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Reduce the indegree of each adjacent group of the removed vertex by 1</span></span>
-<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a>                group_indegree[adj_grp] <span class="op">-=</span> <span class="dv">1</span></span>
-<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Add new zero degree groups to the group deque</span></span>
-<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> group_indegree[adj_grp] <span class="op">==</span> <span class="dv">0</span> :</span>
-<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>                    grp_queue.append(adj_grp)</span>
-<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>            <span class="co"># For popped group, find out zero degree items</span></span>
-<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> i <span class="kw">in</span> groupwise_items[curr_grp]:</span>
-<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> items_indegree[i] <span class="op">==</span> <span class="dv">0</span> :</span>
-<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a>                    items_queue.append(i)</span>
-<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Topological sort is for the items</span></span>
-<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a>            <span class="cf">while</span> items_queue:</span>
-<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Remove one vertex from items queue which have zero degree items and reduce the indegree</span></span>
-<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a>                curr_vertex <span class="op">=</span> items_queue.popleft()</span>
-<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a>                output.append(curr_vertex)</span>
-<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a>                items_indegree[curr_vertex] <span class="op">=</span> items_indegree[curr_vertex] <span class="op">-</span> <span class="dv">1</span></span>
-<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a>                </span>
-<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Repeat for each adjacent of the removed item </span></span>
-<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> adj_vertex <span class="kw">in</span> items_alist[curr_vertex]:</span>
-<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># Reduce the indegree of each adjacent of the removed item by 1</span></span>
-<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a>                    items_indegree[adj_vertex] <span class="op">=</span> items_indegree[adj_vertex] <span class="op">-</span> <span class="dv">1</span></span>
-<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># Add items to items deque if their indegree becomes zero</span></span>
-<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> items_indegree[adj_vertex] <span class="op">==</span> <span class="dv">0</span> <span class="kw">and</span> group[adj_vertex] <span class="op">==</span> curr_grp:</span>
-<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a>                        items_queue.append(adj_vertex)</span>
-<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(output) <span class="op">!=</span> n: <span class="cf">return</span> []</span>
-<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> output</span>
-<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> sortItems(<span class="va">self</span>, n: <span class="bu">int</span>, m: <span class="bu">int</span>, group: List[<span class="bu">int</span>], beforeItems: List[List[<span class="bu">int</span>]]) <span class="op">-&gt;</span> List[<span class="bu">int</span>]:</span>
-<span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a>        group_wise_items <span class="op">=</span> <span class="va">self</span>.get_group_wise_elements(group, m)</span>
-<span id="cb6-105"><a href="#cb6-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-106"><a href="#cb6-106" aria-hidden="true" tabindex="-1"></a>        items_alist, group_alist, items_indegree, group_indegree <span class="op">=</span> <span class="va">self</span>.preprocessing(beforeItems,group, m, n, group_wise_items)</span>
-<span id="cb6-107"><a href="#cb6-107" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb6-108"><a href="#cb6-108" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.lpath(items_alist, group_alist, items_indegree, group_indegree, group_wise_items, n, group)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
+<details>
+<summary>
+<strong>Need help with the implementation?</strong>
+</summary>
+<pre><code class="language-python">
+from collections import deque
+
+class Solution:
+    def get_group_wise_elements(self, group, m):
+        """Helper function to quickly access all items belonging to a group"""
+        group_wise_elements = { i:[] for i in range(m) }
+        for i in range(len(group)):
+            grp = group[i] if group[i] &gt;= 0 else -i-1
+            if grp not in group_wise_elements:
+                group_wise_elements[grp] = []
+            group_wise_elements[grp].append(i)
+        return group_wise_elements
+
+    def preprocessing(self, beforeItems, group, m, n, groupwise_items):
+        """
+        Given the beforeItems array, this function converts it into two graphs- Groups and Items. 
+        Along with it, we are also returning the indegrees of each of the graphs' nodes so that we 
+        can smoothly run topological sort. 
+        """
+        group_indegree, items_indegree = {}, {i:0 for i in range(n)}
+        items_alist =  {i:[] for i in range(n)}
+        group_alist = {}
+
+        for key in groupwise_items:
+            group_alist[key] = set()
+            group_indegree[key] = 0
+ 
+        for i in range(len(beforeItems)):
+            before = beforeItems[i]
+            for num in before:
+                if num not in items_alist:
+                    items_alist[num] = [ ]
+                items_alist[num].append(i)
+                items_indegree[i] += 1
+
+                grp_num = group[num] if group[num] &gt;= 0 else -num-1
+                grp_i = group[i] if group[i] &gt;= 0 else -i-1  
+                if grp_num != grp_i:
+                    if grp_num not in group_alist:
+                        group_alist[grp_num] = set()
+                    group_alist[grp_num].add(grp_i)
+        
+        for key in group_alist.keys():
+            group_alist[key] = list(group_alist[key])
+
+        for start_node in group_alist.keys():
+            for end_node in group_alist[u]:
+                if end_node not in group_indegree:
+                    group_indegree[end_node] = 0
+                group_indegree[end_node] += 1
+
+        return items_alist, group_alist, items_indegree, group_indegree
+
+    
+    def lpath(self, items_alist, group_alist, items_indegree, group_indegree, groupwise_items, n, group):
+        """The actual nested topological sorting algorithm"""
+        output = [ ]
+
+        grp_queue = deque()
+        items_queue = deque()
+
+        for grp in group_indegree:
+            if group_indegree[grp] == 0:
+                grp_queue.append(grp)
+
+        # Outer topological sort is for groups
+        while grp_queue:
+            curr_grp = grp_queue.popleft()
+            group_indegree[curr_grp] -= 1
+            for adj_grp in group_alist[curr_grp]:
+                # Reduce the indegree of each adjacent group of the removed vertex by 1
+                group_indegree[adj_grp] -= 1
+
+                # Add new zero degree groups to the group deque
+                if group_indegree[adj_grp] == 0 :
+                    grp_queue.append(adj_grp)
+
+            # For popped group, find out zero degree items
+            for i in groupwise_items[curr_grp]:
+                if items_indegree[i] == 0 :
+                    items_queue.append(i)
+
+            # Topological sort is for the items
+            while items_queue:
+
+                # Remove one vertex from items queue which have zero degree items and reduce the indegree
+                curr_vertex = items_queue.popleft()
+                output.append(curr_vertex)
+                items_indegree[curr_vertex] = items_indegree[curr_vertex] - 1
+                
+                # Repeat for each adjacent of the removed item 
+                for adj_vertex in items_alist[curr_vertex]:
+                    # Reduce the indegree of each adjacent of the removed item by 1
+                    items_indegree[adj_vertex] = items_indegree[adj_vertex] - 1
+
+                    # Add items to items deque if their indegree becomes zero
+                    if items_indegree[adj_vertex] == 0 and group[adj_vertex] == curr_grp:
+                        items_queue.append(adj_vertex)
+
+        if len(output) != n: return []
+        return output
+
+    def sortItems(self, n: int, m: int, group: List[int], beforeItems: List[List[int]]) -&gt; List[int]:
+        group_wise_items = self.get_group_wise_elements(group, m)
+
+        items_alist, group_alist, items_indegree, group_indegree = self.preprocessing(beforeItems,group, m, n, group_wise_items)
+        
+        return self.lpath(items_alist, group_alist, items_indegree, group_indegree, group_wise_items, n, group)
+</code>
+</pre>
+</details>
 </section>
 </section>
 <section id="find-if-path-exists" class="level3">
@@ -867,32 +853,40 @@ Group 1: Items [3, 4]</code></pre>
 <pre><code>for u, v in edges:
     adj_list[u].append(v)
     adj_list[v].append(u)</code></pre>
-<section id="code-implementation-5" class="level5">
-<h5 class="anchored" data-anchor-id="code-implementation-5">💻 Code Implementation:</h5>
+<section id="code-implementation" class="level5">
+<h5 class="anchored" data-anchor-id="code-implementation">💻 Code Implementation:</h5>
 <p>Note: For a better, more neat code, we have used the <code>deque</code> data structure from the <code>collections</code> module in Python. We can use it to implement a <code>queue</code> used in BFS. It’s a useful data structure to know.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> deque</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> validPath(<span class="va">self</span>, n: <span class="bu">int</span>, edges: List[List[<span class="bu">int</span>]], source: <span class="bu">int</span>, destination: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        adj_list <span class="op">=</span> { i:[ ] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n) }</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        visited <span class="op">=</span> <span class="bu">set</span>()</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Create the adjacency list representation from Graph</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> u, v <span class="kw">in</span> edges:</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>            adj_list[u].append(v)</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>            adj_list[v].append(u)</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        queue <span class="op">=</span> deque([source])</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        visited.add(source)</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> queue:</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>            vertex <span class="op">=</span> queue.popleft()</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> vertex <span class="op">==</span> destination:</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> <span class="va">True</span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> neighbor <span class="kw">in</span> adj_list[vertex]:</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> neighbor <span class="kw">not</span> <span class="kw">in</span> visited:</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>                    queue.append(neighbor)</span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>                    visited.add(neighbor)</span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details>
+<summary>
+<strong>Need help with the implementation?</strong>
+</summary>
+<pre><code class="language-python">
+from collections import deque
+
+class Solution:
+    def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -&gt; bool:
+        adj_list = { i:[ ] for i in range(n) }
+        visited = set()
+
+        # Create the adjacency list representation from Graph
+        for u, v in edges:
+            adj_list[u].append(v)
+            adj_list[v].append(u)
+
+        queue = deque([source])
+        visited.add(source)
+        while queue:
+            vertex = queue.popleft()
+            if vertex == destination:
+                return True
+            for neighbor in adj_list[vertex]:
+                if neighbor not in visited:
+                    queue.append(neighbor)
+                    visited.add(neighbor)
+        return False
+</code>
+</pre>
+</details>
 </section>
 </section>
 </section>
@@ -919,65 +913,70 @@ Tip
 <p>This is a <strong>connected components</strong> problem. We need to find how many separate groups of connected nodes exist in the graph.</p>
 <p><strong>💡 The Solution:</strong></p>
 <p>To solve this, we can use either <strong>BFS</strong> or <strong>DFS</strong>. For this explanation, we’ll go with <strong>BFS</strong> to explore each connected component one by one.</p>
-<section id="code-implementation-6" class="level5">
-<h5 class="anchored" data-anchor-id="code-implementation-6">💻 Code Implementation:</h5>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> deque</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_neighbors(<span class="va">self</span>, AMat, vertex):</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Helper function to find out all neighbors of a node given the adjacency matrix."""</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        neighbors <span class="op">=</span> []</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(AMat)):</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> AMat[vertex][i] <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>                neighbors.append(i)</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> neighbors</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> BFS(<span class="va">self</span>, AMat, source):</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">        Runs BFS from a given source vertex and returns the set of vertices visited in that run of BFS.</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">        That is, each run of the BFS will give us one province, or one connected component.</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>        visited <span class="op">=</span> <span class="bu">set</span>()</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>        queue <span class="op">=</span> deque([source])  <span class="co"># Initialize the queue with the source vertex</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>        visited.add(source)</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> queue:</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>            vertex <span class="op">=</span> queue.popleft()</span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>            neighbors <span class="op">=</span> <span class="va">self</span>.get_neighbors(AMat, vertex)  <span class="co"># Pass both AMat and vertex</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> neighbor <span class="kw">in</span> neighbors:</span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> neighbor <span class="kw">not</span> <span class="kw">in</span> visited:</span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>                    queue.append(neighbor)</span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>                    visited.add(neighbor)</span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> visited</span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> findCircleNum(<span class="va">self</span>, isConnected):</span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Initially, every vertex gets an invalid component number</span></span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>        components <span class="op">=</span> {i: <span class="op">-</span><span class="dv">1</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(isConnected))}</span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Keep track of the component number and the number of vertices already visited across BFS runs</span></span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>        component_number <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>        seen <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> seen <span class="op">&lt;</span> <span class="bu">len</span>(isConnected):</span>
-<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>            startvertex <span class="op">=</span> <span class="bu">min</span>([i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(isConnected)) <span class="cf">if</span> components[i] <span class="op">==</span> <span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>            visited <span class="op">=</span> <span class="va">self</span>.BFS(isConnected, startvertex)</span>
-<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>            <span class="co"># For every vertex that was visited in the current run of BFS, update its component number and update </span></span>
-<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>            <span class="co"># the number of vertices seen.</span></span>
-<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> vertex <span class="kw">in</span> visited:</span>
-<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>                components[vertex] <span class="op">=</span> component_number</span>
-<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>                seen <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Increment component number such that for the next run of BFS, </span></span>
-<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>            <span class="co"># a different component number will be assigned</span></span>
-<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>            component_number <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> component_number </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details>
+<summary>
+<strong>Need help with the implementation?</strong>
+</summary>
+<pre><code class="language-python">
+from collections import deque
+
+class Solution:
+    def get_neighbors(self, AMat, vertex):
+        """Helper function to find out all neighbors of a node given the adjacency matrix."""
+        neighbors = []
+        for i in range(len(AMat)):
+            if AMat[vertex][i] == 1:
+                neighbors.append(i)
+        return neighbors
+
+    def BFS(self, AMat, source):
+        """
+        Runs BFS from a given source vertex and returns the set of vertices visited in that run of BFS.
+        That is, each run of the BFS will give us one province, or one connected component.
+        """
+        visited = set()
+        queue = deque([source])  # Initialize the queue with the source vertex
+        visited.add(source)
+        while queue:
+            vertex = queue.popleft()
+            neighbors = self.get_neighbors(AMat, vertex)  # Pass both AMat and vertex
+            for neighbor in neighbors:
+                if neighbor not in visited:
+                    queue.append(neighbor)
+                    visited.add(neighbor)
+        return visited
+
+    def findCircleNum(self, isConnected):
+
+        # Initially, every vertex gets an invalid component number
+        components = {i: -1 for i in range(len(isConnected))}
+
+        # Keep track of the component number and the number of vertices already visited across BFS runs
+        component_number = 0
+        seen = 0
+        
+        while seen &lt; len(isConnected):
+            startvertex = min([i for i in range(len(isConnected)) if components[i] == -1])
+            visited = self.BFS(isConnected, startvertex)
+
+            # For every vertex that was visited in the current run of BFS, update its component number and update 
+            # the number of vertices seen.
+            for vertex in visited:
+                components[vertex] = component_number
+                seen += 1
+
+            # Increment component number such that for the next run of BFS, 
+            # a different component number will be assigned
+            component_number += 1
+            
+        return component_number 
+</code>
+</pre>
+</details>
 <!-- Add DFS Backtracking problems here. You can add a callout tip for problem patterns. -->
 <hr>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
