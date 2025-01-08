@@ -1,6 +1,6 @@
 ---
 title: "Daring to Execute"
-image: ""
+image: "./Rajendra Bagwe.jpeg"
 author: "Vikrant Mehta"
 date: "2020-10-31"
 categories: [Business]
