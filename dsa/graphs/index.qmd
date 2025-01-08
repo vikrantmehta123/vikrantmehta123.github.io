@@ -239,24 +239,18 @@ class Solution:
         toposortlist = []
         zerodegreeq = deque()
         
-        # Find the vertex with indegree 0 and added into the queue
+        # Code from PDSA Book
         for u in range(numCourse):
             if indegree[u] == 0:
                 zerodegreeq.append(u)
-        
-        # Topological sort Computing process
+
         while (zerodegreeq):
-            # Remove one vertex from queue which have zero degree vertices
-            curr_vertex = zerodegreeq.popleft()       
-            # Store the removed vertex in toposortlist and reduce the indegree by one 
+            curr_vertex = zerodegreeq.popleft()        
             toposortlist.append(curr_vertex)
             indegree[curr_vertex] = indegree[curr_vertex]-1
             
-            # Repeat for each adjacent of the removed vertex
             for adj_vertex in AList[curr_vertex]:
-                # Reduce the indegree of each adjacent of the removed vertex by 1
                 indegree[adj_vertex] = indegree[adj_vertex] - 1
-                # If after reducing the degree of adjacent, it becomes zero then insert it into the queue
                 if indegree[adj_vertex] == 0:
                     zerodegreeq.append(adj_vertex)                
         

@@ -61,8 +61,13 @@ We need to find the *minimum cost* to connect all points. This is a *Minimum Cos
    - Then, just sum up the edge weights of the Tree. That's our minimum cost! 🏆
 
 
-##### 💻 Code Implementation:
-```python
+<details>
+    <summary>
+        <strong>Need help with the implementation?</strong>
+    </summary>
+
+<pre>
+<code class="language-python">
 def kruskal(WList):
     """Kruskal's as per the PDSA book"""
     (edges,component,TE) = ([],{},[])
@@ -108,7 +113,10 @@ class Solution:
         tree_edges = kruskal(AList)
         minimum_cost = compute_min_cost(tree_edges)
         return minimum_cost
-```
+</code>
+</pre>
+</details>
+
 
 ### 2. [Path with Maximum Probability](https://leetcode.com/problems/path-with-maximum-probability/description/)
 
@@ -130,8 +138,13 @@ It’s similar to finding the shortest path, but here we are finding the *path w
 
 If we never reach the end node, we return `0.0` because there's no valid path! 
 
-##### 💻 Code Implementation:
-```python
+<details>
+    <summary>
+        <strong>Need help with the implementation?</strong>
+    </summary>
+
+<pre>
+<code class="language-python">
 class Solution:
     def maxProbability(self, n: int, edges: List[List[int]], succProb: List[float], start_node: int, end_node: int) -> float:
         # Create an adjacency list
@@ -165,15 +178,22 @@ class Solution:
 
         # If we never reach the end node
         return 0.0
-```
+</code>
+</pre>
+</details>
 
 
 ### 3. [Cheapest Flight Within K Stops](https://leetcode.com/problems/cheapest-flights-within-k-stops/description/)
 
 #### 3.1 Using Dijkstra
 
-##### 💻 Code Implementation:
-```python
+<details>
+    <summary>
+        <strong>Need help with the implementation?</strong>
+    </summary>
+
+<pre>
+<code class="language-python">
 class Solution:
     def findCheapestPrice(self, n, flights, src, dst, k):
         # Create the adjacency list
@@ -215,6 +235,9 @@ class Solution:
         
         # If no valid route found
         return -1
-```
+</code>
+</pre>
+</details>
+
 
 ---

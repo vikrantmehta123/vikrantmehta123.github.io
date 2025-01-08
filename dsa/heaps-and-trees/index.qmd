@@ -43,14 +43,15 @@ If the list is sorted, the tree is a valid BST. If not, it's invalid.
 
 **⏳ Time Complexity:** $O(n)$
 
-##### 💻 Code Implementation:
-```python
+<details>
+    <summary>
+        <strong>Need help with implementation?</strong>
+    </summary>
+
+<pre>
+<code class="language-python">
 class Solution:
     def isValidBST(self, root):
-        """
-        :type root: TreeNode
-        :rtype: bool
-        """
 
         tree = self.inorder_traversal(root) # Do inorder traversal
 
@@ -68,7 +69,9 @@ class Solution:
         if not root:
             return []
         return self.inorder_traversal(root.left) + [root.val] + self.inorder_traversal(root.right)     
-```
+</code>
+</pre>
+</details>
 
 
 ### 2. [Network Delay Time](https://leetcode.com/problems/network-delay-time/description/)
@@ -103,8 +106,13 @@ We need to find out the minimum time it will take for the signal to reach all no
 This is a shortest path problem. Since the weights are non-negative, we can solve it using Dijkstra's algorithm. 
 The minimum time for the signal to reach all nodes is the maximum shortest path found after running Dijkstra. In other words, it’s the time when the last node receives the signal.
 
-##### 💻 Code Implementation:
-```python
+<details>
+    <summary>
+        <strong>Need help with implementation?</strong>
+    </summary>
+
+<pre>
+<code class="language-python">
 import heapq
 
 class Solution:
@@ -143,7 +151,9 @@ class Solution:
         # get "burnt" in Dijkstra's algorithm, which is the same as maximum of shortest distance values
         max_dist = max(dist.values())
         return max_dist if max_dist != float('inf') else -1 # Check if all nodes can be reached or not.
-```
+</code>
+</pre>
+</details>
 
 ### 3 [Maximum Spending After Buying Items](https://leetcode.com/problems/maximum-spending-after-buying-items/description/)
 
@@ -168,8 +178,13 @@ It should be the smallest element that we can remove, because the spending can b
 
 Time Complexity: $O(m^2n)$
 
-##### 💻 Code Implementation:
-```python
+<details>
+    <summary>
+        <strong>Need help with implementation?</strong>
+    </summary>
+
+<pre>
+<code class="language-python">
 class Solution:
     def maxSpending(self, values: List[List[int]]) -> int:
         m, n = len(values), len(values[0])  
@@ -191,7 +206,9 @@ class Solution:
             product_val = values[min_index].pop()
             max_spending += day * product_val
         return max_spending
-```
+</code>
+</pre>
+</details>
 
 #### 3.2 Using Minheaps
 
@@ -309,8 +326,13 @@ When you hear "level-by-level," which algorithm comes to mind? 🤔
 
 Yep, good old **BFS** (Breadth-First Search)! BFS helps us traverse the tree one level at a time, which is exactly what we need here. For each level, we collect all the nodes, then simply compute the **average** of their values.😊
 
-##### 💻 Code Implementation:
-```python
+<details>
+    <summary>
+        <strong>Need help with implementation?</strong>
+    </summary>
+
+<pre>
+<code class="language-python">
 from collections import deque
 
 class Solution:
@@ -341,7 +363,9 @@ class Solution:
             answer.append(level_sum / level_nodes)
 
         return answer
-```
+</code>
+</pre>
+</details>
 
 ### 5. [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/description/)
 
@@ -357,8 +381,13 @@ The problem is straightforward. The easiest way to solve this is by sorting the 
 - Whenever we find an element which is bigger than the minimum element in the heap, we need to insert that element in the heap. By doing this, at the end of the iteration, we will have the min-heap of `k` elements which are the `k` largest numbers in the array. 
 - Among these `k` largest elements, `k`th largest element, is the smallest element (if you're given a list of `k` elements and you want to find `k`th largest element, that's the same as finding the minimum in the list). So at the end, we can pop the smallest element from the min-heap, and return it.
 
-##### 💻 Code Implementation:
-```python
+<details>
+    <summary>
+        <strong>Need help with implementation?</strong>
+    </summary>
+
+<pre>
+<code class="language-python">
 import heapq
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
@@ -377,12 +406,19 @@ class Solution:
 
         # minimum of top k largest number = kth largest in the list
         return heapq.heappop(heap)
-```
+</code>
+</pre>
+</details>
 
 ### 6. [Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/description/)
 
-##### 💻 Code Implementation:
-```python
+<details>
+    <summary>
+        <strong>Need help with implementation?</strong>
+    </summary>
+
+<pre>
+<code class="language-python">
 from collections import deque
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
@@ -407,7 +443,9 @@ class Solution:
 
             levelorder.append(level)
         return levelorder
-```
+</code>
+</pre>
+</details>
 
 ### 7. [Maximum Level Sum of a Binary Tree](https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/description/)
 
