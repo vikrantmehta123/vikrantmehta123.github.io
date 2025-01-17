@@ -1,9 +1,9 @@
 ---
 title: "What Next?"
-image: ""
+image: "Mahesh Bhagwat.jpg"
 author: "Vikrant Mehta"
 date: "2020-06-29"
-categories: [Business]
+categories: [Business, People]
 description: "Meeting someone in the civil services is a special experience. Getting to interview them is even more special. Read on to know an IPS officer's journey."
 ---
 
@@ -12,6 +12,9 @@ description: "Meeting someone in the civil services is a special experience. Get
 Whilst he was busy, I had enough time to look around his office. Spacious and stylish. Brilliant blues and polished whites. Behind him, accolades shone proudly. A replica of a rocket, a signed cricket bat, and his khaki cap added to the beauty.
 
 I was lucky. Although I needed to be quick, I got 18 minutes of precious, uninterrupted time.
+
+![Personal Photo with Mahesh Bhagwat](Mahesh%20Bhagwat.jpg)
+*Photo with Mahesh Bhagwat*
 
 He is remarkably soft spoken and a bit shy. His gaze always finds something curious to look at. His words, too, are few and measured.
 

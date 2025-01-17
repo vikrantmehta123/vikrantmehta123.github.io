@@ -3,7 +3,7 @@ title: "Daring to Execute"
 image: "./Rajendra Bagwe.jpeg"
 author: "Vikrant Mehta"
 date: "2020-10-31"
-categories: [Business]
+categories: [Business, People]
 description: "Three friends, a risky gamble, and a relentless spirit made Reliable Engineers India's top engineering companies. Rajendra's business journey is one that only a few will dare to try."
 ---
 

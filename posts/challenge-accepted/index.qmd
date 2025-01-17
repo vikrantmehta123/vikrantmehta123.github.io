@@ -3,7 +3,7 @@ title: "Challenge Accepted!"
 image: "./Shashikant Parakh.jpeg"
 author: "Vikrant Mehta"
 date: "2021-06-07"
-categories: [Business]
+categories: [Business, People]
 description: "The incredible journey of Shashikant Parakh, the man who transformed NAMCO Hospital and built a legacy of success through relentless challenges. From business ventures to life lessons, his story is a testament to dreaming big and making a difference."
 ---
 
