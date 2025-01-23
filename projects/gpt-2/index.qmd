@@ -1,5 +1,5 @@
 ---
-title: "The Shakespeare In Me"
+title: "GPT-2"
 author: "Vikrant Mehta"
 date: "2025-01-17"
 image: 'GPT-2.png'
