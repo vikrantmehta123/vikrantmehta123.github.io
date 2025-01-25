@@ -9,9 +9,7 @@ description: "In this project, I implemented GPT-2 architecture from scratch."
 
 ### Project Overview
 
-In this project, I tried to implement the GPT-2 architecture from scratch using PyTorch. I trained the model using the FineWeb_Edu dataset, and evaluated using the Hellaswag dataset. 
-
-For training, I rented a few Lambda Labs GPUs.
+In this project, I tried to implement the full GPT-2 architecture from scratch using PyTorch. I pretrained the model using the *FineWeb_Edu* dataset. The model is an implementation and an improvement on the GPT-2 124M model.
 
 I relied heavily on Andrej Karpathy's tutorial and Mitesh Khapra Sir's lectures to understand the internals of GPT-2 better. 
 

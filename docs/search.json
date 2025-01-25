@@ -443,7 +443,7 @@
     "href": "projects/gpt-2/index.html",
     "title": "GPT-2",
     "section": "",
-    "text": "Project Overview\nIn this project, I tried to implement the GPT-2 architecture from scratch using PyTorch. I trained the model using the FineWeb_Edu dataset, and evaluated using the Hellaswag dataset.\nFor training, I rented a few Lambda Labs GPUs.\nI relied heavily on Andrej Karpathy’s tutorial and Mitesh Khapra Sir’s lectures to understand the internals of GPT-2 better.\n\n\nTech Stack\n\nPyTorch\n\nGitHub Repository\nFor more details, the full source code can be found on GitHub: Source Code"
+    "text": "Project Overview\nIn this project, I tried to implement the full GPT-2 architecture from scratch using PyTorch. I pretrained the model using the FineWeb_Edu dataset. The model is an implementation and an improvement on the GPT-2 124M model.\nI relied heavily on Andrej Karpathy’s tutorial and Mitesh Khapra Sir’s lectures to understand the internals of GPT-2 better.\n\n\nTech Stack\n\nPyTorch\n\nGitHub Repository\nFor more details, the full source code can be found on GitHub: Source Code"
   },
   {
     "objectID": "posts/navigating-gold/index.html",
