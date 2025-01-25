@@ -1,10 +1,10 @@
 ---
 title: "Navigating Gold"
-image: "./Anil Dande.jpeg"
+image: "./Anil Dande.jpg"
 author: "Vikrant Mehta"
 date: "2020-06-07"
 categories: [Business, People]
-description: ""
+description: "The man behind the best retail store of India tells his story. Read on to know more."
 ---
 
 A magnificent three-storey building, proudly displaying the name **Govind Dande and Sons**, was my next stop. When you enter GDS, everything around you is exquisite and you are blinded by the resplendence. But that is not the most impressive thing. Instead, it is how you are treated when you enter GDS. A middle-aged man, smiling—not because his boss tells him to, but because he wants to—greets you and makes you feel truly welcome.
