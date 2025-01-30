@@ -1,6 +1,7 @@
 ---
 title: "From Ashes to an Empire!"
 author: "Vikrant Mehta"
+image: "./Amol Kasar.jpg"
 date: "2020-05-07"
 categories: [Business, People]
 description: ""
