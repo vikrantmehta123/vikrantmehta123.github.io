@@ -11,37 +11,29 @@ about:
       href: https://github.com/vikrantmehta123
     - text: CV
       href: ./assets/CV.pdf
+
+include-after-body: footer.html
 ---
 
 :::{#hero-layout}
 
-Hi, I'm Vikrant👋. I’m a final-year student at IIT Madras, pursuing a B.S. in Data Science and Applications. I currently work as a Teaching Assistant for the Data Structures and Algorithms (PDSA) course and as a Software Engineering intern at VuNet Systems in Bangalore.
+Hi, I'm Vikrant👋. 
 
-Outside of academics, I love sports, theatre, and finance. I play chess, tennis, and cricket. I'm an avid reader, and I write about what I read, projects I'm building, or my learning journey.
+I am an Arts graduate (B.A. in Psychology) who loves computer science. To that end I am pursuing an online B.S. in Data Science from IIT Madras. I currently work in the data science team at VuNet Systems, Bangalore. 
+
+I like building things from scratch. I love sports, theatre, and finance. I play chess, tennis, and cricket. I'm an avid reader and I write about what I read, the projects I'm building, or the amazing people that I meet.
 
 ---
-
-### Education
-
-**Indian Institute of Technology, Madras**  
-
-*B.S. in Data Science* | Sept 2021 - Sept 2025
-
-**H.P.T. Arts College, Nashik** 
-
-*B.A. in Psychology* | June 2018 - June 2021  
-
---- 
 
 ### Experience
 
 **VuNet Systems**, *Bangalore* 
 
-*Software Engineering Intern* | Oct 2024 - Present  
+*Data Science Team* | Oct 2024 - Present  
 
 **IIT Madras**, *Chennai*  
 
-*Teaching Assistant* | June 2024 - Present 
+*Teaching Assistant* | June 2024 - Jan 2025 
 
 :::
 

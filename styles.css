@@ -3,3 +3,17 @@
     font-weight: 500;
     font-style: normal;
 }
+
+.slideshow-container {
+    position: relative;
+  }
+  
+  /* Slides */
+  .mySlides {
+    display: none;
+    padding: 4px;
+    text-align: center;
+  }
+  
+  /* Add a blue color to the author */
+  .author {color: cornflowerblue;}
