@@ -19,9 +19,13 @@ include-after-body: footer.html
 
 Hi, I'm Vikrant👋. 
 
-I am an Arts graduate (B.A. in Psychology) who loves computer science. To that end I am pursuing an online B.S. in Data Science from IIT Madras. I currently work in the data science team at VuNet Systems, Bangalore. 
+I am an Arts graduate (B.A. in Psychology) who loves computer science. To that end, I am pursuing an online B.S. in Data Science from IIT Madras while working in the big data team at VuNet Systems, Bangalore. 
 
-I like building things from scratch. I love sports, theatre, and finance. I play chess, tennis, and cricket. I'm an avid reader and I write about what I read, the projects I'm building, or the amazing people that I meet.
+Knowing what's *under the hood* is a joy to me. Building things from scratch is my kind of fun.
+
+Beyond computers, I love sports, theatre, and finance. You'll often find me playing chess or tennis. I strongly believe books are closest things to magic in the world of muggles.
+
+I write about what I read, the projects I'm building, or the amazing people that I meet.
 
 ---
 
