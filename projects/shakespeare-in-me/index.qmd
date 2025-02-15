@@ -24,3 +24,5 @@ I trained the model on Google Colab GPU for 40 mins, and after training the mode
 For more details, the full source code can be found on GitHub: [Source Code](https://github.com/vikrantmehta123/gpt-from-scratch)
 
 And for a curious reading, the output could be found here: [more.txt](https://github.com/vikrantmehta123/gpt-from-scratch/blob/main/shakespeare-in-me/more.txt)
+
+---

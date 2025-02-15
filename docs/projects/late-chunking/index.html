@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Vikrant Mehta">
-<meta name="dcterms.date" content="2024-10-29">
-<meta name="description" content="Manually getting data from websites like Screener can be tedious, especially if you want to run a simple computational model. I built a tool to automate the time-consuming work.">
+<meta name="dcterms.date" content="2025-02-15">
+<meta name="description" content="In this project, I implemented a research paper from arXiv using PyTorch.">
 
-<title>Screener Scraper – Vikrant</title>
+<title>Implementing Late Chunking in PyTorch – Vikrant</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -156,14 +156,14 @@ gtag('config', 'G-CKDPXJ4Y38', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Screener Scraper</h1>
+      <h1 class="title">Implementing Late Chunking in PyTorch</h1>
                   <div>
         <div class="description">
-          Manually getting data from websites like Screener can be tedious, especially if you want to run a simple computational model. I built a tool to automate the time-consuming work.
+          In this project, I implemented a research paper from arXiv using PyTorch.
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">Software Engineering</div>
+                <div class="quarto-category">Data Science</div>
               </div>
                   </div>
   </div>
@@ -181,7 +181,7 @@ gtag('config', 'G-CKDPXJ4Y38', { 'anonymize_ip': true});
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">October 29, 2024</p>
+        <p class="date">February 15, 2025</p>
       </div>
     </div>
     
@@ -198,8 +198,8 @@ gtag('config', 'G-CKDPXJ4Y38', { 'anonymize_ip': true});
    
   <ul>
   <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview">Project Overview</a></li>
-  <li><a href="#tech-stack-used" id="toc-tech-stack-used" class="nav-link" data-scroll-target="#tech-stack-used">Tech Stack Used</a></li>
-  <li><a href="#how-to-use" id="toc-how-to-use" class="nav-link" data-scroll-target="#how-to-use">How to Use?</a></li>
+  <li><a href="#tech-stack" id="toc-tech-stack" class="nav-link" data-scroll-target="#tech-stack">Tech Stack:</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References:</a></li>
   </ul>
 </nav>
     </div>
@@ -212,29 +212,34 @@ gtag('config', 'G-CKDPXJ4Y38', { 'anonymize_ip': true});
 
 <section id="project-overview" class="level3">
 <h3 class="anchored" data-anchor-id="project-overview">Project Overview</h3>
-<p>A few years ago, I came across a book <em>Warren Buffett’s Ground Rules</em> by Jeremy Miller. In the book, we find discussions on how Warren used to invest in his early years. But for me, the real treasure was the Appendix section. There you got a worked out example of how Warren valued a business when he was running his partnership.</p>
-<p>The computation was simple, really, and might apply to most use cases, but not all. Since then, I used to go on <a href="https://screener.in">Screener</a>, and meticulously try to value each and every company from a screen (a custom filter for the companies) of mine. The screen itself was inspired from the advice of Benjamin Graham from the book <code>The Intelligent Investor</code>.</p>
-<p>Then I figured, I could use the Python and Selenium to automate this process. Instead of manually going over each company, I’ll let me script shortlist a few companies for me and then I’ll evaluate the shortlisted companies. That’s why I built <strong>Screener Scraper</strong>.</p>
-<p>Screener Scraper takes as input a screen on <a href="https://screener.in">Screener</a>, and filters out the <em>free puffs</em> based on the book. This is by no means a definitive valuation, but it saves me a ton of time!</p>
-</section>
-<section id="tech-stack-used" class="level3">
-<h3 class="anchored" data-anchor-id="tech-stack-used">Tech Stack Used</h3>
+<p>In this project, I implemented the research paper: Late Chunking:Contextual Chunk Embeddings Using Long-Context Embedding Models.<sup><a href="#1">1</a></sup></p>
+<p>As my understanding of the paper goes, the idea of it is as follows:</p>
+<p>When storing embeddings of chunks of textual data in a vector database (for use cases like RAG applications), it is often more efficient and useful to store smaller chunks. While they are efficient, the information in those chunks is totally isolated from other chunks. As a result, the information <em>across</em> chunks is lost due to this process.</p>
+<p>On the other hand, we have long context embedding models which can take large textual documents and embed them as one chunk. As the entire document is being treated as a single chunk, there is not the issue of the information being lost across chunks. However, these long context embeddings have their own issues of inefficiency and loss of information, due to phenomena like lost in the middle.</p>
+<p>So, late chunking offers the best of both worlds: embed using long context model, but chunk as if they are being embedded using small context models. It achieves this using the following steps:</p>
 <ol type="1">
-<li>Python</li>
-<li>Libraries like <code>Selenium</code> and <code>BeautifulSoup</code></li>
+<li>Embed the entire long document using long context model.</li>
+<li>Define a size that you want your chunk to have.</li>
+<li>Pool only this subset of embedding vectors to get a representation of a much smaller chunk than what was initially embedded.</li>
 </ol>
+<p>Using this, we hope to maintain the entire information across chunks as well, while keeping a manageable chunk size.</p>
 </section>
-<section id="how-to-use" class="level3">
-<h3 class="anchored" data-anchor-id="how-to-use">How to Use?</h3>
+<section id="tech-stack" class="level3">
+<h3 class="anchored" data-anchor-id="tech-stack">Tech Stack:</h3>
 <ol type="1">
-<li><p>Ensure you have provided your cookies and CSRF tokens from Screener in a file named <code>secrets.env</code>.</p></li>
-<li><p>When prompted, input the URL of your custom screen from Screener.</p></li>
-<li><p>The scraper will go through each of the companies in your screen, annd computes the liquidation valuation for each company.</p></li>
-<li><p>A <code>.csv</code> file will be generated containing all the crucial data you need for your analysis, along with the liquidation valuation.</p></li>
+<li>PyTorch</li>
+<li>HuggingFace: I have used <em>NovaSearch/stella_en_400M_v5</em> model as a long context model.</li>
 </ol>
-<p>Happy analyzing!</p>
-<p><strong>GitHub Repository</strong><br>
-For more details, the full source code can be found on GitHub: <a href="https://github.com/vikrantmehta123/screener-scraper">Source Code</a></p>
+<p>You can find the source code of my implementation <a href="https://github.com/vikrantmehta123/Research-Papers-Implementations/blob/main/LateChunking/latechunking.py">here</a>.</p>
+<hr>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References:</h3>
+<p><a id="1" href="https://arxiv.org/pdf/2409.04701"><strong>1. </strong></a> Late Chunking: Contextual Chunk Embeddings Using Long-Context Embedding Models</p>
+<ol start="2" type="1">
+<li>Image Reference: <a href="https://jina.ai/news/late-chunking-in-long-context-embedding-models/">Late Chunking Article From JinaAI</a></li>
+</ol>
+<hr>
 
 
 </section>

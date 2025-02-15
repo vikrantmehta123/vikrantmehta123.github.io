@@ -2,6 +2,7 @@
   {
     "listing": "/projects.html",
     "items": [
+      "/projects/late-chunking/index.html",
       "/projects/gpt-2/index.html",
       "/projects/shakespeare-in-me/index.html",
       "/projects/wavenet/index.html",

@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Vikrant Mehta">
-<meta name="dcterms.date" content="2024-10-29">
-<meta name="description" content="Manually getting data from websites like Screener can be tedious, especially if you want to run a simple computational model. I built a tool to automate the time-consuming work.">
+<meta name="dcterms.date" content="2025-02-01">
+<meta name="description" content="Git needs no introduction. Eventually, everyone has to work with Git. Why not recreate a prototype from scratch to understand it’s internals? I created a simple Git as an exercise.">
 
-<title>Screener Scraper – Vikrant</title>
+<title>Wrote Myself a Git – Vikrant</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -156,14 +156,14 @@ gtag('config', 'G-CKDPXJ4Y38', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Screener Scraper</h1>
+      <h1 class="title">Wrote Myself a Git</h1>
                   <div>
         <div class="description">
-          Manually getting data from websites like Screener can be tedious, especially if you want to run a simple computational model. I built a tool to automate the time-consuming work.
+          Git needs no introduction. Eventually, everyone has to work with Git. Why not recreate a prototype from scratch to understand it’s internals? I created a simple Git as an exercise.
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">Software Engineering</div>
+                <div class="quarto-category">Data Science</div>
               </div>
                   </div>
   </div>
@@ -181,7 +181,7 @@ gtag('config', 'G-CKDPXJ4Y38', { 'anonymize_ip': true});
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">October 29, 2024</p>
+        <p class="date">February 1, 2025</p>
       </div>
     </div>
     
@@ -198,8 +198,6 @@ gtag('config', 'G-CKDPXJ4Y38', { 'anonymize_ip': true});
    
   <ul>
   <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview">Project Overview</a></li>
-  <li><a href="#tech-stack-used" id="toc-tech-stack-used" class="nav-link" data-scroll-target="#tech-stack-used">Tech Stack Used</a></li>
-  <li><a href="#how-to-use" id="toc-how-to-use" class="nav-link" data-scroll-target="#how-to-use">How to Use?</a></li>
   </ul>
 </nav>
     </div>
@@ -212,29 +210,17 @@ gtag('config', 'G-CKDPXJ4Y38', { 'anonymize_ip': true});
 
 <section id="project-overview" class="level3">
 <h3 class="anchored" data-anchor-id="project-overview">Project Overview</h3>
-<p>A few years ago, I came across a book <em>Warren Buffett’s Ground Rules</em> by Jeremy Miller. In the book, we find discussions on how Warren used to invest in his early years. But for me, the real treasure was the Appendix section. There you got a worked out example of how Warren valued a business when he was running his partnership.</p>
-<p>The computation was simple, really, and might apply to most use cases, but not all. Since then, I used to go on <a href="https://screener.in">Screener</a>, and meticulously try to value each and every company from a screen (a custom filter for the companies) of mine. The screen itself was inspired from the advice of Benjamin Graham from the book <code>The Intelligent Investor</code>.</p>
-<p>Then I figured, I could use the Python and Selenium to automate this process. Instead of manually going over each company, I’ll let me script shortlist a few companies for me and then I’ll evaluate the shortlisted companies. That’s why I built <strong>Screener Scraper</strong>.</p>
-<p>Screener Scraper takes as input a screen on <a href="https://screener.in">Screener</a>, and filters out the <em>free puffs</em> based on the book. This is by no means a definitive valuation, but it saves me a ton of time!</p>
-</section>
-<section id="tech-stack-used" class="level3">
-<h3 class="anchored" data-anchor-id="tech-stack-used">Tech Stack Used</h3>
+<p>In this project, I implemented the core functionalities of git from scratch using Python. This project supports the features of Git such as staging, branches, commits, and logs.</p>
+<p>You can run all the commands using a similar syntax as Git via the terminal.</p>
+<p>For the purposes of this project, I have relied heavily on the following resources:</p>
 <ol type="1">
-<li>Python</li>
-<li>Libraries like <code>Selenium</code> and <code>BeautifulSoup</code></li>
+<li><a href="https://wyag.thb.lt/">WYAG</a></li>
+<li><a href="https://git-scm.com/book/en/v2">Git Documentation</a></li>
+<li><a href="https://youtube.com/playlist?list=PLRAV69dS1uWT4v4iK1h6qejyhGObFH9_o&amp;si=7Bko2YT1c2MvQjyO">Hitesh Choudhary’s YouTube Playlist</a></li>
 </ol>
-</section>
-<section id="how-to-use" class="level3">
-<h3 class="anchored" data-anchor-id="how-to-use">How to Use?</h3>
-<ol type="1">
-<li><p>Ensure you have provided your cookies and CSRF tokens from Screener in a file named <code>secrets.env</code>.</p></li>
-<li><p>When prompted, input the URL of your custom screen from Screener.</p></li>
-<li><p>The scraper will go through each of the companies in your screen, annd computes the liquidation valuation for each company.</p></li>
-<li><p>A <code>.csv</code> file will be generated containing all the crucial data you need for your analysis, along with the liquidation valuation.</p></li>
-</ol>
-<p>Happy analyzing!</p>
-<p><strong>GitHub Repository</strong><br>
-For more details, the full source code can be found on GitHub: <a href="https://github.com/vikrantmehta123/screener-scraper">Source Code</a></p>
+<p><strong>GitHub Repository:</strong></p>
+<p>The full source code along with my notes on the same could be found on GitHub: <a href="https://github.com/vikrantmehta123/Wrote-Myself-a-Git">Source Code</a>.</p>
+<hr>
 
 
 </section>
