@@ -9,7 +9,7 @@ description: "In this project, I implemented a research paper from arXiv using P
 
 ### Project Overview
 
-In this project, I implemented the research paper: Late Chunking:Contextual Chunk Embeddings Using Long-Context Embedding Models.<sup>[1](#1)</sup>
+In this project, I implemented the research paper: Late Chunking:Contextual Chunk Embeddings Using Long-Context Embedding Models.<sup>1</sup>
 
 As my understanding of the paper goes, the idea of it is as follows:
 
@@ -36,7 +36,7 @@ You can find the source code of my implementation [here](https://github.com/vikr
 
 ### References:
 
-<a id="1" href="https://arxiv.org/pdf/2409.04701" ><strong>1. </strong></a> Late Chunking: Contextual Chunk Embeddings Using Long-Context Embedding Models
+1. [Late Chunking](https://arxiv.org/pdf/2409.04701): Contextual Chunk Embeddings Using Long-Context Embedding Models
 
 2. Image Reference: [Late Chunking Article From JinaAI](https://jina.ai/news/late-chunking-in-long-context-embedding-models/)
 
