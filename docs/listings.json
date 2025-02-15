@@ -14,6 +14,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/mab-and-advice-on-life/index.html",
       "/posts/poor-charlies-almanack/index.html",
       "/posts/creating-http-server-from-scratch/index.html",
       "/posts/first-project-using-fastai/index.html",
