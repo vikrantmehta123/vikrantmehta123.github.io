@@ -1,0 +1,35 @@
+---
+title: "Logstash Parser"
+author: "Vikrant Mehta"
+date: "2025-08-23"
+image: 'ast.png'
+categories: [Software Engineering]
+description: "In this project, I wrote a parser for Logstash pipelines using PyParsing."
+---
+
+### Project Overview
+
+In this project, I wanted to peel away one layer of abstraction from the way we use programming languages. Instead of writing code in Python and not worrying about anything below that, I want to go one step lower and figure out what happens under-the-hood. In this project, I wrote a parser that uses Python to parse a Logstash pipeline into a neat Abstract Syntax Tree objects.
+
+[Logstash](https://www.elastic.co/logstash) is an open-source data processing pipeline that is commonly used to parse logs. Logstash pipelines have a specific structure where the users can define inputs, outputs, and the processing filters. The parser parses a logstash file and constructs an easily-traversable Abstract Syntax Tree for the pipeline. This tree can then be manipulated, analyzed, and improved as user desires.
+
+For the purposes of this project, I focused only on the [Filter plugins](https://www.elastic.co/docs/reference/logstash/plugins/filter-plugins). 
+
+### Features
+
+- Logstash syntax can be easily accessed and manipulated through Python objects such as `Plugin`, `Expression`, etc.
+- Each object has a method `to_logstash` which reconstructs the corresponding logstash configuration based on the AST.
+
+### Tech Stack
+
+- **Language**: Python
+- **Modules**: `PyParsing`
+
+**GitHub Repository**  
+For more details, the full source code can be found on GitHub: [Source Code](https://github.com/vikrantmehta123/http-server)
+
+### References
+
+1. [TomasKoutek](https://github.com/TomasKoutek/logstash-pipeline-parser): I relied heavily on this existing parser to arrive at the Context Free Grammar definitions.
+
+---
