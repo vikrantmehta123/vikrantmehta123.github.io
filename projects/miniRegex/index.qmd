@@ -1,0 +1,42 @@
+---
+title: "miniRegex"
+author: "Vikrant Mehta"
+date: "2025-12-29"
+image: 'regex.png'
+categories: [Software Engineering, Compilers]
+description: "A fully functional regular expression engine built from scratch in Python, featuring recursive descent parsing and backtracking search."
+---
+
+### Project Overview
+
+During my work at VuNet Systems, I frequently worked with Regular Expressions, which sparked my curiosity about how regex engines actually work under the hood.
+
+To understand the theory behind regular languages and parsing algorithms, I self-studied online courses on Theory of Computation and Compilers. Armed with this knowledge, I built a complete regex engine from scratch in Python—without using Python's built-in `re` module.
+
+The engine supports all fundamental regex syntax including quantifiers (both greedy and lazy), character classes, capture groups, anchors, and alternation. It implements a recursive descent parser to convert regex patterns into an Abstract Syntax Tree (AST), followed by a backtracking matcher for pattern matching. The architecture roughly follows Java's `java.util.regex` module.
+
+### Key Features
+
+- **Complete Parsing Pipeline**: Recursive descent parser that converts regex patterns into an AST representation
+- **Advanced Quantifiers**: Support for `*`, `+`, `?`, `{n,m}` with both greedy and lazy variants
+- **Character Classes**: Including ranges `[a-z]`, negation `[^abc]`, and shortcuts like `\d`, `\w`, `\s`
+- **Capture Groups**: Regular `(...)`, non-capturing `(?:...)`, and named groups `(?<name>...)`
+- **Anchors**: Position assertions with `^`, `$`, `\b`, `\B`
+
+### Tech Stack
+
+- **Language**: Python
+
+### Limitations & Future Work
+
+While functional for educational purposes, the engine lacks some advanced features like lookahead/lookbehind assertions and backreferences. Future enhancements could include NFA/DFA compilation for improved performance and an interactive regex debugger.
+
+**GitHub Repository**  
+Full source code and documentation: [miniRegex on GitHub](https://github.com/vikrantmehta123/miniRegex)
+
+### References
+
+1. [Java's Regex Engine](https://github.com/openjdk/jdk/blob/master/src/java.base/share/classes/java/util/regex/Pattern.java)
+2. [Compilers Course by Suresh Purini](https://www.youtube.com/playlist?list=PLde1J4XOn2z0i6fc39dI6OWjEoNuaFglI)
+
+---

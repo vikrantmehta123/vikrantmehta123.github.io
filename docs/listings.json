@@ -2,6 +2,7 @@
   {
     "listing": "/projects.html",
     "items": [
+      "/projects/miniRegex/index.html",
       "/projects/logstash-parser/index.html",
       "/projects/late-chunking/index.html",
       "/projects/gpt-2/index.html",
