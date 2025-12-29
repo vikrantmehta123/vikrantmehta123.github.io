@@ -17,15 +17,13 @@ include-after-body: footer.html
 
 :::{#hero-layout}
 
-Hi, I'm Vikrant👋. 
+Hi, I’m Vikrant👋.
 
-I'm an Arts graduate (B.A. in Psychology) who loves computer science. To that end, I am pursuing an online B.S. in Data Science from IIT Madras while working in the big data team at **VuNet Systems**, Bangalore. 
+I studied Psychology and completed my B.S. in Data Science from IIT Madras. I currently work in the Big Data team at VuNet Systems, Bangalore.
 
-Understanding what's *under the hood* is a joy to me.
+Outside of work, I enjoy reading, playing tennis, and theatre. And I strongly believe books are closest things to magic in the world of muggles.
 
-I strongly believe books are closest things to magic in the world of muggles. Beyond computers and the human mind, I love tennis, theatre, and finance. 
-
-I write about what I read, the projects I'm building, and the amazing people that I meet.
+Here, I share what I'm reading, projects I'm building, and lessons I'm learning along the way.
 
 ---
 
@@ -33,12 +31,13 @@ I write about what I read, the projects I'm building, and the amazing people tha
 
 **VuNet Systems**, *Bangalore* 
 
-*Data Science Team* | Oct 2024 - Present  
+Data Engineer | Oct 2024 - Present
+
+Working with Big Data tech like Kafka & Clickhouse
 
 **IIT Madras**, *Chennai*  
 
-*Teaching Assistant* | June 2024 - Jan 2025 
+Teaching Assistant | June 2024 - Dec 2024
 
+Helped students with Data Structures and Algorithms
 :::
-
----
