@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Vikrant</title>
+<title>claude – Vikrant</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +65,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -76,35 +109,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-reading-time','listing-categories','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-CKDPXJ4Y38"></script>
 
 <script type="text/javascript">
@@ -118,35 +122,6 @@ gtag('config', 'G-CKDPXJ4Y38', { 'anonymize_ip': true});
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Sofia&amp;family=WindSong:wght@400;500&amp;display=swap" rel="stylesheet">
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -316,7 +291,7 @@ window.Quarto = {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -335,7 +310,7 @@ window.Quarto = {
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
@@ -376,496 +351,140 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block"></header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(15)</span></div><div class="category" data-category="Qm9va3M=">Books <span class="quarto-category-count">(5)</span></div><div class="category" data-category="QnVzaW5lc3M=">Business <span class="quarto-category-count">(6)</span></div><div class="category" data-category="Q2hlc3M=">Chess <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RGF0YSUyMFNjaWVuY2U=">Data Science <span class="quarto-category-count">(3)</span></div><div class="category" data-category="UGVvcGxl">People <span class="quarto-category-count">(6)</span></div><div class="category" data-category="UHN5Y2hvbG9neQ==">Psychology <span class="quarto-category-count">(5)</span></div><div class="category" data-category="U29mdHdhcmUlMjBFbmdpbmVlcmluZw==">Software Engineering <span class="quarto-category-count">(2)</span></div></div></div>
-<!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
-
-
-
-
-
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-      <option value="" disabled="" selected="" hidden="">Order By</option>
-      <option value="index" data-direction="asc">Default</option>
-      <option value="listing-title" data-direction="asc">
-        Title
-      </option>
-      <option value="listing-date-sort" data-direction="asc">
-        Date - Oldest
-      </option>
-      <option value="listing-date-sort" data-direction="desc">
-        Date - Newest
-      </option>
-    </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#claude.md" id="toc-claude.md" class="nav-link active" data-scroll-target="#claude.md">CLAUDE.md</a>
+  <ul class="collapse">
+  <li><a href="#project-overview" id="toc-project-overview" class="nav-link" data-scroll-target="#project-overview">Project Overview</a></li>
+  <li><a href="#build-commands" id="toc-build-commands" class="nav-link" data-scroll-target="#build-commands">Build Commands</a></li>
+  <li><a href="#architecture" id="toc-architecture" class="nav-link" data-scroll-target="#architecture">Architecture</a>
+  <ul class="collapse">
+  <li><a href="#content-structure" id="toc-content-structure" class="nav-link" data-scroll-target="#content-structure">Content Structure</a></li>
+  <li><a href="#key-root-files" id="toc-key-root-files" class="nav-link" data-scroll-target="#key-root-files">Key Root Files</a></li>
+  </ul></li>
+  <li><a href="#creating-new-content" id="toc-creating-new-content" class="nav-link" data-scroll-target="#creating-new-content">Creating New Content</a></li>
+  <li><a href="#publishing-workflow" id="toc-publishing-workflow" class="nav-link" data-scroll-target="#publishing-workflow">Publishing Workflow</a></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
-</div>
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="U29mdHdhcmUlMjBFbmdpbmVlcmluZw==" data-listing-date-sort="1771007400000" data-listing-file-modified-sort="1771089295182" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2134">
-<div class="thumbnail"><a href="./posts/journey-of-an-insert-part-1/index.html" class="no-external">
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+
+<section id="claude.md" class="level1">
+<h1>CLAUDE.md</h1>
+<p>This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.</p>
+<section id="project-overview" class="level2">
+<h2 class="anchored" data-anchor-id="project-overview">Project Overview</h2>
+<p>Personal blog and portfolio website built with <strong>Quarto</strong>, deployed to GitHub Pages from the <code>docs/</code> directory. The site includes blog posts, project showcases, and educational DSA content.</p>
+</section>
+<section id="build-commands" class="level2">
+<h2 class="anchored" data-anchor-id="build-commands">Build Commands</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Render the full site (generates output in docs/)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Preview with live reload</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Render a single post/page</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render posts/my-post/index.qmd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>There is no package.json, Makefile, or test suite. Quarto is the sole build tool.</p>
+</section>
+<section id="architecture" class="level2">
+<h2 class="anchored" data-anchor-id="architecture">Architecture</h2>
+<ul>
+<li><strong>Source files:</strong> <code>.qmd</code> (Quarto Markdown) files with YAML frontmatter</li>
+<li><strong>Output directory:</strong> <code>docs/</code> — committed to git, served by GitHub Pages</li>
+<li><strong>Configuration:</strong> <code>_quarto.yml</code> is the main config (site structure, navbar, sidebar, themes)</li>
+<li><strong>Metadata inheritance:</strong> <code>_metadata.yml</code> files in <code>posts/</code>, <code>projects/</code>, and <code>dsa/</code> apply shared settings (e.g., <code>freeze: true</code>) to all content in those directories</li>
+</ul>
+<section id="content-structure" class="level3">
+<h3 class="anchored" data-anchor-id="content-structure">Content Structure</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Directory</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>posts/</code></td>
+<td>Blog posts (each is a folder with <code>index.qmd</code> + assets)</td>
+</tr>
+<tr class="even">
+<td><code>projects/</code></td>
+<td>Project showcases (same structure)</td>
+</tr>
+<tr class="odd">
+<td><code>dsa/</code></td>
+<td>Educational DSA content with sidebar navigation</td>
+</tr>
+<tr class="even">
+<td><code>docs/</code></td>
+<td>Generated output — do not hand-edit</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="key-root-files" class="level3">
+<h3 class="anchored" data-anchor-id="key-root-files">Key Root Files</h3>
+<ul>
+<li><code>_quarto.yml</code> — Site config, navbar, sidebar, theme settings</li>
+<li><code>index.qmd</code> — Home page with auto-generated post listing</li>
+<li><code>about.qmd</code> — About page</li>
+<li><code>projects.qmd</code> — Projects listing page</li>
+<li><code>styles.css</code> — Custom CSS overrides</li>
+<li><code>scripts.js</code> — Custom JS (quote slideshow in footer)</li>
+<li><code>footer.html</code> — Custom footer template</li>
+</ul>
+</section>
+</section>
+<section id="creating-new-content" class="level2">
+<h2 class="anchored" data-anchor-id="creating-new-content">Creating New Content</h2>
+<p>A new blog post is a directory under <code>posts/</code> containing an <code>index.qmd</code> with this frontmatter:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Post Title"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Vikrant Mehta"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"YYYY-MM-DD"</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">categories</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">"Category"</span><span class="kw">]</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">description</span><span class="kw">:</span><span class="at"> </span><span class="st">"Brief description"</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Posts automatically appear on the home page listing (sorted by date descending). The same pattern applies to <code>projects/</code>.</p>
+</section>
+<section id="publishing-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="publishing-workflow">Publishing Workflow</h2>
+<ol type="1">
+<li>Create/edit <code>.qmd</code> source files</li>
+<li>Run <code>quarto render</code></li>
+<li>Commit both source files and generated <code>docs/</code> output</li>
+<li>Push to GitHub — Pages serves from <code>docs/</code></li>
+</ol>
+</section>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
+<ul>
+<li><code>freeze: true</code> is set in content metadata — Quarto reuses previously rendered output unless the source changes</li>
+<li>Themes: Flatly (light) / Darkly (dark) via Bootstrap</li>
+<li><code>docs/search.json</code> and <code>docs/listings.json</code> are auto-generated by Quarto for search and listing functionality</li>
+</ul>
 
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
 
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/journey-of-an-insert-part-1/index.html" class="no-external">Journey of an Insert: Storage in Postgres</a>
-</h3>
-<div class="listing-categories">
+</section>
+</section>
 
-<div class="listing-category" onclick="window.quartoListingCategory('U29mdHdhcmUlMjBFbmdpbmVlcmluZw=='); return false;">Software Engineering</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/journey-of-an-insert-part-1/index.html" class="no-external">
-<p>This is the first part in a series of blogs where we trace the journey of a postgres insert from the INSERT INTO command to how it gets replicated on multiple nodes. In this blog, we see how the insert happens on a single node and how it gets stored.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/journey-of-an-insert-part-1/index.html" class="no-external">
-<div class="listing-date">
-Feb 14, 2026
-</div>
-<div class="listing-reading-time">11 min</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="RGF0YSUyMFNjaWVuY2UlMkNQc3ljaG9sb2d5" data-listing-date-sort="1739557800000" data-listing-file-modified-sort="1767016216305" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="676">
-<div class="thumbnail"><a href="./posts/mab-and-advice-on-life/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/mab-and-advice-on-life/profile.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/mab-and-advice-on-life/index.html" class="no-external">Reinforcement Learning, Positive Psychology and Life</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGF0YSUyMFNjaWVuY2U='); return false;">Data Science</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHN5Y2hvbG9neQ=='); return false;">Psychology</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/mab-and-advice-on-life/index.html" class="no-external">
-The Multi-Armed Bandit (MAB) problem is an important idea in reinforcement learning. But you don’t need to know anything about reinforcement learning to see how the idea can…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/mab-and-advice-on-life/index.html" class="no-external">
-<div class="listing-date">
-Feb 15, 2025
-</div>
-<div class="listing-reading-time">4 min</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="UHN5Y2hvbG9neSUyQ0Jvb2tz" data-listing-date-sort="1730658600000" data-listing-file-modified-sort="1767016216316" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="484">
-<div class="thumbnail"><a href="./posts/poor-charlies-almanack/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/poor-charlies-almanack/Poor Charlies Almanack.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/poor-charlies-almanack/index.html" class="no-external">A Wise Man’s Counsel</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHN5Y2hvbG9neQ=='); return false;">Psychology</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Qm9va3M='); return false;">Books</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/poor-charlies-almanack/index.html" class="no-external">
-<p>I think Charlie Munger is one of the wisest men to have ever lived. He didn’t bother writing a book himself, but his wisdom is out there for us to soak up through his letters, speeches, and the incredible Poor Charlie’s Almanack.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/poor-charlies-almanack/index.html" class="no-external">
-<div class="listing-date">
-Nov 4, 2024
-</div>
-<div class="listing-reading-time">3 min</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="U29mdHdhcmUlMjBFbmdpbmVlcmluZw==" data-listing-date-sort="1729967400000" data-listing-file-modified-sort="1767016216301" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2623">
-<div class="thumbnail"><a href="./posts/creating-http-server-from-scratch/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/creating-http-server-from-scratch/FastAPI Server.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/creating-http-server-from-scratch/index.html" class="no-external">Building an HTTP Server From Scratch</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('U29mdHdhcmUlMjBFbmdpbmVlcmluZw=='); return false;">Software Engineering</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/creating-http-server-from-scratch/index.html" class="no-external">
-<p>Serving a web application is as simple as running a single command. But this hides a lot of details. In this post, we create an HTTP server from scratch in Python to peek under the hood.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/creating-http-server-from-scratch/index.html" class="no-external">
-<div class="listing-date">
-Oct 27, 2024
-</div>
-<div class="listing-reading-time">14 min</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="RGF0YSUyMFNjaWVuY2U=" data-listing-date-sort="1729621800000" data-listing-file-modified-sort="1767016216301" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1500">
-<div class="thumbnail"><a href="./posts/first-project-using-fastai/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/first-project-using-fastai/MNIST Viz.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/first-project-using-fastai/index.html" class="no-external">Building a Digit Classifier From Scratch</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGF0YSUyMFNjaWVuY2U='); return false;">Data Science</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/first-project-using-fastai/index.html" class="no-external">
-<p>In this post, I’ll share how I created my first deep learning model. I created a neural network from scratch using FastAI and PyTorch. While I didn’t write code for backpropagation (thankfully, PyTorch is there!), I did write the building blocks myself, which made this incredibly fun!</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/first-project-using-fastai/index.html" class="no-external">
-<div class="listing-date">
-Oct 23, 2024
-</div>
-<div class="listing-reading-time">8 min</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="RGF0YSUyMFNjaWVuY2UlMkNQc3ljaG9sb2d5JTJDQm9va3M=" data-listing-date-sort="1729189800000" data-listing-file-modified-sort="1767016216305" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="566">
-<div class="thumbnail"><a href="./posts/how-to-learn-dl/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/how-to-learn-dl/Meta Learning.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/how-to-learn-dl/index.html" class="no-external">Mastering Deep Learning as a Non-Techie</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGF0YSUyMFNjaWVuY2U='); return false;">Data Science</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHN5Y2hvbG9neQ=='); return false;">Psychology</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Qm9va3M='); return false;">Books</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/how-to-learn-dl/index.html" class="no-external">
-<p>How do you master deep learning, especially if you’re not a ‘techie’? Radek Osmulski did just this. He went from having a boring job to an exciting career at NVidia. This post tells you how.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/how-to-learn-dl/index.html" class="no-external">
-<div class="listing-date">
-Oct 18, 2024
-</div>
-<div class="listing-reading-time">3 min</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="Q2hlc3MlMkNCb29rcw==" data-listing-date-sort="1728757800000" data-listing-file-modified-sort="1767016216309" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="694">
-<div class="thumbnail"><a href="./posts/mastering-life-like-a-grandmaster/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/mastering-life-like-a-grandmaster/Mind Master.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/mastering-life-like-a-grandmaster/index.html" class="no-external">Grandmaster-ing Life</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q2hlc3M='); return false;">Chess</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Qm9va3M='); return false;">Books</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/mastering-life-like-a-grandmaster/index.html" class="no-external">
-<p>Vishy Anand, the five-time world chess champion, inspires many. His advice, like his chess, is well thought out. Recently, he published his book: “Mind Master: Winning Lessons from a Champion’s life”. Read on to find out Vishy’s take on life.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/mastering-life-like-a-grandmaster/index.html" class="no-external">
-<div class="listing-date">
-Oct 13, 2024
-</div>
-<div class="listing-reading-time">4 min</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-categories="QnVzaW5lc3MlMkNQZW9wbGU=" data-listing-date-sort="1623004200000" data-listing-file-modified-sort="1767016216299" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="928">
-<div class="thumbnail"><a href="./posts/challenge-accepted/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/challenge-accepted/Shashikant Parakh.jpeg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/challenge-accepted/index.html" class="no-external">Challenge Accepted!</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('QnVzaW5lc3M='); return false;">Business</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UGVvcGxl'); return false;">People</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/challenge-accepted/index.html" class="no-external">
-<p>The incredible journey of Shashikant Parakh, the man who transformed NAMCO Hospital and built a legacy of success through relentless challenges. From business ventures to life lessons, his story is a testament to dreaming big and making a difference.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/challenge-accepted/index.html" class="no-external">
-<div class="listing-date">
-Jun 7, 2021
-</div>
-<div class="listing-reading-time">5 min</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="8" data-categories="Qm9va3MlMkNQc3ljaG9sb2d5" data-listing-date-sort="1621103400000" data-listing-file-modified-sort="1767016216318" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1913">
-<div class="thumbnail"><a href="./posts/why-we-sleep/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/why-we-sleep/Why We Sleep.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/why-we-sleep/index.html" class="no-external">How Good Is Sleep!</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Qm9va3M='); return false;">Books</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHN5Y2hvbG9neQ=='); return false;">Psychology</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/why-we-sleep/index.html" class="no-external">
-<p>Why do we sleep? How do we sleep? What are dreams? Until now, sleep was a mystery. But the developments in technology allow us to answer such questions. In his bestselling book “ Why We Sleep: The New Science of Sleep and Dreams”, neurologist and sleep researcher Matt Walker answers the same questions. He takes us on a journey from ‘Sleep is good’ to ‘How good is sleep?’</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/why-we-sleep/index.html" class="no-external">
-<div class="listing-date">
-May 16, 2021
-</div>
-<div class="listing-reading-time">10 min</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="9" data-categories="QnVzaW5lc3MlMkNQZW9wbGU=" data-listing-date-sort="1604082600000" data-listing-file-modified-sort="1767016216309" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1341">
-<div class="thumbnail"><a href="./posts/meeting-bhavesh-bhatia/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/meeting-bhavesh-bhatia/Bhavesh Bhatia.jpeg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/meeting-bhavesh-bhatia/index.html" class="no-external">Unstoppable!</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('QnVzaW5lc3M='); return false;">Business</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UGVvcGxl'); return false;">People</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/meeting-bhavesh-bhatia/index.html" class="no-external">
-<p>Bhavesh Bhatia’s story is nothing short of inspirational. He started with a rented handcart as a store, and built a business employing more than 10,000 people. But there’s something more. Read on to know why Bhavesh is so special.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/meeting-bhavesh-bhatia/index.html" class="no-external">
-<div class="listing-date">
-Oct 31, 2020
-</div>
-<div class="listing-reading-time">7 min</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="10" data-categories="QnVzaW5lc3MlMkNQZW9wbGU=" data-listing-date-sort="1604082600000" data-listing-file-modified-sort="1767016216316" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1316">
-<div class="thumbnail"><a href="./posts/rajendra-bagwe/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/rajendra-bagwe/Rajendra Bagwe.jpeg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/rajendra-bagwe/index.html" class="no-external">Daring to Execute</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('QnVzaW5lc3M='); return false;">Business</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UGVvcGxl'); return false;">People</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/rajendra-bagwe/index.html" class="no-external">
-<p>Three friends, a risky gamble, and a relentless spirit made Reliable Engineers India’s top engineering companies. Rajendra’s business journey is one that only a few will dare to try.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/rajendra-bagwe/index.html" class="no-external">
-<div class="listing-date">
-Oct 31, 2020
-</div>
-<div class="listing-reading-time">7 min</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="11" data-categories="UHN5Y2hvbG9neSUyQ0Jvb2tz" data-listing-date-sort="1598553000000" data-listing-file-modified-sort="1767016216314" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1964">
-<div class="thumbnail"><a href="./posts/peak/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/peak/Peak.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/peak/index.html" class="no-external">Master Anything With Deliberate Practice</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHN5Y2hvbG9neQ=='); return false;">Psychology</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Qm9va3M='); return false;">Books</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/peak/index.html" class="no-external">
-When we see Virat Kohli score a century, we are tempted to say, “He’s so talented.” But we all know it’s not because of talent but instead, because he practiced. A lot. Not…<em></em>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/peak/index.html" class="no-external">
-<div class="listing-date">
-Aug 28, 2020
-</div>
-<div class="listing-reading-time">10 min</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="12" data-categories="QnVzaW5lc3MlMkNQZW9wbGU=" data-listing-date-sort="1593369000000" data-listing-file-modified-sort="1767016216317" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1004">
-<div class="thumbnail"><a href="./posts/what-next/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/what-next/Mahesh Bhagwat.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/what-next/index.html" class="no-external">What Next?</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('QnVzaW5lc3M='); return false;">Business</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UGVvcGxl'); return false;">People</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/what-next/index.html" class="no-external">
-<p>Meeting someone in the civil services is a special experience. Getting to interview them is even more special. Read on to know an IPS officer’s journey.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/what-next/index.html" class="no-external">
-<div class="listing-date">
-Jun 29, 2020
-</div>
-<div class="listing-reading-time">6 min</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="13" data-categories="QnVzaW5lc3MlMkNQZW9wbGU=" data-listing-date-sort="1591468200000" data-listing-file-modified-sort="1767016216310" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="939">
-<div class="thumbnail"><a href="./posts/navigating-gold/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/navigating-gold/Anil Dande.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/navigating-gold/index.html" class="no-external">Navigating Gold</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('QnVzaW5lc3M='); return false;">Business</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UGVvcGxl'); return false;">People</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/navigating-gold/index.html" class="no-external">
-<p>The man behind the best retail store of India tells his story. Read on to know more.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/navigating-gold/index.html" class="no-external">
-<div class="listing-date">
-Jun 7, 2020
-</div>
-<div class="listing-reading-time">5 min</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="14" data-categories="QnVzaW5lc3MlMkNQZW9wbGU=" data-listing-date-sort="1588789800000" data-listing-file-modified-sort="1767016216302" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1288">
-<div class="thumbnail"><a href="./posts/from-ashes-to-an-empire/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/from-ashes-to-an-empire/Amol Kasar.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/from-ashes-to-an-empire/index.html" class="no-external">From Ashes to an Empire!</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('QnVzaW5lc3M='); return false;">Business</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UGVvcGxl'); return false;">People</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/from-ashes-to-an-empire/index.html" class="no-external">
-We went to Sinnar to meet a man about whom I knew virtually nothing. But very soon I realised what the name <em>Amol Kasar</em> meant. A man in his mid-thirties, Amol Kasar was a…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/from-ashes-to-an-empire/index.html" class="no-external">
-<div class="listing-date">
-May 7, 2020
-</div>
-<div class="listing-reading-time">7 min</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
