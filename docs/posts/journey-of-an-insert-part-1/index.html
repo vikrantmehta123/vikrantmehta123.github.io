@@ -516,7 +516,7 @@ window.Quarto = {
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This will create a table named <code>mytesttable</code> in the default namespace in Postgres.</p>
 <p>And now let’s make an insert:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> mytesttable (<span class="kw">data</span>) <span class="kw">VALUES</span> (<span class="st">'Hello, this is my test record!'</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> mytesttable (<span class="kw">data</span>) <span class="kw">VALUES</span> (<span class="st">'Tracking this specific insert!'</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>In the client terminal, we see a success response. The row has been inserted now. But who inserted this row? Where is it stored? Did it have any side-effects / other operations that happened in the background? These are important details that we need to explain.</p>
 <p>When we execute an INSERT, the data flows through three stages:</p>
 <ol type="1">

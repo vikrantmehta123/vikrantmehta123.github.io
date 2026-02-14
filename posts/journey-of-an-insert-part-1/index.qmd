@@ -84,7 +84,7 @@ This will create a table named `mytesttable` in the default namespace in Postgre
 And now let's make an insert:
 
 ```sql
-INSERT INTO mytesttable (data) VALUES ('Hello, this is my test record!');
+INSERT INTO mytesttable (data) VALUES ('Tracking this specific insert!');
 ```	
 
 In the client terminal, we see a success response. The row has been inserted now. But who inserted this row? Where is it stored? Did it have any side-effects / other operations that happened in the background? These are important details that we need to explain.
