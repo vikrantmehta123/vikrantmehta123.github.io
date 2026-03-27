@@ -1,9 +1,21 @@
 [
   {
+    "listing": "/projects.html",
+    "items": [
+      "/projects/miniRegex/index.html",
+      "/projects/logstash-parser/index.html",
+      "/projects/late-chunking/index.html",
+      "/projects/gpt-2/index.html",
+      "/projects/shakespeare-in-me/index.html",
+      "/projects/wavenet/index.html",
+      "/projects/screener-scraper/index.html",
+      "/projects/http-server-from-scratch/index.html",
+      "/projects/money-map/index.html"
+    ]
+  },
+  {
     "listing": "/index.html",
     "items": [
-      "/posts/journey-of-an-insert-part-1/index.html",
-      "/posts/journey-of-an-insert-part-2/index.html",
       "/posts/mab-and-advice-on-life/index.html",
       "/posts/poor-charlies-almanack/index.html",
       "/posts/creating-http-server-from-scratch/index.html",
@@ -18,20 +30,6 @@
       "/posts/what-next/index.html",
       "/posts/navigating-gold/index.html",
       "/posts/from-ashes-to-an-empire/index.html"
-    ]
-  },
-  {
-    "listing": "/projects.html",
-    "items": [
-      "/projects/miniRegex/index.html",
-      "/projects/logstash-parser/index.html",
-      "/projects/late-chunking/index.html",
-      "/projects/gpt-2/index.html",
-      "/projects/shakespeare-in-me/index.html",
-      "/projects/wavenet/index.html",
-      "/projects/screener-scraper/index.html",
-      "/projects/http-server-from-scratch/index.html",
-      "/projects/money-map/index.html"
     ]
   }
 ]
